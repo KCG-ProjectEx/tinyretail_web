@@ -44,7 +44,7 @@ switch ($get_type) {
     break;
 }
 
-$json_data    = file_get_contents('php://input','r');
+$json_data = file_get_contents('php://input','r');
 
 if(is_json($json_data)){
 $json_data_d = json_decode($json_data,true);
@@ -90,5 +90,3 @@ $dbh = null;
 ?>
 </body>
 </html>
-
-

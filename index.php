@@ -76,43 +76,43 @@ $encoded_age = json_encode($age_array);
 </script>
 
 <div id="wrapper">
-<!-- Nav -->
-  <nav id="nav">
-    <a href="#me" class="icon fa-home active"><span>Home</span></a>
-    <a href="#work" class="icon fa-folder"><span>Work</span></a>
-    <a href="#contact" class="icon fa-envelope"><span>Contact</span></a>
-    <a href="#" class="icon fa-twitter"><span>Twitter</span></a>
-  </nav>
-<!-- Main -->
-	<div id="main">
-    <!-- Me -->
-    <article id="me" class="panel">
-      <header>
-        <h1>来店者数</h1>
-      </header>
-      <div id="graph_1">
-        <canvas id="firstGraphCanvas"></canvas>
-        <script id="firstGraph" src="js/first_graph.js"></script>
-      </div>
-    </article>
-<!-- Work -->
-    <article id="work" class="panel">
-      <header>
-        <h1>年齢分布</h1>
-      </header>
-      <div id="graph_2">
-        <canvas id="secondGraphCanvas"></canvas>
-        <script id="secondGraph" src="js/second_graph.js"></script>
-      </div>
-    </article>
-  </div>
-<!-- Footer -->
-	<div id="footer">
-		<ul class="copyright">
-			<li>&copy; Untitled.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-		</ul>
-	</div>
-</dev>
+    <!-- Nav -->
+    <nav id="nav">
+      <a href="#me" class="icon fa-home active"><span>Home</span></a>
+      <a href="#work" class="icon fa-folder"><span>Work</span></a>
+      <a href="#contact" class="icon fa-envelope"><span>Contact</span></a>
+      <a href="#" class="icon fa-twitter"><span>Twitter</span></a>
+    </nav>
+    <!-- Main -->
+  	<div id="main">
+      <!-- Me -->
+      <article id="me" class="panel">
+        <header>
+          <h1>来店者数</h1>
+        </header>
+        <div id="graph_1">
+          <canvas id="firstGraphCanvas"></canvas>
+          <script id="firstGraph" src="js/first_graph.js"></script>
+        </div>
+      </article>
+      <!-- Work -->
+      <article id="work" class="panel">
+        <header>
+          <h1>年齢分布</h1>
+        </header>
+        <div id="graph_2">
+          <canvas id="secondGraphCanvas"></canvas>
+          <script id="secondGraph" src="js/second_graph.js"></script>
+        </div>
+      </article>
+    </div>
+     <!-- Footer -->
+  	<div id="footer">
+  		<ul class="copyright">
+  			<li>&copy; Untitled.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+  		</ul>
+  	</div>
+</div>
 
 <!-- Scripts -->
 	<script src="assets/js/jquery.min.js"></script>
