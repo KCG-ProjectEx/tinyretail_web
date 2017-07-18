@@ -106,7 +106,14 @@ $encoded_age = json_encode($age_array);
       </div>
     </article>
   </div>
+<!-- Footer -->
+	<div id="footer">
+		<ul class="copyright">
+			<li>&copy; Untitled.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+		</ul>
+	</div>
 </dev>
+
 <!-- Scripts -->
 	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/js/skel.min.js"></script>
