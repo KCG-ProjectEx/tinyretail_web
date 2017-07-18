@@ -78,15 +78,15 @@ $encoded_age = json_encode($age_array);
 <div id="wrapper">
     <!-- Nav -->
     <nav id="nav">
-      <a href="#me" class="icon fa-home active"><span>Home</span></a>
-      <a href="#work" class="icon fa-folder"><span>Work</span></a>
+      <a href="#maingraph" class="fa fa-user-circle" aria-hidden="true"><span>Home</span></a>
+      <a href="#subgraph" class="icon fa-folder"><span>Work</span></a>
       <a href="#contact" class="icon fa-envelope"><span>Contact</span></a>
       <a href="#" class="icon fa-twitter"><span>Twitter</span></a>
     </nav>
     <!-- Main -->
   	<div id="main">
       <!-- Me -->
-      <article id="me" class="panel">
+      <article id="maingraph" class="panel">
         <header>
           <h1>来店者数</h1>
         </header>
@@ -96,7 +96,7 @@ $encoded_age = json_encode($age_array);
         </div>
       </article>
       <!-- Work -->
-      <article id="work" class="panel">
+      <article id="subgraph" class="panel">
         <header>
           <h1>年齢分布</h1>
         </header>
