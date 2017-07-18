@@ -77,8 +77,8 @@ $encoded_age = json_encode($age_array);
 <div id="wrapper">
     <!-- Nav -->
     <nav id="nav">
-      <a href="#maingraph" class="icon fa-user-circle"><span>Home</span></a>
-      <a href="#subgraph" class="icon fa-area-chart"><span>Work</span></a>
+      <a href="#maingraph" class="icon fa-user-circle"><span>Guestcount</span></a>
+      <a href="#subgraph" class="icon fa-area-chart"><span>Age</span></a>
       <!-- <a href="#" class="icon "><span>Twitter</span></a> -->
     </nav>
     <!-- Main -->
