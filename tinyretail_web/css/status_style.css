@@ -1,0 +1,23 @@
+#average_data{ 
+        float: right;
+}
+#emotion_data{
+	float: right;
+}
+#graph_1{
+	float: right;
+	width: 50%;
+        bottom: 0;
+}
+
+.firstGraphCanvas{
+        position: relative;
+        bottom: 0;
+}
+
+#graph_2{
+	float: right;
+	width: 50%;
+        bottom: 0;
+}
+
