@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="assets/css/main.css" />
+  <link href="assets/css/main.css" rel="stylesheet" />
   <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
   <title>Project Ex TinyRetail Test</title>
@@ -78,9 +78,8 @@ $encoded_age = json_encode($age_array);
     <!-- Nav -->
     <nav id="nav">
       <a href="#maingraph" class="icon fa-user-circle"><span>Home</span></a>
-      <a href="#subgraph" class="icon fa-folder"><span>Work</span></a>
-      <a href="#contact" class="icon fa-envelope"><span>Contact</span></a>
-      <a href="#" class="icon fa-twitter"><span>Twitter</span></a>
+      <a href="#subgraph" class="icon fa-area-chart"><span>Work</span></a>
+      <!-- <a href="#" class="icon "><span>Twitter</span></a> -->
     </nav>
     <!-- Main -->
   	<div id="main">
