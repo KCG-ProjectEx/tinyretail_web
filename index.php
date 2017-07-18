@@ -76,14 +76,15 @@ $encoded_age = json_encode($age_array);
 </script>
 
 <div id="wrapper">
-  <!-- Nav -->
+<!-- Nav -->
   <nav id="nav">
     <a href="#me" class="icon fa-home active"><span>Home</span></a>
     <a href="#work" class="icon fa-folder"><span>Work</span></a>
     <a href="#contact" class="icon fa-envelope"><span>Contact</span></a>
     <a href="#" class="icon fa-twitter"><span>Twitter</span></a>
   </nav>
-  <div class="container">
+<!-- Main -->
+	<div id="main">
     <div class="row">
       <div id="graph_1">
         <canvas id="firstGraphCanvas"></canvas>
@@ -99,5 +100,12 @@ $encoded_age = json_encode($age_array);
     </div>
   </div>
 </dev>
+<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/skel.min.js"></script>
+	<script src="assets/js/skel-viewport.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+	<script src="assets/js/main.js"></script>
 </body>
 </html>
