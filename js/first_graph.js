@@ -6,6 +6,7 @@ var myChart = new Chart(ctx, {
     data: {
         labels: [dataheadmen,dataheadladies,dataheadunknown],
         datasets: [{
+            label: 'total guest come in!',
             data: [datamen,dataladies,dataunknown],
             backgroundColor: [
                 'rgba(66, 96, 45, 0.2)',

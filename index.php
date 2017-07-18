@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="assets/css/main.css" rel="stylesheet" />
-  <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+  <noscript><link href="assets/css/noscript.css" rel="stylesheet" /></noscript>
 
   <title>Project Ex TinyRetail Test</title>
 
