@@ -88,8 +88,7 @@ $encoded_age = json_encode($age_array);
     <!-- Me -->
     <article id="me" class="panel">
       <header>
-        <h1>Jane Doe</h1>
-        <p>Senior Astral Projectionist</p>
+        <h1>来店者数</h1>
       </header>
       <div id="graph_1">
         <canvas id="firstGraphCanvas"></canvas>
@@ -99,15 +98,13 @@ $encoded_age = json_encode($age_array);
 <!-- Work -->
     <article id="work" class="panel">
       <header>
-        <h1>Jane Doe</h1>
-        <p>Senior Astral Projectionist</p>
+        <h1>年齢分布</h1>
       </header>
       <div id="graph_2">
         <canvas id="secondGraphCanvas"></canvas>
         <script id="secondGraph" src="js/second_graph.js"></script>
       </div>
     </article>
-    </div>
   </div>
 </dev>
 <!-- Scripts -->
