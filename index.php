@@ -75,37 +75,29 @@ $encoded_age = json_encode($age_array);
   var dataunknown = "<?php echo json_encode($count_other); ?>";
 </script>
 
-  <div id="wrapper">
-	<!-- Nav -->
-		<nav id="nav">
-			<a href="#me" class="icon fa-home active"><span>Home</span></a>
-			<a href="#work" class="icon fa-folder"><span>Work</span></a>
-			<a href="#contact" class="icon fa-envelope"><span>Contact</span></a>
-			<a href="#" class="icon fa-twitter"><span>Twitter</span></a>
-		</nav>
-    <div class="container">
-       <div class="row">
-  	<div id="emotion_data">
-  	<ul>
-  		<li><script>document.write(datamen)</script></li>
-  		<li><script>document.write(dataladies)</script></li>
-  	</ul>
-  	</div>
-            <div id="graph_1">
-            <canvas id="firstGraphCanvas"></canvas>
-            <script id="firstGraph" src="js/first_graph.js"></script>
-            </div>
-         </div>
-         <div class="row">
-         </div>
-         <div class="row">
-            <div id="graph_2">
-              <canvas id="secondGraphCanvas"></canvas>
-              <script id="secondGraph" src="js/second_graph.js"></script>
-              <div id="average_data">平均年齢 = <?php echo $age_avarage; ?> 歳</div>
-            </div>
-         </div>
+<div id="wrapper">
+  <!-- Nav -->
+  <nav id="nav">
+    <a href="#me" class="icon fa-home active"><span>Home</span></a>
+    <a href="#work" class="icon fa-folder"><span>Work</span></a>
+    <a href="#contact" class="icon fa-envelope"><span>Contact</span></a>
+    <a href="#" class="icon fa-twitter"><span>Twitter</span></a>
+  </nav>
+  <div class="container">
+    <div class="row">
+      <div id="graph_1">
+        <canvas id="firstGraphCanvas"></canvas>
+        <script id="firstGraph" src="js/first_graph.js"></script>
       </div>
+    </div>
+    <div class="row">
+      <div id="graph_2">
+        <canvas id="secondGraphCanvas"></canvas>
+        <script id="secondGraph" src="js/second_graph.js"></script>
+        <div id="average_data">平均年齢 = <?php echo $age_avarage; ?> 歳</div>
+      </div>
+    </div>
+  </div>
 </dev>
 </body>
 </html>
