@@ -113,7 +113,7 @@ $encoded_age = json_encode($age_array);
 </div>
 
 <!-- Scripts -->
-	<script src="assets/js/jquery.min.js"></script>
+	<!-- <script src="assets/js/jquery.min.js"></script> -->
 	<script src="assets/js/skel.min.js"></script>
 	<script src="assets/js/skel-viewport.min.js"></script>
 	<script src="assets/js/util.js"></script>
