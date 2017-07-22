@@ -79,6 +79,8 @@ $encoded_age = json_encode($age_array);
     <nav id="nav">
       <a href="#maingraph" class="icon fa-user-circle"><span>Guestcount</span></a>
       <a href="#subgraph" class="icon fa-area-chart"><span>Age</span></a>
+      <a href="#maingraph" class="icon fa-user-circle"><span>Guestcount</span></a>
+      <a href="#subgraph" class="icon fa-area-chart"><span>Age</span></a>
       <!-- <a href="#" class="icon "><span>Twitter</span></a> -->
     </nav>
     <!-- Main -->
@@ -108,7 +110,6 @@ $encoded_age = json_encode($age_array);
   	<div id="footer">
   	</div>
 </div>
-
 <!-- Scripts -->
 	<!-- <script src="assets/js/jquery.min.js"></script> -->
 	<script src="assets/js/skel.min.js"></script>
