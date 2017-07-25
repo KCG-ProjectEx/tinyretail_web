@@ -90,7 +90,7 @@ $encoded_age = json_encode($age_array);
         <header>
           <h1>来店者数</h1>
         </header>
-        <div id="graph_1">
+        <div class="col-lg-6" id="graph_1">
           <canvas id="firstGraphCanvas"></canvas>
           <script id="firstGraph" src="js/first_graph.js"></script>
         </div>
@@ -100,7 +100,7 @@ $encoded_age = json_encode($age_array);
         <header>
           <h1>年齢分布</h1>
         </header>
-        <div id="graph_2">
+        <div class="col-lg-6" id="graph_2">
           <canvas id="secondGraphCanvas"></canvas>
           <script id="secondGraph" src="js/second_graph.js"></script>
         </div>
