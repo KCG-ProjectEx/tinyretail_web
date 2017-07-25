@@ -8,7 +8,9 @@ $get_type = $_GET['iam'];
 
 switch ($get_type) {
   case "sencer":
-    $tbn_selecter = "esp32";
+//    $tbn_selecter = "esp32";
+    $tbn_selecter = "test";
+
     break;
   case "camera":
     $tbn_selecter = "hvc_p2";
@@ -16,11 +18,8 @@ switch ($get_type) {
   case "julius":
     $tbn_selecter = "julius";
     break;
-  case "sex":
-    $tbn_selecter = "sex";
-    break;
   default:
-    $tbn_selecter = "item_info";
+    $tbn_selecter = "test";
     break;
 }
 
@@ -41,27 +40,27 @@ try{
 
   switch ($get_type) {
     case 'sensor':
-      $sql =  "INSERT INTO test (name,value) VALUES (:name,:value)";
+      $sql =  "INSERT INTO $tbn_selecter (name,value) VALUES (:name,:value)";
+      $keys = array();
       break;
 
     case 'camera':
       $sql =  "INSERT INTO $tbn_selecter (date, time, camera_id, sex_id, age, neutral, happiness, surprise, anger, sadness, emotion) VALUES (current_date(), current_time(), :camera_id, :sex_id, :age, :neutral, :happiness, :surprise, :anger, :sadness, :emotion)";
+      $keys = array(':camera_id', ':sex_id', ':age', ':neutral', ':happiness', ':surprise', ':anger', ':sadness', ':emotion');
       break;
 
     case 'julius':
       $sql =  "INSERT INTO $tbn_selecter (date, time, mic_id, word_id, word_rbd) VALUES (current_date(), current_time(), :mic_id, :word_id, :word_rbd)";
+      $keys = array(':mic_id', ':word_id', ':word_rbd');
       break;
 
     default:
-      $sql =  "INSERT INTO test (name,value) VALUES (:name,:value)";
+      $sql =  "INSERT INTO $tbn_selecter (name,value) VALUES (:name,:value)";
       break;
   }
   $stmt = $dbh->prepare($sql);
-  foreach($json_data_d as $key => $value){
-  $param[$key] = $value;
-  }
+  $param = array_combine($keys, $json_data_d);
   $stmt->execute($param);
-  }
 
 }catch (PDOException $e){
     print('Error:'.$e->getMessage());
