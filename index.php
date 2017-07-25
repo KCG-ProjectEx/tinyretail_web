@@ -78,9 +78,9 @@ $encoded_age = json_encode($age_array);
     <!-- Nav -->
     <nav id="nav">
       <a href="#maingraph" class="icon fa-user-circle"><span>Guestcount</span></a>
-      <a href="#subgraph" class="icon fa-area-chart"><span>Age</span></a>
-      <a href="#maingraph" class="icon fa-user-circle"><span>Guestcount</span></a>
-      <a href="#subgraph" class="icon fa-area-chart"><span>Age</span></a>
+      <a href="#subgraph_0" class="icon fa-area-chart"><span>Age</span></a>
+      <a href="#subgraph_1" class="icon fa-user-circle"><span>Guestcount</span></a>
+      <a href="#subgraph_2" class="icon fa-area-chart"><span>Age</span></a>
       <!-- <a href="#" class="icon "><span>Twitter</span></a> -->
     </nav>
     <!-- Main -->
@@ -96,7 +96,7 @@ $encoded_age = json_encode($age_array);
         </div>
       </article>
       <!-- Work -->
-      <article id="subgraph" class="panel">
+      <article id="subgraph_0" class="panel">
         <header>
           <h1>年齢分布</h1>
         </header>
