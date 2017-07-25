@@ -9,7 +9,7 @@ var myChart = new Chart(ctx, {
             label: 'total guest come in!',
             data: [datamen,dataladies,dataunknown],
             backgroundColor: [
-                'rgba(66, 96, 45, 0.2)',
+                'rgba(0, 229, 103, 0.2)',
                 'rgba(255, 177, 27, 0.2)',
                 'rgba(180, 165, 130, 0.2)'
             ],
