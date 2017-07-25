@@ -36,6 +36,8 @@ try{
   }
   $stmt = $dbh->prepare($sql);
 
+var_dump($json_data_d);
+
   foreach($json_data_d as $name => $values){
   $param = array(':name' => $name,':value' => $values);
   $stmt->execute($param);
