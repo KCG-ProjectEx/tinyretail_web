@@ -31,7 +31,7 @@ try{
       break;
 
     default:
-      $sql =  "INSERT INTO test (name,value) VALUES (:name,:value)";
+      $sql =  "INSERT INTO test (name,value,text) VALUES (:name,:value,:text)";
       break;
   }
   $stmt = $dbh->prepare($sql);
