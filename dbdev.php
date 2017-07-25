@@ -26,23 +26,23 @@ function is_json($string){
 }
 $get_type = $_GET['iam'];
 
-switch ($get_type) {
-  case "sencer":
-    echo('sencer');
-    echo('<br>');
-    break;
-  case "camera":
-    echo('camera');
-    echo('<br>');
-    break;
-  case "julius":
-    echo('julius');
-    echo('<br>');
-    break;
-  default:
-    echo('<br>');
-    break;
-}
+// switch ($get_type) {
+//   case "sensor":
+//     echo('sensor');
+//     echo('<br>');
+//     break;
+//   case "camera":
+//     echo('camera');
+//     echo('<br>');
+//     break;
+//   case "julius":
+//     echo('julius');
+//     echo('<br>');
+//     break;
+//   default:
+//     echo('<br>');
+//     break;
+// }
 
 $json_data = file_get_contents('php://input','r');
 
@@ -64,7 +64,23 @@ $pass = 'mysql0001';
 try{
   $dbh = new PDO($dsn,$user,$pass);
 
-  $sql =  "INSERT INTO test (name,value) VALUES (:name,:value)";
+  switch ($get_type) {
+    case 'sensor':
+      $sql =  "INSERT INTO test (name,value) VALUES (:name,:value)";
+      break;
+
+    case 'camera':
+      $sql =  "INSERT INTO test_camera (name,value) VALUES (:name,:value)";
+      break;
+
+    case 'julius':
+      $sql =  "INSERT INTO test (name,value) VALUES (:name,:value)";
+      break;
+
+    default:
+      $sql =  "INSERT INTO test (name,value) VALUES (:name,:value)";
+      break;
+  }
   $stmt = $dbh->prepare($sql);
 
   foreach($json_data_d as $name => $values){

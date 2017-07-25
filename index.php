@@ -84,23 +84,43 @@ $encoded_age = json_encode($age_array);
       <!-- <a href="#" class="icon "><span>Twitter</span></a> -->
     </nav>
     <!-- Main -->
-  	<div id="main">
-      <!-- Me -->
+  	<div id="main" class="row">
+
       <article id="maingraph" class="panel">
         <header>
           <h1>来店者数</h1>
         </header>
-        <div class="col-lg-6" id="graph_1">
+        <div id="graph_1" class="col-lg-6">
           <canvas id="firstGraphCanvas"></canvas>
           <script id="firstGraph" src="js/first_graph.js"></script>
         </div>
       </article>
-      <!-- Work -->
+
       <article id="subgraph_0" class="panel">
         <header>
           <h1>年齢分布</h1>
         </header>
-        <div class="col-lg-6" id="graph_2">
+        <div id="graph_2" class="col-lg-6">
+          <canvas id="secondGraphCanvas"></canvas>
+          <script id="secondGraph" src="js/second_graph.js"></script>
+        </div>
+      </article>
+
+      <article id="subgraph_1" class="panel">
+        <header>
+          <h1>Not Define</h1>
+        </header>
+        <div id="graph_2" class="col-lg-6">
+          <canvas id="secondGraphCanvas"></canvas>
+          <script id="secondGraph" src="js/second_graph.js"></script>
+        </div>
+      </article>
+
+      <article id="subgraph_2" class="panel">
+        <header>
+          <h1>Not Define</h1>
+        </header>
+        <div id="graph_2" class="col-lg-6">
           <canvas id="secondGraphCanvas"></canvas>
           <script id="secondGraph" src="js/second_graph.js"></script>
         </div>
