@@ -27,7 +27,7 @@ try{
       break;
 
     case 'julius':
-      $sql =  "INSERT INTO test (name,value) VALUES (:name,:value)";
+      $sql =  "INSERT INTO test_julius (name,value) VALUES (:name,:value)";
       break;
 
     default:
