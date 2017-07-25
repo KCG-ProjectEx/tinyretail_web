@@ -1,17 +1,3 @@
-<!DOCTYPE html>
-<html lang="ja";>
-<head>
-  <meta charset="utf-8">
-  <title>dbsumbit</title>
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/status_style.css" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-</head>
-<body>
-
-<h1>connect test</h1>
-
 <?php
 
 function is_json($string){
@@ -53,20 +39,29 @@ try{
 
   $dbh = new PDO($dsn, $user, $password); // Database Connect (Make object)
 
-  $sql =  "INSERT INTO $tbn_selecter (date,time,unique_id,mic_id,word_id) VALUES (:date,:time,:unique_id,:mic_id,:word_id)";
-  $stmt = $dbh->prepare($sql);
+  switch ($get_type) {
+    case 'sensor':
+      $sql =  "INSERT INTO test (name,value) VALUES (:name,:value)";
+      break;
 
+    case 'camera':
+      $sql =  "INSERT INTO $tbn_selecter (date, time, camera_id, sex_id, age, neutral, happiness, surprise, anger, sadness, emotion) VALUES (current_date(), current_time(), :camera_id, :sex_id, :age, :neutral, :happiness, :surprise, :anger, :sadness, :emotion)";
+      break;
+
+    case 'julius':
+      $sql =  "INSERT INTO $tbn_selecter (date, time, mic_id, word_id, word_rbd) VALUES (current_date(), current_time(), :mic_id, :word_id, :word_rbd)";
+      break;
+
+    default:
+      $sql =  "INSERT INTO test (name,value) VALUES (:name,:value)";
+      break;
+  }
+  $stmt = $dbh->prepare($sql);
   foreach($json_data_d as $key => $value){
   $param[$key] = $value;
   }
   $stmt->execute($param);
-  $sql =  "SELECT * FROM $tbn_selecter";
-  foreach ($dbh->query($sql,PDO::FETCH_ASSOC) as $row) {
-    var_dump($row);
   }
-
-echo ('<br>');
-echo ('<br>');
 
 }catch (PDOException $e){
     print('Error:'.$e->getMessage());
@@ -74,7 +69,3 @@ echo ('<br>');
 }
 
 $dbh = null;
-
-?>
-</body>
-</html>
