@@ -41,10 +41,6 @@ try{
   $stmt->execute($param);
   }
 
-  $sql = 'SELECT * FROM test';
-  foreach ($dbh->query($sql,PDO::FETCH_ASSOC) as $row) {
-    var_dump($row);
-  }
 }catch (PDOException $e){
     print('Error:'.$e->getMessage());
     die();
