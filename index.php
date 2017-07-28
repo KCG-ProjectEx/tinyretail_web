@@ -1,141 +1,104 @@
 <!DOCTYPE html>
-<html lang='ja'>
+<html lang="jp">
 <head>
+    <title>Project Ex TinyRetail Test</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="assets/css/main.css" rel="stylesheet" />
-  <noscript><link href="assets/css/noscript.css" rel="stylesheet" /></noscript>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">  
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="commons/css/materialize.min.css"  media="screen,projection"/>  
 
-  <title>Project Ex TinyRetail Test</title>
+    <!--chart.js  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
 
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
+    <!--materialize js  -->
+    <script type="text/javascript" src="commons/js/materialize.min.js"></script>      
 
-<!--  <script src="js/react.js"></script> -->
-<!--  <script src="js/react-dom.js"></script> -->
-  <script src="js/JSXTransformer.js"></script>
-  <script src="jsx/app.js" type="text/jsx"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+    <!--jquery  -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
 
+    <!--jquery UI  -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
+
+    <!-- jsの変数初期化 -->
+    <script type="text/javascript" src="js/variable_assignment.js"></script>
+    <!--グラフの更新  -->
+    <script type="text/javascript" src="js/update_graph.js"></script>    
+
+    <!--カレンダーCSS  -->
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/blitzer/jquery-ui.css" >
 </head>
+
 <body>
-<?php
-
-$dsn = 'mysql:dbname=tinyretail;host=localhost;charset=utf8';
-$user = 'root';
-$pass = 'mysql0001';
-$age_array = array(0,0,0,0,0,0,0,0,0,0);
-
-try{
-
-  $dbh = new PDO($dsn,$user,$pass);
-  $sql = 'SELECT * FROM hvc_p2 INNER JOIN sex ON hvc_p2.sex_id = sex.sex_id';
-
-  foreach ($dbh->query($sql,PDO::FETCH_ASSOC) as $row) {
-    if($row['sex_val'] == '男'){
-      $count_men++;
-    }elseif($row['sex_val'] == '女'){
-      $count_ladies++;
-    }else{
-      $count_other++;
-    }
-    $age_array[round($row['age']/10)] += 1;
-    $age_avarage = $age_avarage + $row['age'];
-    $count++;
-  }
-
-  $sql = 'SELECT * FROM hvc_p2';
-  foreach ($dbh->query($sql,PDO::FETCH_ASSOC) as $row) {
-    $happy += $row['happiness'];
-    $sad += $row['sadness'];
-  }
 
 
-}catch (PDOException $e){
-    print('Error:'.$e->Message());
-    die();
-}
-
-$dbh = null;
-$age_avarage = $age_avarage / $count;
-$encoded_age = json_encode($age_array);
-?>
-<script>
-  var agearray = JSON.parse('<?php echo $encoded_age?>');
-  var dataheadmen = "men";
-  var datamen = "<?php echo json_encode($count_men); ?>";
-  var dataheadladies = "ladies";
-  var dataladies = "<?php echo json_encode($count_ladies); ?>";
-  var dataheadunknown = "unknown";
-  var dataunknown = "<?php echo json_encode($count_other); ?>";
-</script>
-
-<div id="wrapper">
     <!-- Nav -->
-    <nav id="nav">
-      <a href="#maingraph" class="icon fa-user-circle"><span>Guestcount</span></a>
-      <a href="#subgraph_0" class="icon fa-area-chart"><span>Age</span></a>
-      <a href="#subgraph_1" class="icon fa-user-circle"><span>Guestcount</span></a>
-      <a href="#subgraph_2" class="icon fa-area-chart"><span>Age</span></a>
+    <nav>
+      <a href="#maingraph"><span>Guestcount</span></a>
+      <a href="#subgraph_0"><span>Age</span></a>
+      <a href="#subgraph_1"><span>Guestcount</span></a>
+      <a href="#subgraph_2"><span>Age</span></a>
       <!-- <a href="#" class="icon "><span>Twitter</span></a> -->
     </nav>
-    <!-- Main -->
-  	<div id="main" class="row">
 
-      <article id="maingraph" class="panel">
-        <header>
-          <h1>来店者数</h1>
-        </header>
-        <div id="graph_1" class="col-lg-6">
-          <canvas id="firstGraphCanvas"></canvas>
-          <script id="firstGraph" src="js/first_graph.js"></script>
-        </div>
-      </article>
+        <!-- Main -->
+  	<main>
 
-      <article id="subgraph_0" class="panel">
-        <header>
-          <h1>年齢分布</h1>
-        </header>
-        <div id="graph_2" class="col-lg-6">
-          <canvas id="secondGraphCanvas"></canvas>
-          <script id="secondGraph" src="js/second_graph.js"></script>
-        </div>
-      </article>
+         <article>
+            <header>
+            <h1>性別分布</h1>
+            </header>
+            <div>
+                <canvas id="graph_sex"></canvas> 
+                <script id="Graph_sex" src="js/graph_sex.js"></script> 
+            </div>
+        </article>
 
-      <article id="subgraph_1" class="panel">
-        <header>
-          <h1>Not Define</h1>
-        </header>
-        <div id="graph_2" class="col-lg-6">
-          <canvas id="secondGraphCanvas"></canvas>
-          <script id="secondGraph" src="js/second_graph.js"></script>
-        </div>
-      </article>
+        <article>
+            <header>
+            <h1>年齢分布</h1>
+            </header>
+            <div>
+                <canvas id="graph_age"></canvas>  
+                <script id="Graph_age" src="js/graph_age.js"></script>  
+            </div>
+        </article>
 
-      <article id="subgraph_2" class="panel">
-        <header>
-          <h1>Not Define</h1>
-        </header>
-        <div id="graph_2" class="col-lg-6">
-          <canvas id="secondGraphCanvas"></canvas>
-          <script id="secondGraph" src="js/second_graph.js"></script>
-        </div>
-      </article>
-    </div>
-     <!-- Footer -->
-  	<div id="footer">
-  	</div>
-</div>
-<!-- Scripts -->
-	<!-- <script src="assets/js/jquery.min.js"></script> -->
-	<script src="assets/js/skel.min.js"></script>
-	<script src="assets/js/skel-viewport.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-	<script src="assets/js/main.js"></script>
+        <article>
+            <header>
+            <h1>表情数</h1>
+            </header>
+            <div>
+                <canvas id="graph_facial_expression"></canvas>  
+                <script id="Graph_facial_expression" src="js/graph_facial_expression.js"></script>  
+            </div>
+        </article> 
+
+        <article>
+            <form id="form_dete" action="">
+                <input type="text" id="datepicker" name="get_dete" value="" /> 
+                <input class="waves-effect waves-light btn" type="button" value="更新" onclick="myChart_UPDATE();" />
+            </form>  
+            <div id="output"></div>
+
+            <header>
+            <h1>好感度分析</h1>
+            </header>
+            <div>
+                <canvas id="graph_favor"></canvas>  
+                <script id="Graph_favor" src="js/graph_favor.js"></script>  
+            </div>
+        </article>
+
+    </main>
+
+
 </body>
 </html>
