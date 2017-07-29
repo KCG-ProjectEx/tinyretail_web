@@ -34,14 +34,15 @@ data: {
         backgroundColor: "#017A40",
         data:ary_timeline_unknown
     }
-    ]},
-  //オプションの設定
+]},
+    //オプションの設定
     options: {
         //軸の設定
         scales: {
             xAxes: [{
                 // stacked: true, //積み上げ棒グラフにする設定
-                categoryPercentage:0.4 //棒グラフの太さ
+                categoryPercentage:0.7, //棒グラフの太さ
+                barPercentage:0.9 //棒グラフの全体の幅
             },{
                 id:"y-axis-1"
             },{
@@ -84,6 +85,12 @@ data: {
                     }
                 } 
             }]
+        },legend: { //ラベルの表示
+            // display: false, //false : 非表示
+            position: 'bottom',
+            labels: {
+                boxWidth: 12
+            }
         }
     }
 });

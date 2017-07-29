@@ -1,7 +1,7 @@
 function myChart_UPDATE()
 {
-    // id=output　タグへのエレメントを取得
-    target = document.getElementById("output");
+    // id=output-date　タグへのエレメントを取得
+    var target = document.getElementById("output-date");
     // 受け取った日付データを表示する(ここから日付データを使ってください)
     target.innerText = document.forms.form_dete.get_dete.value;
 
