@@ -1,0 +1,113 @@
+#wrapper{
+    background-color: rgba(225, 245, 254, 0.35);
+}
+
+main{
+    max-width: 960px;
+    min-width: 420px;
+    margin: 0 auto;
+    padding-top: 50px;
+}
+.card .card-header{
+    display: block;
+    width: 100%;
+    height: 50px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.card .card-title{
+    font-family: "Rounded Mplus 1c";
+    font-weight: 400;
+    font-size: 1.5em;
+    margin: 10px 30px;
+}
+.card .graph_box{
+    margin-top: 60px;
+}
+.card .graph_label{
+    margin-top: 60px;
+}
+
+/* favor */
+#favor .card-header #output-date{
+    font-size: 1.2em;
+    position: absolute;
+    top: 15px;
+    right: 30px;
+    color: #FFF;
+}
+#favor .card-header{
+    background-color: #af2de6;    
+}
+#favor .card-header .card-title{
+    color: #FFF;
+}
+
+/* materializeで設定されている項目初期化 */
+ #favor #form_dete .row{
+    margin: 0;
+} 
+ #favor #form_dete #datepicker{
+    margin: 0;
+}
+ #favor #form_dete .input-field{
+    margin: 0;
+}  
+/****************************************/
+
+/* weather */
+#weather .card{
+    background-color: #607d8b;
+}
+#weather .card .card-image{
+    width: 70%;
+    margin: auto;
+}
+
+/* 適当領域*****************  */
+/* cnt-info  */
+#cnt-info .card{
+    background-color: #00d2a0;
+}
+#cnt-info .card .relative{
+    position: relative;
+    height: 30px;
+    left : 15%;
+    margin-top: 10px;
+}
+#cnt-info .card i{
+    position: absolute;
+}
+#cnt-info .card p{
+    position: absolute;
+    left: 55px;
+    top: -10px;
+    font-size: 2em;
+    color: #FFF;
+}
+/**************************  */
+
+/* sex */
+#sex .card-header{
+    background-color: #e69c2d;    
+}
+#sex .card-header .card-title{
+    color: #FFF;
+}
+
+/* age */
+#age .card-header{
+    background-color: #2d80e6;    
+}
+#age .card-header .card-title{
+    color: #FFF;
+}
+
+/* facial_expression */
+#facial_expression .card-header{
+    background-color: #b82de6;    
+}
+#facial_expression .card-header .card-title{
+    color: #FFF;
+}

@@ -31,3 +31,14 @@ var ary_timeline_ladies = ["80","50","25","60","90","20","10","5","48","45","70"
 var ary_timeline_unknown = ["0","20","50","0","5","10","0","90","30","10","0","60"]; 
 var ary_timeline_temp = ["26","26","27","28","30","34","35","33","30","28","26","25"];
 var ary_timeline_favor = ["80","70","80","67","40","50","70","80","90","60","50","60"];
+
+
+// 自動初期設定(JavaScript)
+
+var today=new Date(); 
+// id=output-date　タグへのエレメントを取得
+var target = document.getElementById("output-date");
+// 受け取った日付データを表示する(ここから日付データを使ってください)
+target.innerText = (today.getFullYear()) + "/" + 
+                   (today.getMonth()+1) + "/" +
+                   (today.getDate());
