@@ -57,8 +57,8 @@ $ave_age = $ave_age / $count;
 $encoded_age = json_encode($ave_age);
 ?>
 <script>
-  var ary_facial_expression = JSON.parse('<?php echo $ary_facial_expression ?>');
-  var ary_age = JSON.parse('<?php echo $encoded_age ?>');
+  var ary_facial_expression = JSON.parse('<?php echo $ary_facial_expression; ?>');
+  var ary_age = JSON.parse('<?php echo $encoded_age; ?>');
   var data_men = "<?php echo json_encode($count_men); ?>";
   var data_ladies = "<?php echo json_encode($count_ladies); ?>";
   var data_unknown = "<?php echo json_encode($count_other); ?>";

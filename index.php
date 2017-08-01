@@ -7,11 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <!--Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">  
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
 
     <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="commons/css/materialize.min.css"  media="screen,projection"/>  
+    <link type="text/css" rel="stylesheet" href="commons/css/materialize.min.css"  media="screen,projection"/>
 
     <!--カレンダーCSS  -->
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/blitzer/jquery-ui.css" >
@@ -22,7 +22,7 @@
 </head>
 
 <body>
-
+<?php require "init_data.php"; ?>
 <div id="wrapper">
 
     <header>
@@ -33,7 +33,7 @@
             </div>
         </nav>
     </header>
-    
+
         <!-- Main -->
   	<main>
 
@@ -44,22 +44,22 @@
             <div class="card-content">
                 <header class="card-header">
                     <h1 class="card-title">好感度分析</h1>
-                    <p id="output-date">日付</p> 
+                    <p id="output-date">日付</p>
                 </header>
                 <div class="graph_box">
-                    <canvas id="graph_favor"></canvas>  
+                    <canvas id="graph_favor"></canvas>
                 </div>
-            </div>     
+            </div>
 
-            <div class="card-action"> 
+            <div class="card-action">
                 <form id="form_dete" action="">
                     <div class="row">
                     <div class="input-field col s5">
-                        <input type="text" id="datepicker" name="get_dete" value="" /> 
+                        <input type="text" id="datepicker" name="get_dete" value="" />
                         <label for="datepicker">検索日時</label>
                     </div>
                     <div class="input-field col s5">
-                        <a class="waves-effect waves-light btn" onclick="myChart_UPDATE();">更新</a> 
+                        <a class="waves-effect waves-light btn" onclick="myChart_UPDATE();">更新</a>
                     </div>
                     </div>
                 </form>
@@ -97,9 +97,9 @@
                     <h1 class="card-title">性別分布</h1>
                 </header>
                 <div class="graph_box">
-                    <canvas id="graph_sex"></canvas> 
+                    <canvas id="graph_sex"></canvas>
                 </div>
-            </div> 
+            </div>
         </div>
         </article>
 
@@ -110,9 +110,9 @@
                     <h1 class="card-title">年齢分布</h1>
                 </header>
                 <div class="graph_box">
-                    <canvas id="graph_age"></canvas>  
+                    <canvas id="graph_age"></canvas>
                 </div>
-            </div> 
+            </div>
         </div>
         </article>
 
@@ -123,12 +123,12 @@
                     <h1 class="card-title">表情数</h1>
                 </header>
                 <div class="graph_box">
-                    <canvas id="graph_facial_expression"></canvas>  
+                    <canvas id="graph_facial_expression"></canvas>
                 </div>
-            </div> 
+            </div>
         </div>
         </article>
-    </div>  
+    </div>
 
     </main>
 </div> <!--wrapper  -->
@@ -144,17 +144,17 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/i18n/jquery.ui.datepicker-ja.min.js"></script>
 
 <!--materialize js  -->
-<script type="text/javascript" src="commons/js/materialize.min.js"></script>      
+<script type="text/javascript" src="commons/js/materialize.min.js"></script>
 
 <!-- jsの変数初期化 -->
 <script type="text/javascript" src="js/variable_assignment.js"></script>
 <!--グラフの更新  -->
-<script type="text/javascript" src="js/update_graph.js"></script>    
+<script type="text/javascript" src="js/update_graph.js"></script>
 <!--各種グラフの設定  -->
-<script id="Graph_favor" src="js/graph_favor.js"></script>  
+<script id="Graph_favor" src="js/graph_favor.js"></script>
 <script id="Graph_sex" src="js/graph_sex.js"></script>
 <script id="Graph_age" src="js/graph_age.js"></script>
-<script id="Graph_facial_expression" src="js/graph_facial_expression.js"></script> 
+<script id="Graph_facial_expression" src="js/graph_facial_expression.js"></script>
 
 </body>
 </html>
