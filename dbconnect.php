@@ -13,19 +13,16 @@ $get_type = $_GET['iam'];
 
 switch ($get_type) {
   case "sencer":
-    $tbn_selecter = "esp32";
+//    $tbn_selecter = "esp32";
     $sql =  "INSERT INTO $tbn_selecter (name,value) VALUES (:name,:value)";
     $keys = array();
+    $tbn_selecter = "test";
     break;
 
   case "camera":
     $tbn_selecter = "hvc_p2";
-    $sql =  "INSERT INTO $tbn_selecter
-              (date, time, camera_id, sex_id, age, age_rbd, neutral, neutral_rbd, happiness, happiness_rbd, surprise, surprise_rbd, anger, anger_rbd, sadness, sadness_rbd, emotion, emotion_rbd)
-              VALUES
-              (current_date(), current_time(), :camera_id, :sex_id, :age, :age_rbd, :neutral, :neutral_rbd, :happiness, :happiness_rbd, :surprise, :surprise_rbd, :anger, :anger_rbd, :sadness, :sadness_rbd, :emotion, :emotion_rbd)";
-
-    $keys = array(':camera_id', ':sex_id', ':age', ':age_rbd', ':neutral', ':neutral_rbd', ':happiness', ':happiness_rbd', ':surprise', ':surprise_rbd', ':anger',':anger_rbd', ':sadness', ':sadness_rbd', ':emotion', 'emotion_rbd');
+    $sql =  "INSERT INTO $tbn_selecter (date, time, camera_id, sex_id, age, neutral, happiness, surprise, anger, sadness, emotion) VALUES (current_date(), current_time(), :camera_id, :sex_id, :age, :neutral, :happiness, :surprise, :anger, :sadness, :emotion)";
+    $keys = array(':camera_id', ':sex_id', ':age', ':neutral', ':happiness', ':surprise', ':anger', ':sadness', ':emotion');
     break;
 
   case "julius":
