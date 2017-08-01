@@ -1,10 +1,10 @@
 #wrapper{
     background-color: rgba(225, 245, 254, 0.35);
+    min-width: 450px;      
 }
 
 main{
     max-width: 960px;
-    min-width: 420px;
     margin: 0 auto;
     padding-top: 50px;
 }
@@ -106,7 +106,7 @@ main{
 
 /* facial_expression */
 #facial_expression .card-header{
-    background-color: #b82de6;    
+    background-color: #e62da7;    
 }
 #facial_expression .card-header .card-title{
     color: #FFF;
