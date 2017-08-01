@@ -1,6 +1,6 @@
 #wrapper{
     background-color: rgba(225, 245, 254, 0.35);
-    min-width: 450px;      
+    min-width: 450px;
 }
 
 main{
@@ -38,7 +38,7 @@ main{
     color: #FFF;
 }
 #favor .card-header{
-    background-color: #af2de6;    
+    background-color: #af2de6;
 }
 #favor .card-header .card-title{
     color: #FFF;
@@ -47,13 +47,13 @@ main{
 /* materializeで設定されている項目初期化 */
  #favor #form_dete .row{
     margin: 0;
-} 
+}
  #favor #form_dete #datepicker{
     margin: 0;
 }
  #favor #form_dete .input-field{
     margin: 0;
-}  
+}
 /****************************************/
 
 /* weather */
@@ -90,7 +90,7 @@ main{
 
 /* sex */
 #sex .card-header{
-    background-color: #e69c2d;    
+    background-color: #e69c2d;
 }
 #sex .card-header .card-title{
     color: #FFF;
@@ -98,7 +98,7 @@ main{
 
 /* age */
 #age .card-header{
-    background-color: #2d80e6;    
+    background-color: #2d80e6;
 }
 #age .card-header .card-title{
     color: #FFF;
@@ -106,7 +106,7 @@ main{
 
 /* facial_expression */
 #facial_expression .card-header{
-    background-color: #e62da7;    
+    background-color: #F78DB1;
 }
 #facial_expression .card-header .card-title{
     color: #FFF;
