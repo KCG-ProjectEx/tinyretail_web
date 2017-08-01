@@ -6,11 +6,11 @@ var myChart_facial_expression = new Chart(ctx, {
     labels: ["neutral","happiness","surprise","anger","sadness"],
     datasets:[{
       backgroundColor: [
-        "#ECBB00",
-        "#A17A40",
-        "#0087AF",
-        "#EB6100",
-        "#16902E"
+        'rgba(236, 187, 0, 0.5)',
+        'rgba(161, 122, 64, 0.5)',
+        'rgba(0, 135, 175, 0.5)',
+        'rgba(235, 97, 0, 0.5)',
+        'rgba(22, 144, 46, 0.5)'
       ],
       data: ary_facial_expression,
       yAxisID:0

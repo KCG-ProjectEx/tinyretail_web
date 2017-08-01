@@ -11,27 +11,32 @@ data: {
         data: ary_timeline_favor,
         type: 'line',
         fill: false,
+        borderColor: "#ff4081",
+        backgroundColor: "#FFF",        
         yAxisID:"y-axis-1",
     },{
         label: '気温',
         data: ary_timeline_temp,
         type: 'line',
         fill: false,
+        borderColor: "#689f38",
+        backgroundColor: "#FFF",
+        pointBorderColor: "#33691e",
         yAxisID:"y-axis-2",
     },{
         label: 'men',
         type: 'bar',
-        backgroundColor: "#ECBB00",
+        backgroundColor: "#9fa8da",
         data:ary_timeline_men
     },{
         label: 'ladies',
         type: 'bar',
-        backgroundColor: "#A17A40",
+        backgroundColor: "#ef9a9a",
         data:ary_timeline_ladies
     },{
         label: 'unknown',
         type: 'bar',
-        backgroundColor: "#017A40",
+        backgroundColor: "#bdbdbd",
         data:ary_timeline_unknown
     }
 ]},
