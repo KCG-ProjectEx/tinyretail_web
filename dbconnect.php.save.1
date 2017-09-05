@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang='ja'>
+<head>
+  <meta charset="utf-8">
+</head>
+<body>
+
+<?php
+
+function is_json($string){
+    return is_string($string) && is_array(json_decode($string,true)) ? true : false;
+}
+
+$json_data = file_get_contents('php://input','r');
+if(is_json($json_data)){
+  $json_data_d = json_decode($json_data,true);
+}
+$get_type = $_GET['iam'];
+
+$dsn = "mysql:host=localhost;dbname=tinyretail;charset=utf8"; // Database name
+$user = "root";           // Databese User Name
+$password = "mysql0001";        // Database Password
+$dbh = new PDO($dsn, $user, $password); // Database Connect (Make object)
+
+switch ($get_type) {
+  case 'sencer':
+    $sql = "INSERT INTO indoor_sensor_node (name,value) VALUES (name,value)";
+    $keys = array();
+    break;
+
+  case 'camera':
+    $sql = "INSERT INTO hvc_p2 (date, time, camera_id, sex_id, age, age_rbd, neutral, neutral_rbd, happiness, happiness_rbd, surprise, surprise_rbd, anger, anger_rbd, sadness, sadness_rbd, emotion, emotion_rbd) VALUES (current_date(), current_time(), camera_id, sex_id, age, age_rbd, neutral, neutral_rbd, happiness, happiness_rbd, surprise, surprise_rbd, anger, anger_rbd, sadness, sadness_rbd, emotion, emotion_rbd)";
+    $keys = array('camera_id', 'sex_id', 'age', 'age_rbd', 'neutral', 'neutral_rbd', 'happiness', 'happiness_rbd', 'surprise', 'surprise_rbd', 'anger','anger_rbd', 'sadness', 'sadness_rbd', 'emotion', 'emotion_rbd');
+    break;
+
+  case 'julius':
+    $sql = "INSERT INTO julius (date, time, mic_id, word_id, word_rbd) VALUES (:date, :time, :mic_id, :word_id, :word_rbd)";
+    $time_ary = array(':date' => 'current_date()', ':time' => 'current_time()');
+    $keys = array(':mic_id', ':word_id', ':word_rbd');
+    break;
+
+  default:
+    $sql = "INSERT INTO test (name,value) VALUES (name, value)";
+    $keys = array(':n',':v',':t',':a',':b');
+    break;
+}
+
+try{
+
+  $stmt = $dbh->prepare($sql);
+  $param = array_combine($keys,$json_data_d);
+
+var_dump($time_ary);
+var_dump($param);
+var_dump($sql);
+
+$params = $time_ary + $param;
+var_dump($params);
+$stmt->bindParam(':date', $params[':date'], PDO::PARAM_STR);
+$stmt->bindParam(':time', $params[':time'], PDO::PARAM_STR);
+$stmt->bindParam(':mic_id', $params[':mic_id'], PDO::PARAM_INT);
+$stmt->bindParam(':word_id', $params[':word_id'], PDO::PARAM_INT);
+$stmt->bindParam(':word_rbd', $params[':word_rbd'], PDO::PARAM_INT);
+
+var_dump($params);
+var_dump($stmt);
+
+$res = $stmt->execute();
+
+var_dump($res);
+
+}catch (PDOException $e){
+  print('Error:'.$e->getMessage());
+  die();
+}
+
+$dbh = null;
+
+?>
+</body>
+</html>
