@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja";>
+<head>
+  <meta charset="utf-8">
+  <title>dbsumbit</title>
+</head>
+<body>
+
+<?php
+
+function is_json($string){
+    return is_string($string) && is_array(json_decode($string,true)) ? true : false;
+}
+
+$json_data = file_get_contents('php://input','r');
+
+if(is_json($json_data)){
+$json_data_d = json_decode($json_data,true);
+}
+$get_type = $_GET['iam'];
+switch ($get_type) {
+  case 'sencer':
+    $tbn_selecter = "esp32";
+    $sql =  "INSERT INTO $tbn_selecter (name,value) VALUES (:name,:value)";
+    $keys = array();
+    break;
+
+  case 'camera':
+    $sql =  "INSERT INTO hvc_p2 (date, time, camera_id, sex_id, age, age_rbd, neutral, neutral_rbd, happiness, happiness_rbd, surprise, surprise_rbd, anger, anger_rbd, sadness, sadness_rbd, emotion, emotion_rbd) VALUES (current_date(), current_time(), :camera_id, :sex_id, :age, :age_rbd, :neutral, :neutral_rbd, :happiness, :happiness_rbd, :surprise, :surprise_rbd, :anger, :anger_rbd, :sadness, :sadness_rbd, :emotion, :emotion_rbd)";
+    $keys = array(':camera_id', ':sex_id', ':age', ':age_rbd', ':neutral', ':neutral_rbd', ':happiness', ':happiness_rbd', ':surprise', ':surprise_rbd', ':anger',':anger_rbd', ':sadness', ':sadness_rbd', ':emotion', 'emotion_rbd');
+    break;
+
+  case 'julius':
+    $sql =  "INSERT INTO julius (date, time, mic_id, word_id, word_rbd) VALUES (current_date(), current_time(), :mic_id, :word_id, :word_rbd)";
+    $keys = array(':mic_id', ':word_id', ':word_rbd');
+    break;
+
+  default:
+    $sql =  "INSERT INTO $tbn_selecter (name,value) VALUES (:name,:value)";
+    $keys = array(':camera_id', ':sex_id', ':age', ':age_rbd', ':neutral', ':neutral_rbd', ':happiness', ':happiness_rbd', ':surprise', ':surprise_rbd', ':anger',':anger_rbd', ':sadness', ':sadness_rbd', ':emotion', 'emotion_rbd');
+    $tbn_selecter = "test";
+    break;
+}
+
+$dsn = "mysql:host=localhost;dbname=tinyretail;charset=utf8"; // Database name
+$user = "root";           // Databese User Name
+$password = "mysql0001";        // Database Password
+
+var_dump($keys);
+var_dump($json_data_d);
+try{
+
+  $dbh = new PDO($dsn, $user, $password); // Database Connect (Make object)
+  $stmt = $dbh->prepare($sql);
+  $param = array_combine($keys, $json_data_d);
+  $stmt->execute($param);
+}catch (PDOException $e){
+  print('Error:'.$e->getMessage());
+  die();
+}
+
+$dbh = null;
+
+?>
+</body>
+</html>

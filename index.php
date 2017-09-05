@@ -27,6 +27,7 @@
 $dsn = 'mysql:dbname=tinyretail;host=localhost;charset=utf8';
 $user = 'root';
 $pass = 'mysql0001';
+$border = 1;
 $ary_age = array(0,0,0,0,0,0,0,0,0,0);
 $ary_facial_expression = array(0,0,0,0,0);
 
@@ -50,15 +51,19 @@ try{
 
   $sql = 'SELECT * FROM hvc_p2';
   foreach ($dbh->query($sql,PDO::FETCH_ASSOC) as $row) {
-    if (key($row) == 'neutral'){
+    if (intval($row['neutral']) >= $border){
       $ary_facial_expression[0]++;
-    } elseif (key($row) == 'happiness'){
+    }
+    if (intval($row['happiness']) >= $border){
       $ary_facial_expression[1]++;
-    } elseif (key($row) == 'surprise'){
+    }
+    if (intval($row['surprise']) >= $border){
       $ary_facial_expression[2]++;
-    } elseif (key($row) == 'anger') {
+    }
+    if (intval($row['anger']) >= $border){
       $ary_facial_expression[3]++;
-    } elseif (key($row) == 'sadness') {
+    }
+    if (intval($row['sadness']) >= $border){
       $ary_facial_expression[4]++;
     }
   }
@@ -72,9 +77,10 @@ try{
 $dbh = null;
 $ave_age = $ave_age / $count;
 $encoded_age = json_encode($ave_age);
+$encoded_facial = json_encode($ary_facial_expression);
 ?>
 <script>
-  var ary_facial_expression = JSON.parse('<?php echo $ary_facial_expression; ?>');
+  var ary_facial_expression = JSON.parse('<?php echo $encoded_facial; ?>');
   var ary_age = JSON.parse('<?php echo $encoded_age; ?>');
   var data_men = "<?php echo json_encode($count_men); ?>";
   var data_ladies = "<?php echo json_encode($count_ladies); ?>";
