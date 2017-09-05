@@ -5,8 +5,8 @@
 */
 
 //年齢割合グラフ
-var ary_age = data_ary_age;
-//var ary_age = ["10","1","2","3","4","5","6","7"];
+//var ary_age = data_ary_age;
+var ary_age = ["10","1","2","3","4","5","6","7"];
 
 //性別割合グラフ
 var data_men = "15";
