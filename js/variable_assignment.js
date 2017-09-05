@@ -1,12 +1,11 @@
-var $script = $('#script');
 /*
     *label*  :  グラフのラベル
     *data*   :  単一データ
     *ary*    :  配列データ
 */
-
+var s = document.getElementById("s");
 //年齢割合グラフ
-var ary_age = JSON.parse($script.attr('data_ary_age'));
+var ary_age = JSON.parse(s.getAttribute('data_ary_age'));
 //var ary_age = ["10","1","2","3","4","5","6","7"];
 
 //性別割合グラフ
