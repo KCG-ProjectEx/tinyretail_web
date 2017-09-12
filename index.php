@@ -75,20 +75,17 @@ try{
 }
 
 $dbh = null;
-$ave_age = $ave_age / $count;
+$ave_age = round($ave_age / $count,1); //小数点第一位で四捨五入
 $encoded_age = json_encode($ave_age);
 $encoded_facial = json_encode($ary_facial_expression);
 ?>
 <script id="data_db" src="./js/variable_assignment.js"
     data-ary-age= "<?php echo json_encode($ary_age); ?>";
+    data-men="<?php echo json_encode($count_men); ?>";
+    data-ladies="<?php echo json_encode($count_ladies); ?>";
+    data-unknown="<?php echo json_encode($count_other); ?>";
+    data-ary-facial-expression=<?php echo json_encode($encoded_facial); ?>;
 >
-//   var ary_facial_expression = "<?php echo json_encode($encoded_facial); ?>";
-//   var data_ary_age = "<?php echo json_encode($ary_age); ?>";
-//   var data_men = "<?php echo json_encode($count_men); ?>";
-//   var data_ladies = "<?php echo json_encode($count_ladies); ?>";
-//   var data_unknown = "<?php echo json_encode($count_other); ?>";
-//   var ave_age = "<?php echo json_encode($ave_age); ?>";
-//   var cnt_entrance = "<?php echo json_encode($count); ?>";
 </script>
 <div id="wrapper">
 
@@ -147,11 +144,11 @@ $encoded_facial = json_encode($ary_facial_expression);
                 <div class="card-content">
                     <div class="ave-age relative">
                         <i class="material-icons">face</i>
-                        <p>45</p>
+                        <p><?php echo json_encode($ave_age); ?></p>
                     </div>
                     <div class="visitor_num relative">
                         <i class="material-icons">people</i>
-                        <p>55</p>
+                        <p><?php echo json_encode($count); ?></p>
                     </div>
                 </div>
             </div>
