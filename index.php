@@ -75,7 +75,7 @@ try{
 }
 
 $dbh = null;
-$ave_age = $ave_age / $count;
+$ave_age = round($ave_age / $count,2); //小数点第二位で四捨五入
 $encoded_age = json_encode($ave_age);
 $encoded_facial = json_encode($ary_facial_expression);
 ?>
