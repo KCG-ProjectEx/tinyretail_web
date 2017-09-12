@@ -84,7 +84,7 @@ $encoded_facial = json_encode($ary_facial_expression);
     data-men="<?php echo json_encode($count_men); ?>";
     data-ladies="<?php echo json_encode($count_ladies); ?>";
     data-unknown="<?php echo json_encode($count_other); ?>";
-    data-ary-facial-expression="<?php echo json_encode($encoded_facial); ?>";
+    data-ary-facial-expression=<?php echo json_encode($encoded_facial); ?>;
 >
 //   var ary_facial_expression = "<?php echo json_encode($encoded_facial); ?>";
 //   var data_ary_age = "<?php echo json_encode($ary_age); ?>";
