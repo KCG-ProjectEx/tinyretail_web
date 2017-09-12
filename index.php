@@ -79,14 +79,16 @@ $ave_age = $ave_age / $count;
 $encoded_age = json_encode($ave_age);
 $encoded_facial = json_encode($ary_facial_expression);
 ?>
-<script id="s" src="./js/variable_assignment.js">
-  var ary_facial_expression = "<?php echo json_encode($encoded_facial); ?>";
-  var data_ary_age = "<?php echo json_encode($ary_age); ?>";
-  var data_men = "<?php echo json_encode($count_men); ?>";
-  var data_ladies = "<?php echo json_encode($count_ladies); ?>";
-  var data_unknown = "<?php echo json_encode($count_other); ?>";
-  var ave_age = "<?php echo json_encode($ave_age); ?>";
-  var cnt_entrance = "<?php echo json_encode($count); ?>";
+<script id="data_db" src="./js/variable_assignment.js"
+    data-ary-age= "<?php echo json_encode($ary_age); ?>";
+>
+//   var ary_facial_expression = "<?php echo json_encode($encoded_facial); ?>";
+//   var data_ary_age = "<?php echo json_encode($ary_age); ?>";
+//   var data_men = "<?php echo json_encode($count_men); ?>";
+//   var data_ladies = "<?php echo json_encode($count_ladies); ?>";
+//   var data_unknown = "<?php echo json_encode($count_other); ?>";
+//   var ave_age = "<?php echo json_encode($ave_age); ?>";
+//   var cnt_entrance = "<?php echo json_encode($count); ?>";
 </script>
 <div id="wrapper">
 
