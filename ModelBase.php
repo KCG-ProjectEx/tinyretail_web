@@ -50,6 +50,8 @@ class ModelBase
          }
          $stmt->execute();
          $rows = $stmt->fetchAll();
+
+         var_dump($rows);
  
          return $rows;
      }
