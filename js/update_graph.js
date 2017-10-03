@@ -5,18 +5,18 @@ function myChart_UPDATE()
     // 受け取った日付データを表示する(ここから日付データを使ってください)
     target.innerText = document.forms.form_dete.get_dete.value;
 
-    var date = target.innerText.replace( ///g, '-' );
+//    var date = target.innerText.replace( ///g, '-' );
+    var date = target.innerText.split( '-' ).join( '_' );
+
 console.log(date);
 
-$.ajax(
-  {
-    type: "POST",
-    url: "please.php",
-    date: date,
-  }
-);
-
-ary_timeline_men = ["2","3","2","4","5","7","9","5","2","4","3","3"];
+    $.ajax(
+      {
+        type: "POST",
+        url: "please.php",
+        date: date,
+      }
+    );
 
     for(i=0;i<5;i++){
         for(j=0;j<12;j++){
