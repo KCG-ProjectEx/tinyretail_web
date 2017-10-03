@@ -33,6 +33,8 @@ $favor = new Favor();
 
 $Date = $_POST['date'];
 
+echo $_POST['date'];
+
 $Time = "16";
 
 $ret = $favor->getList($Time."%", $Date);
