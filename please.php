@@ -31,7 +31,7 @@ class Favor extends ModelBase
 $favor = new Favor();
 
 
-$Date = $_GET['date'];
+$Date = $_POST['date'];
 
 $Time = "16";
 
