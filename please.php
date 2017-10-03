@@ -18,10 +18,12 @@ class Favor extends ModelBase
 
     public function getList()
     {
-        echo "in";
-        $sql = sprintf('SELECT * FROM %s' , $this->name);
+
+        $sexId = 1;
+        
+        $sql = sprintf('SELECT date,time,:sexId FROM %s' , $this->name);
         $stmt = $this->pdoIns->query($sql);
-        // $stmt->bindValue(':cart_id', $cartId);
+        $stmt->bindValue(':sexId', $sexId);
         $rows = $stmt->fetchAll();
         return $rows;
     }
