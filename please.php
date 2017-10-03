@@ -5,7 +5,7 @@ require_once('ModelBase.php');
 // DB接続情報設定 (本来はここに置くべきでは無い処理)
 $connInfo = array(
     'host'     => 'localhost',
-    'dbname'   => 'gakusai',
+    'dbname'   => 'tinyretail',
     'dbuser'   => 'root',
     'password' => ''
 );
