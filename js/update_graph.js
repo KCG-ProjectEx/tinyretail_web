@@ -4,7 +4,7 @@ function myChart_UPDATE()
     var target = document.getElementById("output-date");
     // 受け取った日付データを表示する(ここから日付データを使ってください)
     target.innerText = document.forms.form_dete.get_dete.value;
-
+console.log(target);
     for(i=0;i<5;i++){
         for(j=0;j<12;j++){
             // グラフデータを更新

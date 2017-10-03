@@ -45,7 +45,6 @@ var ary_timeline_favor = ["80","70","80","67","40","50","70","80","90","60","50"
 var today=new Date();
 // id=output-date　タグへのエレメントを取得
 var target = document.getElementById("output-date");
-console.log(target);
 // 受け取った日付データを表示する(ここから日付データを使ってください)
 target.innerText = (today.getFullYear()) + "/" +
                    (today.getMonth()+1) + "/" +
