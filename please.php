@@ -23,7 +23,7 @@ class Favor extends ModelBase
         $params = array(
             'Date' => $Date,
             'Time' => $Time,
-            'sex_id' => $SexId
+            'SexId' => $SexId
         );
         $stmt = $this->query($sql, $params);
         return $stmt;
