@@ -22,11 +22,12 @@ class Favor extends ModelBase
         $Date = "2017-09-12";
 
         $sql = sprintf('SELECT date,time,sex_id FROM %s WHERE (date=:Date) and (time like :Time)' , $this->name);
-        $stmt = $this->pdoIns->query($sql);
-        $stmt->bindValue(':Date', $Date);
-        $stmt->bindValue(':Time', $Time);
-        $rows = $stmt->fetchAll();
-        return $rows;
+        $params = array(
+            'Date' => $Date,
+            'Time' => $Time
+        );
+        $stmt = $this->pdoIns->query($sql, $params);
+        return $stmt;
     }
 }
 $favor = new Favor();
