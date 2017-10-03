@@ -40,6 +40,11 @@ for ($Time=8; $Time <= 19; $Time++) { // 8:00-19:00のデータ取得
     $unknown[] = $favor->getList($Time."%", $Date, "3");
 }
 
+
+// $favorDate = array('date' => , $Date);
+
+echo $men[0][3]['date'];
+
 echo "<h1>men</h1>";
 echo "<pre>";
 var_dump($men);
