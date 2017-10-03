@@ -44,9 +44,9 @@ for ($Time=8; $Time <= 19; $Time++) { // 8:00-19:00のデータ取得
 for ($i=0; $i <= 12 ; $i++) { 
     $xxx = array(
         'time' => ($i+8),
-        'men' => $men[$i][0]['count'],
-        'ladies' => $women[$i][0]['count'],
-        'unknown' => $unknown[$i][0]['count'],
+        'men' => (string)$men[$i][0]['count'],
+        'ladies' => (string)$women[$i][0]['count'],
+        'unknown' => (string)$unknown[$i][0]['count'],
     );
 }
 $favorDate = array(
