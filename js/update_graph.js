@@ -8,26 +8,8 @@ function myChart_UPDATE()
 //    var date = target.innerText.replace( ///g, '-' );
     var date = target.innerText.split( '/' ).join( '-' );
 
-console.log(date);
-
-    $.ajax(
-      {
-        type: 'GET',
-        url: 'please.php'
-        dataType: 'text',
-        async: true,
-        data: {
-                date: date,
-        },
-      }
-    );
-
-    for(i=0;i<5;i++){
-        for(j=0;j<12;j++){
-            // グラフデータを更新
-            myChart_favor.data.datasets[i].data[j] = Math.round(Math.random()*45);
-        }
-    }
+    var datas = getCurrentDateData(date);
+    console.log(datas);
     myChart_favor.update(); // グラフの再描画
 }
 
@@ -36,3 +18,24 @@ $(function() {
     $("#datepicker").datepicker();
     $("#datepicker").datepicker("option", "buttonImageOnly", true);
 });
+
+function getCurrentDateData ( currentDate ){
+    var datas = $.ajax({
+        type: 'GET',
+        url: 'please.php'
+        dataType: 'text',
+        async: false
+        data: {
+          date: currentDate,
+        }
+    }).responseText;
+    return datas;
+}
+/*
+for(i=0;i<5;i++){
+    for(j=0;j<12;j++){
+        // グラフデータを更新
+        myChart_favor.data.datasets[i].data[j] = Math.round(Math.random()*45);
+    }
+}
+*/
