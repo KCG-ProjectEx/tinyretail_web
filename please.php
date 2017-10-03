@@ -33,9 +33,10 @@ $favor = new Favor();
 
 $Date = $_GET['date'];
 
-$Time = "16";
+for ($Time=8; $Time <= 19; $Time++) { 
+    $ret[] = $favor->getList($Time."%", $Date);
+}
 
-$ret = $favor->getList($Time."%", $Date);
 
 echo "<pre>";
 var_dump($ret);
