@@ -7,7 +7,7 @@ $connInfo = array(
     'host'     => 'localhost',
     'dbname'   => 'tinyretail',
     'dbuser'   => 'root',
-    'password' => ''
+    'password' => 'mysql0001'
 );
 ModelBase::setConnectionInfo($connInfo );
 
