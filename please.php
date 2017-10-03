@@ -18,17 +18,15 @@ class Favor extends ModelBase
 
     public function getList()
     {
-        // $Time = "'16%'";
-        // $Date = "'2017-09-12'";
+        $Time = "'16%'";
+        $Date = "'2017-09-12'";
 
-        $sql = sprintf('SELECT date,time,sex_id FROM %s WHERE (date=:Date)' , $this->name);
+        $sql = sprintf('SELECT date,time,sex_id FROM %s WHERE (date=:Date) and (time like :Time)' , $this->name);
         $params = array(
-            'Date' => '2017-09-12'
-            // 'Time' => $Time
+            'Date' => $Date,
+            'Time' => $Time
         );
         $stmt = $this->query($sql, $params);
-
-        echo "Hello2";
         return $stmt;
     }
 }

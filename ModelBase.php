@@ -51,9 +51,6 @@ class ModelBase
          $stmt->execute();
          $rows = $stmt->fetchAll();
 
-        echo "Hello1";
-         var_dump($rows);
- 
          return $rows;
      }
  
