@@ -34,12 +34,22 @@ $favor = new Favor();
 
 $Date = $_GET['date'];
 
-for ($Time=8; $Time <= 19; $Time++) { 
-    $ret[] = $favor->getList($Time."%", $Date, "1");
+for ($Time=8; $Time <= 19; $Time++) { // 8:00-19:00のデータ取得
+    $men[] = $favor->getList($Time."%", $Date, "1");
+    $women[] = $favor->getList($Time."%", $Date, "2");
+    $unknown[] = $favor->getList($Time."%", $Date, "3");
 }
 
 
 echo "<pre>";
-var_dump($ret);
+var_dump($men);
+echo "</pre>";
+
+echo "<pre>";
+var_dump($women);
+echo "</pre>";
+
+echo "<pre>";
+var_dump($unknown);
 echo "</pre>";
 ?>
