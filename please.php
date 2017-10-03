@@ -27,6 +27,8 @@ class Favor extends ModelBase
             // 'Time' => $Time
         );
         $stmt = $this->pdoIns->query($sql, $params);
+
+        echo "Hello2";
         return $stmt;
     }
 }
