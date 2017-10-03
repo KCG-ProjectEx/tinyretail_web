@@ -58,7 +58,9 @@ $favorDate = array(
     $xxx
 );
 
-var_dump(json_safe_encode($favorDate));
+$zzz = json_safe_encode($favorDate);
+
+var_dump($zzz);
 
 echo "<h1>ather</h1>";
 echo "<pre>";
