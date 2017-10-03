@@ -19,11 +19,9 @@ class Favor extends ModelBase
     public function getList()
     {
 
-        $sexId = '1';
-
-        $sql = sprintf('SELECT date,time,:sexId FROM %s' , $this->name);
+        $sql = sprintf('SELECT date,time,sex_id FROM %s' , $this->name);
         $stmt = $this->pdoIns->query($sql);
-        $stmt->bindValue(':sexId', $sexId);
+        // $stmt->bindValue(':sexId', $sexId);
         $rows = $stmt->fetchAll();
         return $rows;
     }
