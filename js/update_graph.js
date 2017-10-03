@@ -6,15 +6,19 @@ function myChart_UPDATE()
     target.innerText = document.forms.form_dete.get_dete.value;
 
 //    var date = target.innerText.replace( ///g, '-' );
-    var date = target.innerText.split( '-' ).join( '_' );
+    var date = target.innerText.split( '/' ).join( '-' );
 
 console.log(date);
 
     $.ajax(
       {
-        type: "POST",
-        url: "please.php",
-        date: date,
+        type: 'GET',
+        url: 'please.php'
+        dataType: 'text',
+        async: true,
+        data: {
+                date: date,
+        },
       }
     );
 
