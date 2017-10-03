@@ -18,6 +18,7 @@ class Favor extends ModelBase
 
     public function getList()
     {
+        echo "in";
         $sql = sprintf('SELECT * FROM %s' , $this->name);
         $stmt = $this->pdoIns->query($sql);
         // $stmt->bindValue(':cart_id', $cartId);
