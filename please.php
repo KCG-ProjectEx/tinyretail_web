@@ -28,6 +28,10 @@ class Favor extends ModelBase
         $stmt = $this->query($sql, $params);
         return $stmt;
     }
+
+    public function json_safe_encode($data){
+        return json_encode($data, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT);
+    }
 }
 $favor = new Favor();
 
@@ -54,8 +58,7 @@ $favorDate = array(
     $xxx
 );
 
-var_dump((string)$men[4][0]['count']);
-var_dump($men[4][0]['count']);
+var_dump(json_safe_encode($favorDate));
 
 echo "<h1>ather</h1>";
 echo "<pre>";
