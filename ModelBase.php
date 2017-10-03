@@ -51,10 +51,6 @@ class ModelBase
          $stmt->execute();
          $rows = $stmt->fetchAll();
 
-         echo "<pre>";
-         var_dump($rows);
-         echo "</pre>";
-
          return $rows;
      }
  
