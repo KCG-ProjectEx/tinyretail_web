@@ -16,10 +16,8 @@ class Favor extends ModelBase
 {
     protected $name = "hvc_p2";
 
-    public function getList()
+    public function getList($Time, $Date)
     {
-        $Time = "16%";
-        $Date = "2017-09-12";
 
         $sql = sprintf('SELECT date,time,sex_id FROM %s WHERE (date=:Date) and (time like :Time)' , $this->name);
         $params = array(
@@ -31,7 +29,11 @@ class Favor extends ModelBase
     }
 }
 $favor = new Favor();
-$ret = $favor->getList();
+
+$Time = "16%";
+$Date = "2017-09-12";
+
+$ret = $favor->getList($Time, $Date);
 
 echo "<pre>";
 var_dump($ret);
