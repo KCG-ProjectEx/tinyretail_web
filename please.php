@@ -16,13 +16,14 @@ class Favor extends ModelBase
 {
     protected $name = "hvc_p2";
 
-    public function getList($Time, $Date)
+    public function getList($Time, $Date, $SexId)
     {
 
-        $sql = sprintf('SELECT date,time,sex_id FROM %s WHERE (date=:Date) and (time like :Time)' , $this->name);
+        $sql = sprintf('SELECT date,count(sex_id) FROM %s WHERE (date=:Date) and (time like :Time) and (sex_id=:SexId)' , $this->name);
         $params = array(
             'Date' => $Date,
-            'Time' => $Time
+            'Time' => $Time,
+            'sex_id' => $SexId
         );
         $stmt = $this->query($sql, $params);
         return $stmt;
@@ -34,7 +35,7 @@ $favor = new Favor();
 $Date = $_GET['date'];
 
 for ($Time=8; $Time <= 19; $Time++) { 
-    $ret[] = $favor->getList($Time."%", $Date);
+    $ret[] = $favor->getList($Time."%", $Date, "1");
 }
 
 
