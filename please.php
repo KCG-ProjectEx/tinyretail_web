@@ -19,7 +19,7 @@ class Favor extends ModelBase
     public function getList($Time, $Date, $SexId)
     {
 
-        $sql = sprintf('SELECT date,count(sex_id) FROM %s WHERE (date=:Date) and (time like :Time) and (sex_id=:SexId)' , $this->name);
+        $sql = sprintf('SELECT date,count(sex_id) as count FROM %s WHERE (date=:Date) and (time like :Time) and (sex_id=:SexId)' , $this->name);
         $params = array(
             'Date' => $Date,
             'Time' => $Time,
@@ -41,9 +41,24 @@ for ($Time=8; $Time <= 19; $Time++) { // 8:00-19:00のデータ取得
 }
 
 
-// $favorDate = array('date' => , $Date);
+for ($i=0; $i <= 12 ; $i++) { 
+    $xxx = array(
+        'time' => ($i+8),
+        'men' => $men[$i][0]['count'],
+        'ladies' => $women[$i][0]['count'],
+        'unknown' => $unknown[$i][0]['count'],
+    );
+}
+$favorDate = array(
+    'date' => $Date,
+    $xxx
+);
 
-echo $men[3][0]['date'];
+echo "<h1>ather</h1>";
+echo "<pre>";
+var_dump($favorDate);
+echo "</pre>";
+
 
 echo "<h1>men</h1>";
 echo "<pre>";
