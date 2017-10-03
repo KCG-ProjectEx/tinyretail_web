@@ -30,10 +30,12 @@ class Favor extends ModelBase
 }
 $favor = new Favor();
 
-$Time = "16%";
-$Date = "2017-09-12";
 
-$ret = $favor->getList($Time, $Date);
+$Date = $_GET['date'];
+
+$Time = "16";
+
+$ret = $favor->getList($Time."%", $Date);
 
 echo "<pre>";
 var_dump($ret);
