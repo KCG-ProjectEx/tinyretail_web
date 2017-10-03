@@ -21,10 +21,10 @@ class Favor extends ModelBase
         $Time = "16%";
         $Date = "2017-09-12";
 
-        $sql = sprintf('SELECT date,time,sex_id FROM %s WHERE (date="2017-09-12") and (time like "16:%%")' , $this->name);
+        $sql = sprintf('SELECT date,time,sex_id FROM %s WHERE (date=":Date") and (time like ":Time")' , $this->name);
         $stmt = $this->pdoIns->query($sql);
-        // $stmt->bindValue(':Date', $Date);
-        // $stmt->bindValue(':Time', $Time);
+        $stmt->bindValue(':Date', $Date);
+        $stmt->bindValue(':Time', $Time);
         $rows = $stmt->fetchAll();
         return $rows;
     }
