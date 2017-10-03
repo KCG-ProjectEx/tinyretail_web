@@ -54,7 +54,8 @@ $favorDate = array(
     $xxx
 );
 
-echo (string)$men[4][0]['count'];
+var_dump((string)$men[4][0]['count']);
+var_dump($men[4][0]['count']);
 
 echo "<h1>ather</h1>";
 echo "<pre>";
