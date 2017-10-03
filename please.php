@@ -18,13 +18,13 @@ class Favor extends ModelBase
 
     public function getList()
     {
-        $Time = "'16%'";
-        $Date = "'2017-09-12'";
+        // $Time = "'16%'";
+        // $Date = "'2017-09-12'";
 
-        $sql = sprintf('SELECT date,time,sex_id FROM %s WHERE (date=:Date) and (time like :Time)' , $this->name);
+        $sql = sprintf('SELECT date,time,sex_id FROM %s WHERE (date=:Date)' , $this->name);
         $params = array(
-            'Date' => $Date,
-            'Time' => $Time
+            'Date' => '2017-09-12'
+            // 'Time' => $Time
         );
         $stmt = $this->pdoIns->query($sql, $params);
         return $stmt;
