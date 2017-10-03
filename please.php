@@ -45,8 +45,8 @@ for ($Time=8; $Time <= 19; $Time++) { // 8:00-19:00のデータ取得
 }
 
 
-for ($i=0; $i <= 12 ; $i++) { 
-    $xxx[] = array(
+for ($i=0; $i < 12 ; $i++) { 
+    $xxx = array(
         'time' => (string)($i+8),
         'men' => (string)$men[$i][0]['count'],
         'ladies' => (string)$women[$i][0]['count'],
