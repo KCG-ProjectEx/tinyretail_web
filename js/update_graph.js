@@ -22,8 +22,8 @@ $(function() {
 function getCurrentDateData ( currentDate ){
     var datas = $.ajax({
         type: 'GET',
-        url: 'please.php'
-        async: false
+        url: 'please.php',
+        async: false,
         data: {
           date: currentDate,
         }
