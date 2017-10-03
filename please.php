@@ -43,7 +43,7 @@ for ($Time=8; $Time <= 19; $Time++) { // 8:00-19:00のデータ取得
 
 // $favorDate = array('date' => , $Date);
 
-echo $men[0][3]['date'];
+echo $men[3][0]['date'];
 
 echo "<h1>men</h1>";
 echo "<pre>";
