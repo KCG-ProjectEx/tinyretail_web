@@ -60,24 +60,24 @@ $favorDate = array(
 
 var_dump($favor->json_safe_encode($favorDate));
 
-echo "<h1>ather</h1>";
-echo "<pre>";
-var_dump($favorDate);
-echo "</pre>";
+// echo "<h1>ather</h1>";
+// echo "<pre>";
+// var_dump($favorDate);
+// echo "</pre>";
 
 
-echo "<h1>men</h1>";
-echo "<pre>";
-var_dump($men);
-echo "</pre>";
+// echo "<h1>men</h1>";
+// echo "<pre>";
+// var_dump($men);
+// echo "</pre>";
 
-echo "<h1>women</h1>";
-echo "<pre>";
-var_dump($women);
-echo "</pre>";
+// echo "<h1>women</h1>";
+// echo "<pre>";
+// var_dump($women);
+// echo "</pre>";
 
-echo "<h1>unknown</h1>";
-echo "<pre>";
-var_dump($unknown);
-echo "</pre>";
+// echo "<h1>unknown</h1>";
+// echo "<pre>";
+// var_dump($unknown);
+// echo "</pre>";
 ?>

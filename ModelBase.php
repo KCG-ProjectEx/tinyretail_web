@@ -8,7 +8,6 @@ class ModelBase
 
     public function __construct()
     {
-        echo "ModelBase init<br>";
         $this->initDb();
     }
     
