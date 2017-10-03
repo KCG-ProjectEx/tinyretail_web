@@ -8,9 +8,9 @@ function myChart_UPDATE()
 //    var date = target.innerText.replace( ///g, '-' );
     var date = target.innerText.split( '/' ).join( '-' );
 
-    var datas = JSON.parse(getCurrentDateData(date));
+    var datas = getCurrentDateData(date);
+    var jDatas = JSON.parse(datas);
 console.log(datas);
-
     myChart_favor.update(); // グラフの再描画
 }
 
