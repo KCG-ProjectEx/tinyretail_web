@@ -37,9 +37,9 @@ try{
   $sql = 'SELECT * FROM hvc_p2 INNER JOIN sex ON hvc_p2.sex_id = sex.sex_id';
 
   foreach ($dbh->query($sql,PDO::FETCH_ASSOC) as $row) {
-    if($row['sex_val'] == '男'){
+    if($row['sex_val'] == 'man'){
       $count_men++;
-    }elseif($row['sex_val'] == '女'){
+    }elseif($row['sex_val'] == 'women'){
       $count_ladies++;
     }else{
       $count_other++;
