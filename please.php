@@ -45,7 +45,7 @@ for ($Time=8; $Time <= 19; $Time++) { // 8:00-19:00のデータ取得
 }
 
 
-for ($i=0; $i < 12 ; $i++) { 
+for ($i=0; $i < 12 ; $i++) {
     $xxx[] = array(
         'time' => (string)($i+8),
         'men' => (string)$men[$i][0]['count'],
@@ -58,7 +58,7 @@ $favorDate = array(
     $xxx
 );
 
-var_dump($favor->json_safe_encode($favorDate));
+echo $favor->json_safe_encode($favorDate);
 
 // echo "<h1>ather</h1>";
 // echo "<pre>";
