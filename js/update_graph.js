@@ -9,7 +9,7 @@ function myChart_UPDATE()
     var date = target.innerText.split( '/' ).join( '-' );
 
     var datas = getCurrentDateData(date);
-console.log(datas);
+console.log(datas.0);
     myChart_favor.update(); // グラフの再描画
 }
 
