@@ -30,11 +30,11 @@ class Favor extends ModelBase
         return $stmt;
     }
     
-    public function getSensorList($Data,$Time)
+    public function getSensorList($Date,$Time)
     {
         $sql = sprintf('SELECT avg(temperature) FROM %s WHERE (date=:Date) and (time like :Time)  ',$this->sensor_name );
         $params = array(
-            'Data' => $Data,
+            'Date' => $Date,
             'Time' => $Time
         );
         $stmt = $this->query($sql,$params);
@@ -54,9 +54,12 @@ for ($Time=8; $Time <= 19; $Time++) { // 8:00-19:00のデータ取得
     $men[] = $favor->getList($Time."%", $Date, "1");
     $women[] = $favor->getList($Time."%", $Date, "2");
     $unknown[] = $favor->getList($Time."%", $Date, "3");
-    $tmp[] = $favor ->getSensorList($Data,$Time."%");
+    $tmp[] = $favor ->getSensorList($Date,$Time."%");
 }
 
+echo "<pre>";
+var_dump($tmp);
+echo "</pre>";
 
 for ($i=0; $i < 12 ; $i++) {
     $xxx[] = array(
