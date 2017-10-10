@@ -32,7 +32,7 @@ class Favor extends ModelBase
     
     public function getSensorList($Data,$Time)
     {
-        $sql = sprintf('SELECT temperature FROM %s WHERE (date=:Date) and (time like :Time)  ',$this->sensor_name );
+        $sql = sprintf('SELECT avg(temperature) FROM %s WHERE (date=:Date) and (time like :Time)  ',$this->sensor_name );
         $params = array(
             'Data' => $Data,
             'Time' => $Time
