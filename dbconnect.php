@@ -43,17 +43,10 @@ switch ($get_type) {
     $stmt->bindValue(':age', $json_data_d['age'], PDO::PARAM_INT);
     $stmt->bindValue(':age_rbd', $json_data_d['age_rbd'], PDO::PARAM_INT);
     $stmt->bindValue(':neutral', $json_data_d['neutral'], PDO::PARAM_INT);
-//    $stmt->bindValue(':neutral_rbd', $json_data_d['neutral_rbd'], PDO::PARAM_INT);
     $stmt->bindValue(':happiness', $json_data_d['happiness'], PDO::PARAM_INT);
-//    $stmt->bindValue(':happiness_rbd', $json_data_d['happiness_rbd'], PDO::PARAM_INT);
     $stmt->bindValue(':surprise', $json_data_d['surprise'], PDO::PARAM_INT);
-//    $stmt->bindValue(':surprise_rbd', $json_data_d['surprise_rbd'], PDO::PARAM_INT);
     $stmt->bindValue(':anger', $json_data_d['anger'], PDO::PARAM_INT);
-//    $stmt->bindValue(':anger_rbd', $json_data_d['anger_rbd'], PDO::PARAM_INT);
     $stmt->bindValue(':sadness', $json_data_d['sadness'], PDO::PARAM_INT);
-//    $stmt->bindValue(':sadness_rbd', $json_data_d['sadness_rbd'], PDO::PARAM_INT);
-    $stmt->bindValue(':emotion', $json_data_d['emotion'], PDO::PARAM_INT);
-//    $stmt->bindValue(':emotion_rbd', $json_data_d['emotion_rbd'], PDO::PARAM_INT);
     break;
 
   case 'julius':
