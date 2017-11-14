@@ -91,6 +91,8 @@ $area = $weather['location']['area'];
 $prefecture = $weather['location']['prefecture'];
 $img = $weather['forecasts'][0]['image']['url'];
 $img = str_replace("http://weather.livedoor.com/img/icon","./img",$img);
+$text = $weather['description']['text'];
+echo $text;
 ?>
 <script id="data_db" src="./js/variable_assignment.js"
     data-ary-age= "<?php echo json_encode($ary_age); ?>";
