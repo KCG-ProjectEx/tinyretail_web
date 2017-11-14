@@ -64,7 +64,16 @@ main{
     width: 70%;
     margin: auto;
 }
-
+#weather .card .card-image .weather-text-contents{
+    display: none;
+    position: absolute;
+}
+#weather .card .card-image .weather-text-contents:after{
+    position: absolute;
+}
+#weather .card .card-image .responsive-image:hover + .weather-text-content {
+  display: block;
+}
 /* 適当領域*****************  */
 /* cnt-info  */
 #cnt-info .card{
