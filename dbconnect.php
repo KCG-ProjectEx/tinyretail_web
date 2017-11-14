@@ -37,9 +37,6 @@ switch ($get_type) {
   case 'camera':
     $sql = "INSERT INTO hvc_p2 (date, time, camera_id, sex_id, age, neutral, happiness, surprise, anger, sadness, face_x, face_y, face_size, face_rbd) VALUES (curdate(), curtime(), :camera_id, :sex_id, :age, :neutral, :happiness, :surprise, :anger, :sadness, :face_x, :face_y, :face_size, :face_rbd)";
     $stmt = $dbh->prepare($sql);
-    echo "<pre>";
-    var_dump($json_data_d);
-    echo "</pre>";    
     $stmt->bindValue(':camera_id', $json_data_d['camera_id'], PDO::PARAM_INT);
     $stmt->bindValue(':sex_id', $json_data_d['sex_id'], PDO::PARAM_INT);
     $stmt->bindValue(':age', $json_data_d['age'], PDO::PARAM_INT);
