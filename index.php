@@ -133,7 +133,7 @@ $text = $weather['description']['text'];
                 <form id="form_dete" action="">
                     <div class="row">
                     <div class="input-field col s5">
-                        <input type="text" id="datepicker" name="get_dete" value="" />
+                        <input type="text" id="datepicker" name="get_dete" value="<?php date('y/m/d') ?>" />
                         <label for="datepicker">検索日時</label>
                     </div>
                     <div class="input-field col s5">
