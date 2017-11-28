@@ -37,9 +37,9 @@ try{
   $sql = 'SELECT * FROM hvc_p2 INNER JOIN sex ON hvc_p2.sex_id = sex.sex_id';
 
   foreach ($dbh->query($sql,PDO::FETCH_ASSOC) as $row) {
-    if($row['sex_val'] == 'man'){
+    if($row['sex_val'] == '男'){
       $count_men++;
-    }elseif($row['sex_val'] == 'women'){
+    }elseif($row['sex_val'] == '女'){
       $count_ladies++;
     }else{
       $count_other++;
@@ -78,6 +78,20 @@ $dbh = null;
 $ave_age = round($ave_age / $count,1); //小数点第一位で四捨五入
 $encoded_age = json_encode($ave_age);
 $encoded_facial = json_encode($ary_facial_expression);
+
+$url = "http://weather.livedoor.com/forecast/webservice/json/v1?city=260010";
+$weather = file_get_contents($url, true);
+$weather = json_decode($weather, true);
+
+$title = $weather['title'];
+$description = $weather['description']['text'];
+$publicTime = $weather['publicTime'];
+$city = $weather['location']['city'];
+$area = $weather['location']['area'];
+$prefecture = $weather['location']['prefecture'];
+$img = $weather['forecasts'][0]['image']['url'];
+$img = str_replace("http://weather.livedoor.com/img/icon","./img",$img);
+$text = $weather['description']['text'];
 ?>
 <script id="data_db" src="./js/variable_assignment.js"
     data-ary-age= "<?php echo json_encode($ary_age); ?>";
@@ -134,7 +148,8 @@ $encoded_facial = json_encode($ary_facial_expression);
         <article id="weather" class="col s6 m3">
             <div class="card">
                 <div class="card-image">
-                    <img class="responsive-img" src="img/1.png">
+                    <img class="responsive-img" src=<?php echo $img; ?> >
+                    <p class="weather-text-content"><?php echo $text ?></p>
                 </div>
             </div>
         </article>

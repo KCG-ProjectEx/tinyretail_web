@@ -9,8 +9,10 @@ function myChart_UPDATE()
     var date = target.innerText.split( '/' ).join( '-' );
 
     var datas = JSON.parse(getCurrentDateData(date));
+
     for(i=0;i<12;i++){
         // グラフデータを更新
+        myChart_favor.data.datasets[1].data[i] = datas[0][i]["tmp"];
         myChart_favor.data.datasets[2].data[i] = datas[0][i]["men"];
         myChart_favor.data.datasets[3].data[i] = datas[0][i]["ladies"];
         myChart_favor.data.datasets[4].data[i] = datas[0][i]["unknown"];

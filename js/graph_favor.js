@@ -59,13 +59,9 @@ data: {
                 //目盛りの設定
                 ticks: {
                     beginAtZero:true, //開始値を0にする
-                    max: 100,
+                    max: 200,
                     min: 0,
-                    stepSize: 20,
-                    // Include a dollar sign in the ticks
-                    callback: function(value, index, values) {
-                        return value + "%";
-                    }
+                    stepSize: 20
                 }
             },{
                 id:"y-axis-1",
@@ -75,6 +71,10 @@ data: {
                     max: 100,
                     min: 0,
                     stepSize: 20,
+                    // Include a dollar sign in the ticks
+                    callback: function(value, index, values) {
+                        return value + "%";
+                    }
                 }
             },{
                 id:"y-axis-2",

@@ -29,12 +29,12 @@ class Favor extends ModelBase
         $stmt = $this->query($sql, $params);
         return $stmt;
     }
-    
-    public function getSensorList($Data,$Time)
+
+    public function getSensorList($Date,$Time)
     {
-        $sql = sprintf('SELECT avg(temperature) FROM %s WHERE (date=:Date) and (time like :Time)  ',$this->sensor_name );
+        $sql = sprintf('SELECT avg(temperature) as tmp FROM %s WHERE (date=:Date) and (time like :Time)  ',$this->sensor_name );
         $params = array(
-            'Data' => $Data,
+            'Date' => $Date,
             'Time' => $Time
         );
         $stmt = $this->query($sql,$params);
@@ -54,9 +54,8 @@ for ($Time=8; $Time <= 19; $Time++) { // 8:00-19:00のデータ取得
     $men[] = $favor->getList($Time."%", $Date, "1");
     $women[] = $favor->getList($Time."%", $Date, "2");
     $unknown[] = $favor->getList($Time."%", $Date, "3");
-    $tmp[] = $favor ->getSensorList($Data,$Time."%");
+    $tmp[] = $favor ->getSensorList($Date,$Time."%");
 }
-
 
 for ($i=0; $i < 12 ; $i++) {
     $xxx[] = array(
@@ -64,9 +63,10 @@ for ($i=0; $i < 12 ; $i++) {
         'men' => (string)$men[$i][0]['count'],
         'ladies' => (string)$women[$i][0]['count'],
         'unknown' => (string)$unknown[$i][0]['count'],
-        'tmp' =>(string)$tmp[$i][0]['temperature']
+        'tmp' =>(string)$tmp[$i][0]['tmp']
     );
 }
+
 $favorDate = array(
     'date' => $Date,
     $xxx
