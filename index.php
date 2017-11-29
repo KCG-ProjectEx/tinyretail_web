@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="jp">
+<html lang="ja">
 <head>
     <title>Project Ex TinyRetail Test</title>
     <meta charset="UTF-8">
@@ -79,7 +79,11 @@ $ave_age = round($ave_age / $count,1); //小数点第一位で四捨五入
 $encoded_age = json_encode($ave_age);
 $encoded_facial = json_encode($ary_facial_expression);
 
-$url = "http://weather.livedoor.com/forecast/webservice/json/v1?city=260010";
+$url = "http://weather.livedoor.com/forecast/webservice/json/v1?city=260010"; // 京都
+//$url = "http://weather.livedoor.com/forecast/webservice/json/v1?city=270000"; // 大阪
+//$url = "http://weather.livedoor.com/forecast/webservice/json/v1?city=250010"; // 大津
+//$url = "http://weather.livedoor.com/forecast/webservice/json/v1?city=250020"; // 彦根
+
 $weather = file_get_contents($url, true);
 $weather = json_decode($weather, true);
 
@@ -133,7 +137,7 @@ $text = $weather['description']['text'];
                 <form id="form_dete" action="">
                     <div class="row">
                     <div class="input-field col s5">
-                        <input type="text" id="datepicker" name="get_dete" value="<?php date('y/m/d') ?>" />
+                        <input type="text" id="datepicker" name="get_dete" value="<?php date('y/m/d'); ?>" />
                         <label for="datepicker">検索日時</label>
                     </div>
                     <div class="input-field col s5">
@@ -149,7 +153,7 @@ $text = $weather['description']['text'];
             <div class="card">
                 <div class="card-image">
                     <img class="responsive-img" src=<?php echo $img; ?> >
-                    <p class="weather-text-content"><?php echo $text ?></p>
+                    <p class="weather-text-content"><?php echo $text; ?></p>
                 </div>
             </div>
         </article>
