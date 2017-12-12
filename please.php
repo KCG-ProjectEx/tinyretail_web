@@ -7,8 +7,8 @@ $connInfo = array(
     'host'     => 'localhost',
     'dbname'   => 'tinyretail',
     'dbuser'   => 'root',
-    // 'password' => 'mysql0001'
-    'password' => ''    
+    'password' => 'mysql0001'
+    //'password' => ''
 );
 ModelBase::setConnectionInfo($connInfo );
 
@@ -20,8 +20,7 @@ class Favor extends ModelBase
 
     public function getList($Time, $Date, $SexId)
     {
-
-        $sql = sprintf('SELECT date,count(sex_id) as count FROM %s WHERE (date=:Date) and (time like :Time) and (sex_id=:SexId)' , $this->name);
+        $sql = sprintf('SELECT date,count(sex_id) as count FROM %s WHERE (date=:Date) and (time like :Time) and (sex_id=:SexId) and stabilization = 1' , $this->name);
         $params = array(
             'Date' => $Date,
             'Time' => $Time,
@@ -31,9 +30,27 @@ class Favor extends ModelBase
         return $stmt;
     }
 
-    public function getSensorList($Date,$Time)
+    public function getAvgAge($Date)
     {
-        $sql = sprintf('SELECT avg(temperature) as tmp FROM %s WHERE (date=:Date) and (time like :Time)  ',$this->sensor_name );
+        $sql = sprintf('SELECT avg(age) FROM %s WHERE (date=:Date)' , $this->name);
+        $params = array(
+            'Date' => $Date
+        );
+        $stmt = $this->query($sql, $params);
+        return $stmt;
+    }
+
+    public function getCurPerson($Date){
+        $sql = sprintf('SELECT count(date) from %s WHERE (date=:Date)' , $this->name);
+        $params = array(
+            'Date' => $Date
+        );
+        $stmt = $this->query($sql, $params);
+        return $stmt;        
+    }
+    public function getSensorList($Time,$Date)
+    {
+        $sql = sprintf('SELECT avg(temperature) as tmp FROM %s WHERE (date=:Date) and (time like :Time)',$this->sensor_name );
         $params = array(
             'Date' => $Date,
             'Time' => $Time
@@ -55,7 +72,7 @@ for ($Time=8; $Time <= 19; $Time++) { // 8:00-19:00のデータ取得
     $men[] = $favor->getList($Time."%", $Date, "1");
     $women[] = $favor->getList($Time."%", $Date, "2");
     $unknown[] = $favor->getList($Time."%", $Date, "3");
-    $tmp[] = $favor ->getSensorList($Date,$Time."%");
+    $tmp[] = $favor->getSensorList($Time."%",$Date);
 }
 
 for ($i=0; $i < 12 ; $i++) {
@@ -68,8 +85,12 @@ for ($i=0; $i < 12 ; $i++) {
     );
 }
 
+$age = $favor->getAvgAge($Date);
+$People = $favor->getCurPerson($Date);
 $favorDate = array(
     'date' => $Date,
+    'age' => $age,
+    'cnt' => $People,
     $xxx
 );
 

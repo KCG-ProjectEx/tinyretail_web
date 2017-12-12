@@ -9,14 +9,19 @@ function myChart_UPDATE()
     var date = target.innerText.split( '/' ).join( '-' );
 
     var datas = JSON.parse(getCurrentDateData(date));
-
+    console.log(datas);
+    myChart_sex.data.datasets[0].data = [0,0,0];
     for(i=0;i<12;i++){
         // グラフデータを更新
         myChart_favor.data.datasets[1].data[i] = datas[0][i]["tmp"];
         myChart_favor.data.datasets[2].data[i] = datas[0][i]["men"];
         myChart_favor.data.datasets[3].data[i] = datas[0][i]["ladies"];
         myChart_favor.data.datasets[4].data[i] = datas[0][i]["unknown"];
+        myChart_sex.data.datasets[0].data[0] = parseInt(myChart_sex.data.datasets[0].data[0]) + parseInt(datas[0][i]["men"]);
+        myChart_sex.data.datasets[0].data[1] = parseInt(myChart_sex.data.datasets[0].data[1]) + parseInt(datas[0][i]["ladies"]);
+        myChart_sex.data.datasets[0].data[2] = parseInt(myChart_sex.data.datasets[0].data[2]) + parseInt(datas[0][i]["unknown"]);
     }
+    myChart_sex.update();
     myChart_favor.update(); // グラフの再描画
 }
 
