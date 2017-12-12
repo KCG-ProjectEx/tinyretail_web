@@ -32,7 +32,17 @@ class Favor extends ModelBase
 
     public function getAvgAge($Date)
     {
-        $sql = sprintf('SELECT avg(age) FROM %s WHERE (date=:Date)' , $this->name);
+        $sql = sprintf('SELECT avg(age) FROM %s WHERE (date=:Date) and stabilization = 1' , $this->name);
+        $params = array(
+            'Date' => $Date
+        );
+        $stmt = $this->query($sql, $params);
+        return $stmt;
+    }
+
+    public function getListAge($Date)
+    {
+        $sql = sprintf('SELECT age FROM %s WHERE (date=:Date) and stabilization = 1' , $this->name);
         $params = array(
             'Date' => $Date
         );
@@ -65,7 +75,6 @@ class Favor extends ModelBase
 }
 $favor = new Favor();
 
-
 $Date = $_GET['date'];
 
 for ($Time=8; $Time <= 19; $Time++) { // 8:00-19:00のデータ取得
@@ -85,6 +94,12 @@ for ($i=0; $i < 12 ; $i++) {
     );
 }
 
+$listAge = $favor->getListAge($Date);
+$ary_age = array(0,0,0,0,0,0,0,0,0,0);
+foreach($listAge as $value){
+    $ary_age[ round($value['age']/10) ] += 1;
+}
+
 $age = $favor->getAvgAge($Date);
 $People = $favor->getCurPerson($Date);
 
@@ -92,7 +107,8 @@ $favorDate = array(
     'date' => $Date,
     'age' => $age,
     'cnt' => $People,
-    $xxx
+    $xxx,
+    $ary_age
 );
 
 echo $favor->json_safe_encode($favorDate);

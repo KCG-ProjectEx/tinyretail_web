@@ -35,21 +35,6 @@ $ary_facial_expression = array(0,0,0,0,0);
 try{
 
   $dbh = new PDO($dsn,$user,$pass);
-  $sql = 'SELECT * FROM hvc_p2 INNER JOIN sex ON hvc_p2.sex_id = sex.sex_id';
-
-  $count_men=0;
-  $count_ladies=0;
-  $count_other=0;
-  $count=0;
-  $ave_age=0;
-  $pickupCount=0;
- 
-  foreach ($dbh->query($sql,PDO::FETCH_ASSOC) as $row) {
-    $ary_age[round($row['age']/10)] += 1;
-    $ave_age = $ave_age + $row['age'];
-    if($row['stabilization'] == 1) $pickupCount++;
-    $count++;
-  }
 
   $sql = 'SELECT * FROM hvc_p2';
   foreach ($dbh->query($sql,PDO::FETCH_ASSOC) as $row) {
@@ -77,20 +62,11 @@ try{
 }
 
 $dbh = null;
-$ave_age = round($ave_age / $count); //小数点第一位で四捨五入
-$encoded_age = json_encode($ave_age);
 $encoded_facial = json_encode($ary_facial_expression);
 
 $url = "http://weather.livedoor.com/forecast/webservice/json/v1?city=260010";
 $weather = file_get_contents($url, true);
 $weather = json_decode($weather, true);
-
-$title = $weather['title'];
-$description = $weather['description']['text'];
-$publicTime = $weather['publicTime'];
-$city = $weather['location']['city'];
-$area = $weather['location']['area'];
-$prefecture = $weather['location']['prefecture'];
 $img = $weather['forecasts'][0]['image']['url'];
 $img = str_replace("http://weather.livedoor.com/img/icon","./img",$img);
 $text = $weather['description']['text'];
