@@ -26,7 +26,8 @@
 
 $dsn = 'mysql:dbname=tinyretail;host=localhost;charset=utf8';
 $user = 'root';
-$pass = 'mysql0001';
+// $pass = 'mysql0001';
+$pass = '';
 $border = 1;
 $ary_age = array(0,0,0,0,0,0,0,0,0,0);
 $ary_facial_expression = array(0,0,0,0,0);
@@ -36,13 +37,19 @@ try{
   $dbh = new PDO($dsn,$user,$pass);
   $sql = 'SELECT * FROM hvc_p2 INNER JOIN sex ON hvc_p2.sex_id = sex.sex_id';
 
+  $count_men=0;
+  $count_ladies=0;
+  $count_other=0;
+  $count=0;
+  $ave_age=0;
+  
   foreach ($dbh->query($sql,PDO::FETCH_ASSOC) as $row) {
     if($row['sex_val'] == '男'){
-      $count_men++;
+        $count_men++;
     }elseif($row['sex_val'] == '女'){
-      $count_ladies++;
+        $count_ladies++;
     }else{
-      $count_other++;
+        $count_other++;
     }
     $ary_age[round($row['age']/10)] += 1;
     $ave_age = $ave_age + $row['age'];
@@ -75,7 +82,7 @@ try{
 }
 
 $dbh = null;
-$ave_age = round($ave_age / $count,1); //小数点第一位で四捨五入
+$ave_age = round($ave_age / $count); //小数点第一位で四捨五入
 $encoded_age = json_encode($ave_age);
 $encoded_facial = json_encode($ary_facial_expression);
 
