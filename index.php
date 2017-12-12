@@ -42,7 +42,8 @@ try{
   $count_other=0;
   $count=0;
   $ave_age=0;
-
+  $pickupCount=0;
+ 
   foreach ($dbh->query($sql,PDO::FETCH_ASSOC) as $row) {
     $ary_age[round($row['age']/10)] += 1;
     $ave_age = $ave_age + $row['age'];
@@ -103,7 +104,7 @@ $text = $weather['description']['text'];
 
     <header>
         <!-- Nav -->
-        <nav class="blue darken-1">
+        <nav class="nav_color">
             <div class="nav-wrapper">
                 <a href="#" class="brand-logo center">TinyRetail</a>
             </div>
@@ -115,7 +116,47 @@ $text = $weather['description']['text'];
 
     <div class="row">
 
-        <article id="favor" class="col s12 m9">
+        <div class="col m3 push-m9 s12">
+            <div id="search" class="col s12 m12">
+                <div class="card search-color">
+                    <form id="form_dete" action="">
+                        <div class="row">
+                        <div class="input-field col s7">
+                            <input type="text" id="datepicker" name="get_dete" value="" />
+                            <label for="datepicker">検索日時</label>
+                        </div>
+                        <div class="searchBotton col s5">
+                            <a class="btn-floating btn-large waves-effect waves-light search-btn-color searchBtn" onclick="myChart_UPDATE();"><i class="material-icons">sync</i></a>
+                        </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div id="weather" class="col s6 m12">
+                <div class="card">
+                    <div class="card-image">
+                        <img class="responsive-img" src=<?php echo $img; ?> >
+                        <p class="weather-text-content"><?php echo $text; ?></p>
+                    </div>
+                </div>
+            </div>
+            <div id="cnt-info" class="col s6 m12">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="ave-age relative">
+                            <i class="material-icons" style="color: white;">face</i>
+                            <p id="average_age"><?php echo json_encode($ave_age); ?></p>
+                        </div>
+                        <div class="visitor_num relative">
+                            <i class="material-icons" style="color: white;">people</i>
+                            <p id="count"><?php echo json_encode($pickupCount); ?></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <article id="favor" class="col m9 pull-m3 s12">
         <div class="card">
             <div class="card-content">
                 <header class="card-header">
@@ -126,46 +167,9 @@ $text = $weather['description']['text'];
                     <canvas id="graph_favor"></canvas>
                 </div>
             </div>
-
-            <div class="card-action">
-                <form id="form_dete" action="">
-                    <div class="row">
-                    <div class="input-field col s5">
-                        <input type="text" id="datepicker" name="get_dete" value="" />
-                        <label for="datepicker">検索日時</label>
-                    </div>
-                    <div class="input-field col s5">
-                        <a class="waves-effect waves-light btn" onclick="myChart_UPDATE();">更新</a>
-                    </div>
-                    </div>
-                </form>
-            </div>
         </div>
         </article>
-
-        <article id="weather" class="col s6 m3">
-            <div class="card">
-                <div class="card-image">
-                    <img class="responsive-img" src=<?php echo $img; ?> >
-                    <p class="weather-text-content"><?php echo $text; ?></p>
-                </div>
-            </div>
-        </article>
-
-        <article id="cnt-info" class="col s6 m3">
-            <div class="card">
-                <div class="card-content">
-                    <div class="ave-age relative">
-                        <i class="material-icons">face</i>
-                        <p id="average_age"><?php echo json_encode($ave_age); ?></p>
-                    </div>
-                    <div class="visitor_num relative">
-                        <i class="material-icons">people</i>
-                        <p id="count"><?php echo json_encode($pickupCount); ?></p>
-                    </div>
-                </div>
-            </div>
-        </article>
+        
 
         <article id="sex" class="col s12 m6">
         <div class="card">
