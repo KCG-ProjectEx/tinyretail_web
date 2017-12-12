@@ -247,5 +247,28 @@ $text = $weather['description']['text'];
 <!--グラフの更新  -->
 <script type="text/javascript" src="js/update_graph.js"></script>
 
+<!-- 雪を降らせる -->
+<script type="text/javascript" src="commons/js/snowfall.jquery.js"></script>
+<script>
+    $(document).snowfall({
+        // 雪の量 (数値)
+        flakeCount : 100,
+        // z-indexの値
+        flakeIndex : "888",
+        // 最小サイズ （数値）
+        minSize : 1,
+        // 最大サイズ（数値）
+        maxSize : 5,
+        // 最低速度（数値）
+        minSpeed : 1,
+        // 最高速度（数値）
+        maxSpeed : 5,
+        // 雪の形を丸にする（boolean）
+        round : true,
+        // 影をつける（boolean）
+        shadow : false
+    });
+</script>
+
 </body>
 </html>
