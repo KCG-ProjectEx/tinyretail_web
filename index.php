@@ -26,8 +26,8 @@
 
 $dsn = 'mysql:dbname=tinyretail;host=localhost;charset=utf8';
 $user = 'root';
- $pass = 'mysql0001';
-//$pass = '';
+$pass = 'mysql0001';
+// $pass = '';
 $border = 1;
 $ary_age = array(0,0,0,0,0,0,0,0,0,0);
 $ary_facial_expression = array(0,0,0,0,0);
@@ -100,6 +100,7 @@ $text = $weather['description']['text'];
     data-ary-facial-expression=<?php echo json_encode($encoded_facial); ?>;
 >
 </script>
+
 <div id="wrapper">
 
     <header>
@@ -246,9 +247,9 @@ $text = $weather['description']['text'];
         // z-indexの値
         flakeIndex : "888",
         // 最小サイズ （数値）
-        minSize : 1,
+        minSize : 5,
         // 最大サイズ（数値）
-        maxSize : 5,
+        maxSize : 10,
         // 最低速度（数値）
         minSpeed : 1,
         // 最高速度（数値）
@@ -256,7 +257,9 @@ $text = $weather['description']['text'];
         // 雪の形を丸にする（boolean）
         round : true,
         // 影をつける（boolean）
-        shadow : false
+        shadow : false,
+        // イメージを表示する
+        image : "img/snow.png"
     });
 </script>
 
