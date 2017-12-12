@@ -26,8 +26,8 @@
 
 $dsn = 'mysql:dbname=tinyretail;host=localhost;charset=utf8';
 $user = 'root';
-// $pass = 'mysql0001';
-$pass = '';
+ $pass = 'mysql0001';
+//$pass = '';
 $border = 1;
 $ary_age = array(0,0,0,0,0,0,0,0,0,0);
 $ary_facial_expression = array(0,0,0,0,0);
@@ -43,15 +43,8 @@ try{
   $count=0;
   $ave_age=0;
   $pickupCount=0;
-  
+ 
   foreach ($dbh->query($sql,PDO::FETCH_ASSOC) as $row) {
-    if($row['sex_val'] == '男'){
-        $count_men++;
-    }elseif($row['sex_val'] == '女'){
-        $count_ladies++;
-    }else{
-        $count_other++;
-    }
     $ary_age[round($row['age']/10)] += 1;
     $ave_age = $ave_age + $row['age'];
     if($row['stabilization'] == 1) $pickupCount++;
@@ -104,9 +97,6 @@ $text = $weather['description']['text'];
 ?>
 <script id="data_db" src="./js/variable_assignment.js"
     data-ary-age= "<?php echo json_encode($ary_age); ?>";
-    data-men="<?php echo json_encode($count_men); ?>";
-    data-ladies="<?php echo json_encode($count_ladies); ?>";
-    data-unknown="<?php echo json_encode($count_other); ?>";
     data-ary-facial-expression=<?php echo json_encode($encoded_facial); ?>;
 >
 </script>
