@@ -23,6 +23,8 @@ function myChart_UPDATE()
     }
     myChart_sex.update();
     myChart_favor.update(); // グラフの再描画
+    document.getElementById('average_age').textContent = Math.round(datas.age[0][0]);
+    document.getElementById('count').textContent = datas.cnt[0][0];
 }
 
 // フォームにカレンダーの表示 (id="datepicker"で使用可能)

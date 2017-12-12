@@ -41,12 +41,12 @@ class Favor extends ModelBase
     }
 
     public function getCurPerson($Date){
-        $sql = sprintf('SELECT count(date) from %s WHERE (date=:Date)' , $this->name);
+        $sql = sprintf('SELECT count(date) from %s WHERE (date=:Date) and stabilization = 1' , $this->name);
         $params = array(
             'Date' => $Date
         );
         $stmt = $this->query($sql, $params);
-        return $stmt;        
+        return $stmt;
     }
     public function getSensorList($Time,$Date)
     {
@@ -87,6 +87,7 @@ for ($i=0; $i < 12 ; $i++) {
 
 $age = $favor->getAvgAge($Date);
 $People = $favor->getCurPerson($Date);
+
 $favorDate = array(
     'date' => $Date,
     'age' => $age,
