@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="jp">
+<html lang="ja">
 <head>
     <title>Project Ex TinyRetail Test</title>
     <meta charset="UTF-8">
@@ -46,6 +46,7 @@ try{
     }
     $ary_age[round($row['age']/10)] += 1;
     $ave_age = $ave_age + $row['age'];
+    if($row['stabilization'] == 1) $pickupCount++;
     $count++;
   }
 
@@ -149,7 +150,7 @@ $text = $weather['description']['text'];
             <div class="card">
                 <div class="card-image">
                     <img class="responsive-img" src=<?php echo $img; ?> >
-                    <p class="weather-text-content"><?php echo $text ?></p>
+                    <p class="weather-text-content"><?php echo $text; ?></p>
                 </div>
             </div>
         </article>
@@ -159,11 +160,11 @@ $text = $weather['description']['text'];
                 <div class="card-content">
                     <div class="ave-age relative">
                         <i class="material-icons">face</i>
-                        <p><?php echo json_encode($ave_age); ?></p>
+                        <p id="average_age"><?php echo json_encode($ave_age); ?></p>
                     </div>
                     <div class="visitor_num relative">
                         <i class="material-icons">people</i>
-                        <p><?php echo json_encode($count); ?></p>
+                        <p id="count"><?php echo json_encode($pickupCount); ?></p>
                     </div>
                 </div>
             </div>
@@ -227,13 +228,13 @@ $text = $weather['description']['text'];
 
 <!-- jsの変数初期化 -->
 <script type="text/javascript" src="js/variable_assignment.js"></script>
-<!--グラフの更新  -->
-<script type="text/javascript" src="js/update_graph.js"></script>
 <!--各種グラフの設定  -->
 <script id="Graph_favor" src="js/graph_favor.js"></script>
 <script id="Graph_sex" src="js/graph_sex.js"></script>
 <script id="Graph_age" src="js/graph_age.js"></script>
 <script id="Graph_facial_expression" src="js/graph_facial_expression.js"></script>
+<!--グラフの更新  -->
+<script type="text/javascript" src="js/update_graph.js"></script>
 
 </body>
 </html>

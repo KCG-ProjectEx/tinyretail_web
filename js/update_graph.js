@@ -37,11 +37,7 @@ function getCurrentDateData ( currentDate ){
     }).responseText;
     return datas;
 }
-/*
-for(i=0;i<5;i++){
-    for(j=0;j<12;j++){
-        // グラフデータを更新
-        myChart_favor.data.datasets[i].data[j] = Math.round(Math.random()*45);
-    }
-}
-*/
+
+var today = new Date();
+document.getElementById('datepicker').value = (today.getFullYear()) + "/" + (today.getMonth()+1) + "/" + (today.getDate());
+myChart_UPDATE(); // グラフの再描画

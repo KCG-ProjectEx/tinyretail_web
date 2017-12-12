@@ -42,10 +42,10 @@ var ary_timeline_favor = ["80","70","80","67","40","50","70","80","90","60","50"
 
 // 自動初期設定(JavaScript)
 
-var today=new Date();
-// id=output-date　タグへのエレメントを取得
-var target = document.getElementById("output-date");
+//var today=new Date();
+//var target = document.getElementById("output-date");
 // 受け取った日付データを表示する(ここから日付データを使ってください)
-target.innerText = (today.getFullYear()) + "/" +
-                   (today.getMonth()+1) + "/" +
-                   (today.getDate());
+//target.innerText = (today.getFullYear()) + "/" + (today.getMonth()+1) + "/" + (today.getDate());
+
+//document.getElementById('datepicker').value = (today.getFullYear()) + "/" + (today.getMonth()+1) + "/" + (today.getDate());;
+//myChart_favor.update(); // グラフの再描画

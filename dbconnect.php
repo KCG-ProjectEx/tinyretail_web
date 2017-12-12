@@ -48,7 +48,7 @@ switch ($get_type) {
     $stmt->bindValue(':face_x', $json_data_d['face_x'], PDO::PARAM_INT);
     $stmt->bindValue(':face_y', $json_data_d['face_y'], PDO::PARAM_INT);
     $stmt->bindValue(':face_size', $json_data_d['face_size'], PDO::PARAM_INT);
-    $stmt->bindValue(':face_rbd', $json_data_d['face_rbd'], PDO::PARAM_INT);    
+    $stmt->bindValue(':face_rbd', $json_data_d['face_rbd'], PDO::PARAM_INT);
     $stmt->bindValue(':stabilization', $json_data_d['camera_id'], PDO::PARAM_INT);
     break;
 
