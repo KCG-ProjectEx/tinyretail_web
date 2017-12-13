@@ -7,19 +7,19 @@
 var data_db = document.getElementById("data_db");
 
 //年齢割合グラフ
-var ary_age = JSON.parse(data_db.getAttribute('data-ary-age'));
+var ary_age;
 // var ary_age = ["10","1","2","3","4","5","6","7"];
 
 //性別割合グラフ
-var data_men = JSON.parse(data_db.getAttribute('data-men'));
-var data_ladies = JSON.parse(data_db.getAttribute('data-ladies'));
-var data_unknown = JSON.parse(data_db.getAttribute('data-unknown'));
+var data_men;
+var data_ladies;
+var data_unknown;
 // var data_men = "15";
 // var data_ladies = "20";
 // var data_unknown = "30";
 
 //表情数(neutral, happiness, surprise, anger, sadness)
-var ary_facial_expression = JSON.parse(data_db.getAttribute('data-ary-facial-expression'));
+var ary_facial_expression;
 // var ary_facial_expression = ["20","30","25","40","5"];
 
 // 好感度グラフ
