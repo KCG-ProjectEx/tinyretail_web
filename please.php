@@ -20,7 +20,7 @@ class Favor extends ModelBase
 
     public function getList($Time, $Date, $SexId)
     {
-        $sql = sprintf('SELECT date,count(sex_id) as count FROM %s WHERE (date=:Date) and (time like :Time) and (sex_id=:SexId) and stabilization = 1' , $this->name);
+        $sql = sprintf('SELECT date,count(sex_id) as count FROM %s WHERE (date=:Date) and (time like :Time) and (sex_id=:SexId)' , $this->name);
         $params = array(
             'Date' => $Date,
             'Time' => $Time,
@@ -32,7 +32,7 @@ class Favor extends ModelBase
 
     public function getAvgAge($Date)
     {
-        $sql = sprintf('SELECT avg(age) FROM %s WHERE (date=:Date) and stabilization = 1' , $this->name);
+        $sql = sprintf('SELECT avg(age) FROM %s WHERE (date=:Date)' , $this->name);
         $params = array(
             'Date' => $Date
         );
@@ -42,7 +42,7 @@ class Favor extends ModelBase
 
     public function getListAge($Date)
     {
-        $sql = sprintf('SELECT age FROM %s WHERE (date=:Date) and stabilization = 1' , $this->name);
+        $sql = sprintf('SELECT age FROM %s WHERE (date=:Date)' , $this->name);
         $params = array(
             'Date' => $Date
         );
@@ -51,7 +51,7 @@ class Favor extends ModelBase
     }
 
     public function getCurPerson($Date){
-        $sql = sprintf('SELECT count(date) from %s WHERE (date=:Date) and stabilization = 1' , $this->name);
+        $sql = sprintf('SELECT count(date) from %s WHERE (date=:Date)' , $this->name);
         $params = array(
             'Date' => $Date
         );
