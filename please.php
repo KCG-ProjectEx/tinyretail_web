@@ -51,7 +51,7 @@ class Favor extends ModelBase
     }
 
     public function getCurPerson($Date){
-        $sql = sprintf('SELECT count(date) from %s WHERE (date=:Date)' , $this->name);
+        $sql = sprintf('SELECT count(date) FROM %s WHERE (date=:Date)' , $this->name);
         $params = array(
             'Date' => $Date
         );
@@ -71,7 +71,7 @@ class Favor extends ModelBase
 
     public function getEmotion($Date)
     {
-        $sql = sprintf("SELECT neutral,happiness,surprise,anger,sadness FROM %s WHERE (date=Date)" , $this->name);
+        $sql = sprintf('SELECT neutral,happiness,surprise,anger,sadness FROM %s WHERE (date=:Date)', $this->name);
         $params = array(
             'Date' => $Date
         );
@@ -105,11 +105,32 @@ for ($i=0; $i < 12 ; $i++) {
 }
 
 $listAge = $favor->getListAge($Date);
+
 $ary_age = array(0,0,0,0,0,0,0,0,0,0);
 foreach($listAge as $value){
     $ary_age[ round($value['age']/10) ] += 1;
 }
-var_export($favor->getEmotion($Date));
+$border = 5;
+$listEmotion = $favor->getEmotion($Date);
+$ary_facial_expression = array(0,0,0,0,0);
+foreach ($listEmotion as $value) {
+  if (intval($value['neutral']) >= $border){
+    $ary_facial_expression[0]++;
+  }
+  if (intval($value['happiness']) >= $border){
+    $ary_facial_expression[1]++;
+  }
+  if (intval($value['surprise']) >= $border){
+    $ary_facial_expression[2]++;
+  }
+  if (intval($value['anger']) >= $border){
+    $ary_facial_expression[3]++;
+  }
+  if (intval($value['sadness']) >= $border){
+    $ary_facial_expression[4]++;
+  }
+}
+
 $age = $favor->getAvgAge($Date);
 $People = $favor->getCurPerson($Date);
 
@@ -118,7 +139,8 @@ $favorDate = array(
     'age' => $age,
     'cnt' => $People,
     $xxx,
-    $ary_age
+    $ary_age,
+    $ary_facial_expression
 );
 
 echo $favor->json_safe_encode($favorDate);
