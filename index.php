@@ -215,6 +215,7 @@ $text = $weather['description']['text'];
 <script type="text/javascript" src="js/update_graph.js"></script>
 
 <!-- 雪を降らせる -->
+<!--
 <script type="text/javascript" src="commons/js/snowfall.jquery.js"></script>
 <script>
     $(document).snowfall({
@@ -238,6 +239,7 @@ $text = $weather['description']['text'];
         image : "img/snow.png"
     });
 </script>
+-->
 
 </body>
 </html>
