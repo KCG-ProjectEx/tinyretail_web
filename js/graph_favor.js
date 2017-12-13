@@ -67,10 +67,10 @@ data: {
                 id:"y-axis-1",
                 display:false, //目盛りの表示・非表示
                 ticks:{
-                    beginAtZero:true, 
-                    max: 100,
-                    min: 0,
-                    stepSize: 20,
+                    //beginAtZero:true, 
+                    max: 50,
+                    min: -50,
+                    stepSize: 10,
                     // Include a dollar sign in the ticks
                     callback: function(value, index, values) {
                         return value + "%";

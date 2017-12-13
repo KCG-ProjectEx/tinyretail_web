@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <title>Project Ex TinyRetail Test</title>
+    <title>TinyRetail</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
+    <link rel="shortcut icon" href="favicon.ico" type="img/favicon.ico">
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
@@ -24,45 +24,6 @@
 <body>
 <?php
 
-$dsn = 'mysql:dbname=tinyretail;host=localhost;charset=utf8';
-$user = 'root';
-$pass = 'mysql0001';
-// $pass = '';
-$border = 1;
-$ary_age = array(0,0,0,0,0,0,0,0,0,0);
-$ary_facial_expression = array(0,0,0,0,0);
-
-try{
-
-  $dbh = new PDO($dsn,$user,$pass);
-
-  $sql = 'SELECT * FROM hvc_p2';
-  foreach ($dbh->query($sql,PDO::FETCH_ASSOC) as $row) {
-    if (intval($row['neutral']) >= $border){
-      $ary_facial_expression[0]++;
-    }
-    if (intval($row['happiness']) >= $border){
-      $ary_facial_expression[1]++;
-    }
-    if (intval($row['surprise']) >= $border){
-      $ary_facial_expression[2]++;
-    }
-    if (intval($row['anger']) >= $border){
-      $ary_facial_expression[3]++;
-    }
-    if (intval($row['sadness']) >= $border){
-      $ary_facial_expression[4]++;
-    }
-  }
-
-
-}catch (PDOException $e){
-    print('Error:'.$e->Message());
-    die();
-}
-
-$dbh = null;
-$encoded_facial = json_encode($ary_facial_expression);
 
 $url = "http://weather.livedoor.com/forecast/webservice/json/v1?city=260010";
 $weather = file_get_contents($url, true);
@@ -71,12 +32,6 @@ $img = $weather['forecasts'][0]['image']['url'];
 $img = str_replace("http://weather.livedoor.com/img/icon","./img",$img);
 $text = $weather['description']['text'];
 ?>
-<script id="data_db" src="./js/variable_assignment.js"
-    data-ary-age= "<?php echo json_encode($ary_age); ?>";
-    data-ary-facial-expression=<?php echo json_encode($encoded_facial); ?>;
->
-</script>
-
 <div id="wrapper">
 
     <header>
@@ -206,6 +161,7 @@ $text = $weather['description']['text'];
 
 <!-- jsの変数初期化 -->
 <script type="text/javascript" src="js/variable_assignment.js"></script>
+<script id="data_db" src="./js/variable_assignment.js"></script>
 <!--各種グラフの設定  -->
 <script id="Graph_favor" src="js/graph_favor.js"></script>
 <script id="Graph_sex" src="js/graph_sex.js"></script>
