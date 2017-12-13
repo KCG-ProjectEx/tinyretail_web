@@ -69,6 +69,16 @@ class Favor extends ModelBase
         return $stmt;
     }
 
+    public function getEmotion($Date)
+    {
+        $sql = sprintf("SELECT neutral,happiness,surprise,anger,sadness FROM %s WHERE (date=Date)" , $this->name);
+        $params = array(
+            'Date' => $Date
+        );
+        $stmt = $this->query($sql, $params);
+        return $stmt;
+    }
+
     public function json_safe_encode($data){
         return json_encode($data, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT);
     }
@@ -99,7 +109,7 @@ $ary_age = array(0,0,0,0,0,0,0,0,0,0);
 foreach($listAge as $value){
     $ary_age[ round($value['age']/10) ] += 1;
 }
-
+var_export($favor->getEmotion($Date));
 $age = $favor->getAvgAge($Date);
 $People = $favor->getCurPerson($Date);
 
