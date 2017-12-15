@@ -9,7 +9,7 @@ function myChart_UPDATE()
 
     var datas = JSON.parse(getCurrentDateData(date));
     myChart_sex.data.datasets[0].data = [0,0,0];
-console.log(datas);
+
     for(i=0;i<12;i++){
         // グラフデータを更新
         myChart_favor.data.datasets[1].data[i] = datas[0][i]["tmp"];

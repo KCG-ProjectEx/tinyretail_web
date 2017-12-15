@@ -23,8 +23,6 @@
 
 <body>
 <?php
-
-
 $url = "http://weather.livedoor.com/forecast/webservice/json/v1?city=260010";
 $weather = file_get_contents($url, true);
 $weather = json_decode($weather, true);
@@ -101,7 +99,7 @@ $text = $weather['description']['text'];
             </div>
         </div>
         </article>
-        
+
 
         <article id="sex" class="col s12 m6">
         <div class="card">
