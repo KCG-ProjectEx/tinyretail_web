@@ -9,7 +9,7 @@ function myChart_UPDATE()
 
     var datas = JSON.parse(getCurrentDateData(date));
     myChart_sex.data.datasets[0].data = [0,0,0];
-
+console.log(datas);
     for(i=0;i<12;i++){
         // グラフデータを更新
         myChart_favor.data.datasets[1].data[i] = datas[0][i]["tmp"];
@@ -27,7 +27,7 @@ function myChart_UPDATE()
     myChart_facial_expression.update();
     myChart_sex.update();
     myChart_favor.update(); // グラフの再描画
-    document.getElementById('average_age').textContent = Math.round(datas.age[0][0]);
+    document.getElementById('average_age').textContent = Math.round(datas.age[0][0]*10)/10;
     document.getElementById('count').textContent = datas.cnt[0][0];
 }
 

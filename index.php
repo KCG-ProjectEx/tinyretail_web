@@ -23,7 +23,19 @@
 
 <body>
 <?php
+
+/* Kyoto */
 $url = "http://weather.livedoor.com/forecast/webservice/json/v1?city=260010";
+
+/* Osaka */
+//$url = "http://weather.livedoor.com/forecast/webservice/json/v1?city=270000";
+
+/* Toyohashi */
+//$url = "http://weather.livedoor.com/forecast/webservice/json/v1?city=230020";
+
+/* Otsu */
+//$url = "http://weather.livedoor.com/forecast/webservice/json/v1?city=250010";
+
 $weather = file_get_contents($url, true);
 $weather = json_decode($weather, true);
 $img = $weather['forecasts'][0]['image']['url'];
