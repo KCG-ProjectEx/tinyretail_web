@@ -80,6 +80,17 @@ class Favor extends ModelBase
         return $stmt;
     }
 
+    public function getFavorAvg($Time,$Date)
+    {
+        $sql = sprintf('SELECT avg(emotion) as favor_data FROM %s WHERE (date=:Date) and (time like :Time)' , $this->name);
+        $params = array(
+            'Date' => $Date,
+            'Time' => $Time
+        );
+        $stmt = $this->query($sql, $params);
+        return $stmt;
+    }
+
     public function json_safe_encode($data){
         return json_encode($data, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT);
     }
@@ -93,16 +104,17 @@ for ($Time=8; $Time <= 19; $Time++) { // 8:00-19:00のデータ取得
     $women[] = $favor->getList($Time."%", $Date, "2");
     $unknown[] = $favor->getList($Time."%", $Date, "3");
     $tmp[] = $favor->getSensorList($Time."%",$Date);
+    $favor_data[] = $favor->getFavorAvg($Time."%",$Date);
 }
 
 for ($i=0; $i < 12 ; $i++) {
     $basic_datas[] = array(
         'time' => (string)($i+8),
-//        'favor' => (string)$favor[$i][0]['favor']
         'men' => (string)$men[$i][0]['count'],
         'ladies' => (string)$women[$i][0]['count'],
         'unknown' => (string)$unknown[$i][0]['count'],
-        'tmp' =>(string)$tmp[$i][0]['tmp']
+        'tmp' => (string)$tmp[$i][0]['tmp'],
+        'favor_data' => (string)$favor_data[$i][0]['favor_data']
     );
 }
 
@@ -112,7 +124,7 @@ $ary_age = array(0,0,0,0,0,0,0,0,0,0);
 foreach($listAge as $value){
     $ary_age[ round($value['age']/10) ] += 1;
 }
-$border = 5;
+$border = 10;
 $listEmotion = $favor->getEmotion($Date);
 $ary_facial_expression = array(0,0,0,0,0);
 foreach ($listEmotion as $value) {
