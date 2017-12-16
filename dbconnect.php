@@ -54,10 +54,11 @@ switch ($get_type) {
     break;
 
   case 'julius':
-    $sql = "INSERT INTO julius (date, time, mic_id, sentence, favor) VALUES (curdate(), curtime(), :mic_id, :sentence, :favor)";
+    $sql = "INSERT INTO julius (date, time, mic_id, sentence, is_poji, favor) VALUES (curdate(), curtime(), :mic_id, :sentence, :is_poji, :favor)";
     $stmt = $dbh->prepare($sql);
     $stmt->bindValue(':mic_id', $json_data_d['mic_id'], PDO::PARAM_INT);
     $stmt->bindValue(':sentence', $json_data_d['sentence'], PDO::PARAM_STR);
+    $stmt->bindValue(':is_poji', $json_data_d['is_poji'], PDO::PARAM_INT); 
     $stmt->bindValue(':favor', $json_data_d['favor'], PDO::PARAM_STR[10]);
 
     break;
