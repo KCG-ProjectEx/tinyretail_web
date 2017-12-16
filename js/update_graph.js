@@ -12,6 +12,7 @@ function myChart_UPDATE()
 console.log(datas);
     for(i=0;i<12;i++){
         // グラフデータを更新
+//        myChart_favor.data.datasets[0].data[i] = datas[0][i]["favor"];
         myChart_favor.data.datasets[1].data[i] = datas[0][i]["tmp"];
         myChart_favor.data.datasets[2].data[i] = datas[0][i]["men"];
         myChart_favor.data.datasets[3].data[i] = datas[0][i]["ladies"];
