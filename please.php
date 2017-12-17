@@ -158,7 +158,6 @@ $favorDate = array(
 );
 
 echo $favor->json_safe_encode($favorDate);
-
 // echo "<h1>ather</h1>";
 // echo "<pre>";
 // var_dump($favorDate);
