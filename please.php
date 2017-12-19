@@ -12,7 +12,6 @@ $connInfo = array(
 );
 ModelBase::setConnectionInfo($connInfo );
 
-
 class Favor extends ModelBase
 {
     protected $name = "hvc_p2";

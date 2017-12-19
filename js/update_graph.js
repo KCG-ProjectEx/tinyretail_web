@@ -16,7 +16,7 @@ console.log(datas);
             //NULL時は0(neutral)
             myChart_favor.data.datasets[0].data[i] = 0;
         }else{
-            myChart_favor.data.datasets[0].data[i] = ( parseInt(datas[0][i]["favor_data"]) / 100 ) * 50;
+            myChart_favor.data.datasets[0].data[i] = (parseInt(datas[0][i]["favor_data"]) / 100 ) * 50;
         }
         myChart_favor.data.datasets[1].data[i] = datas[0][i]["tmp"];
         myChart_favor.data.datasets[2].data[i] = datas[0][i]["men"];
