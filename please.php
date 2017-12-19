@@ -7,8 +7,8 @@ $connInfo = array(
     'host'     => 'localhost',
     'dbname'   => 'tinyretail',
     'dbuser'   => 'root',
-    //'password' => 'mysql0001'
-    'password' => ''
+    'password' => 'mysql0001'
+    //'password' => ''
 );
 ModelBase::setConnectionInfo($connInfo );
 
@@ -19,7 +19,8 @@ class Favor extends ModelBase
 
     public function getList($Time, $Date, $SexId)
     {
-        $sql = sprintf('SELECT date,count(sex_id) as count FROM %s WHERE (date=:Date) and (time like :Time) and (sex_id=:SexId) AND stabilization = 1' , $this->name);
+        $sql = sprintf('SELECT date,count(sex_id) as count FROM %s WHERE (date=:Date) and (time like :Time) and (sex_id=:SexId)' , $this->name);
+        // $sql = sprintf('SELECT date,count(sex_id) as count FROM %s WHERE (date=:Date) and (time like :Time) and (sex_id=:SexId) AND stabilization = 1' , $this->name);
         $params = array(
             'Date' => $Date,
             'Time' => $Time,
@@ -81,7 +82,7 @@ class Favor extends ModelBase
 
     public function getFavorAvg($Time,$Date)
     {
-        $sql = sprintf('SELECT avg(emotion) as favor_data FROM %s WHERE (date=:Date) and (time like :Time)' , $this->name);
+        $sql = sprintf('SELECT avg(emotion) as favor_data FROM %s WHERE (date=:Date) and (time like :Time) and stabilization = 1' , $this->name);
         $params = array(
             'Date' => $Date,
             'Time' => $Time
