@@ -35,7 +35,7 @@ switch ($get_type) {
     break;
 
   case 'camera':
-    $sql = "INSERT INTO hvc_p2 (date, time, camera_id, sex_id, age, neutral, happiness, surprise, anger, sadness, face_x, face_y, face_size, face_rbd, stabilization, emotion) VALUES (curdate(), curtime(), :camera_id, :sex_id, :age, :neutral, :happiness, :surprise, :anger, :sadness, :face_x, :face_y, :face_size, :face_rbd, :stabilization, :emotion)";
+    $sql = "INSERT INTO hvc_p2 (date, time, camera_id, sex_id, age, neutral, happiness, surprise, anger, sadness, face_x, face_y, face_size, face_rbd, stabilization, emotion, gaze_lr, gaze_ud) VALUES (curdate(), curtime(), :camera_id, :sex_id, :age, :neutral, :happiness, :surprise, :anger, :sadness, :face_x, :face_y, :face_size, :face_rbd, :stabilization, :emotion, :gaze_lr, :gaze_ud)";
     $stmt = $dbh->prepare($sql);
     $stmt->bindValue(':camera_id', $json_data_d['camera_id'], PDO::PARAM_INT);
     $stmt->bindValue(':sex_id', $json_data_d['sex_id'], PDO::PARAM_INT);
@@ -50,7 +50,9 @@ switch ($get_type) {
     $stmt->bindValue(':face_size', $json_data_d['face_size'], PDO::PARAM_INT);
     $stmt->bindValue(':face_rbd', $json_data_d['face_rbd'], PDO::PARAM_INT);
     $stmt->bindValue(':stabilization', $json_data_d['stabilization'], PDO::PARAM_INT);
-    $stmt->bindValue(':emotion', $json_data_d['emotion'], PDO::PARAM_INT);    
+    $stmt->bindValue(':emotion', $json_data_d['emotion'], PDO::PARAM_INT);  
+    $stmt->bindValue(':gaze_lr', $json_data_d['gaze_lr'], PDO::PARAM_INT);
+    $stmt->bindValue(':gaze_ud', $json_data_d['gaze_ud'], PDO::PARAM_INT);    
     break;
 
   case 'julius':
