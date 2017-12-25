@@ -79,5 +79,3 @@ try{
 $dbh = null;
 
 ?>
-</body>
-</html>
