@@ -1,0 +1,94 @@
+
+{
+    "response": {
+    "version":"0.1",
+    "termsofService":"http://www.wunderground.com/weather/api/d/terms.html",
+    "features": {
+    "conditions": 1
+    }
+      }
+    ,	"current_observation": {
+          "image": {
+          "url":"http://icons.wxug.com/graphics/wu2/logo_130x80.png",
+          "title":"Weather Underground",
+          "link":"http://www.wunderground.com"
+          },
+          "display_location": {
+          "full":"Kyoto, Japan",
+          "city":"Kyoto",
+          "state":"26",
+          "state_name":"Japan",
+          "country":"JP",
+          "country_iso3166":"JP",
+          "zip":"00000",
+          "magic":"18",
+          "wmo":"47759",
+          "latitude":"35.00999832",
+          "longitude":"135.75000000",
+          "elevation":"187.1"
+          },
+          "observation_location": {
+          "full":"Osaka Airport, ",
+          "city":"Osaka Airport",
+          "state":"",
+          "country":"JP",
+          "country_iso3166":"JP",
+          "latitude":"34.77999878",
+          "longitude":"135.44999695",
+          "elevation":"49 ft"
+          },
+          "estimated": {
+          },
+          "station_id":"RJOO",
+          "observation_time":"Last Updated on December 21, 12:00 PM JST",
+          "observation_time_rfc822":"Thu, 21 Dec 2017 12:00:00 +0900",
+          "observation_epoch":"1513825200",
+          "local_time_rfc822":"Thu, 21 Dec 2017 12:53:10 +0900",
+          "local_epoch":"1513828390",
+          "local_tz_short":"JST",
+          "local_tz_long":"Asia/Tokyo",
+          "local_tz_offset":"+0900",
+          "weather":"Partly Cloudy",
+          "temperature_string":"50 F (10 C)",
+          "temp_f":50,
+          "temp_c":10,
+          "relative_humidity":"35%",
+          "wind_string":"From the NNW at 9 MPH",
+          "wind_dir":"NNW",
+          "wind_degrees":340,
+          "wind_mph":9,
+          "wind_gust_mph":0,
+          "wind_kph":15,
+          "wind_gust_kph":0,
+          "pressure_mb":"1027",
+          "pressure_in":"30.33",
+          "pressure_trend":"-",
+          "dewpoint_string":"23 F (-5 C)",
+          "dewpoint_f":23,
+          "dewpoint_c":-5,
+          "heat_index_string":"NA",
+          "heat_index_f":"NA",
+          "heat_index_c":"NA",
+          "windchill_string":"NA",
+          "windchill_f":"NA",
+          "windchill_c":"NA",
+          "feelslike_string":"50 F (10 C)",
+          "feelslike_f":"50",
+          "feelslike_c":"10",
+          "visibility_mi":"6.2",
+          "visibility_km":"10.0",
+          "solarradiation":"--",
+          "UV":"3","precip_1hr_string":"-9999.00 in (-9999.00 mm)",
+          "precip_1hr_in":"-9999.00",
+          "precip_1hr_metric":"--",
+          "precip_today_string":"0.00 in (0.0 mm)",
+          "precip_today_in":"0.00",
+          "precip_today_metric":"0.0",
+          "icon":"partlycloudy",
+          "icon_url":"http://icons.wxug.com/i/c/k/partlycloudy.gif",
+          "forecast_url":"http://www.wunderground.com/global/stations/47759.html",
+          "history_url":"http://www.wunderground.com/history/airport/RJOO/2017/12/21/DailyHistory.html",
+          "ob_url":"http://www.wunderground.com/cgi-bin/findweather/getForecast?query=34.77999878,135.44999695",
+          "nowcast":""
+      }
+  }

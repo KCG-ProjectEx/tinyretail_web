@@ -23,7 +23,7 @@
 
 <body>
 <?php
-
+/* livedoor weather Hack API */
 /* Kyoto */
 $url = "http://weather.livedoor.com/forecast/webservice/json/v1?city=260010";
 
@@ -36,14 +36,31 @@ $url = "http://weather.livedoor.com/forecast/webservice/json/v1?city=260010";
 /* Otsu */
 //$url = "http://weather.livedoor.com/forecast/webservice/json/v1?city=250010";
 
+/* weather underground API */
+/* Kyoto */
+//$url_wu= "http://api.wunderground.com/api/1e884494f8533bbe/conditions/q/JP/Kyoto.json";
+
+/* Osaka */
+//$url_wu = "http://api.wunderground.com/api/1e884494f8533bbe/conditions/q/zmw:00000.36.47617.json";
+
+/* for Debug */
+$url_wu = "./history.json";
+/* 天気情報をDBへ送りたい(未完成) */
+$weather_wu = file_get_contents($url_wu, true);
+$weather_wu = json_decode($weather_wu, true);
+//$weatherData = $weather_wu['current_observation'];
+//echo $weather_wu['history']['observations'][7]['conds'];
+/* <img src=<?php echo "http://icons.wxug.com/i/c/j/".$weather_wu['current_observation']['icon'].".gif" ; ?> > */
+
+/* 天気アイコンと文字を表示 */
 $weather = file_get_contents($url, true);
 $weather = json_decode($weather, true);
 $img = $weather['forecasts'][0]['image']['url'];
 $img = str_replace("http://weather.livedoor.com/img/icon","./img",$img);
 $text = $weather['description']['text'];
+
 ?>
 <div id="wrapper">
-
     <header>
         <!-- Nav -->
         <nav class="nav_color">
