@@ -1,10 +1,3 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="utf-8">
-</head>
-<body>
-
 <?php
 
 function is_json($string){
@@ -62,7 +55,12 @@ switch ($get_type) {
     $stmt->bindValue(':sentence', $json_data_d['sentence'], PDO::PARAM_STR);
     $stmt->bindValue(':is_poji', $json_data_d['is_poji'], PDO::PARAM_INT); 
     $stmt->bindValue(':favor', $json_data_d['favor'], PDO::PARAM_STR[10]);
+    break;
 
+  case 'camera_count':
+    $sql = "INSERT INTO hvc_p2_count (date, time, count) VALUES (curdate(), curtime(), :count)";
+    $stmt = $dbh->prepare($sql);
+    $stmt->bindValue(':count', $json_data_d['count'], PDO::PARAM_INT);
     break;
 
   default:
