@@ -7,8 +7,8 @@ $connInfo = array(
     'host'     => 'localhost',
     'dbname'   => 'tinyretail',
     'dbuser'   => 'root',
-    //'password' => 'mysql0001'
-    'password' => ''
+    'password' => 'mysql0001'
+    //'password' => ''
 );
 ModelBase::setConnectionInfo($connInfo );
 
@@ -73,7 +73,7 @@ class Favor extends ModelBase
 
     public function getPojinega($Time,$Date)
     {
-        $sql = sprintf('SELECT favor as pojinega FROM %s WHERE (date=:Date) and (time like :Time)',$this->mic_name );
+        $sql = sprintf('SELECT favor AS pojinega FROM %s WHERE (date=:Date) AND (time like :Time) AND favor_score > 0.95 AND favor <> "neutral"',$this->mic_name );
         $params = array(
             'Date' => $Date,
             'Time' => $Time
