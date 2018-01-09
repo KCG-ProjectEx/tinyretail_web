@@ -43,6 +43,7 @@ $(function() {
     $("#datepicker").datepicker("option", "buttonImageOnly", true);
 });
 
+// 指定日のデータを取ってくる
 function getCurrentDateData ( currentDate ){
     var datas = $.ajax({
         type: 'GET',

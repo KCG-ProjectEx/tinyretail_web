@@ -8,7 +8,6 @@ main{
     margin: 0 auto;
     padding-top: 50px;
 }
-
 /* 日付を入力する部分 */
 #search .searchBotton{
     padding-top: 20px;
@@ -44,13 +43,18 @@ main{
     left: 0;
     border-radius: 2px 2px 0px 0px;
 }
-
 .card .card-title{
     font-family: "Rounded Mplus 1c";
     font-weight: 400;
     font-size: 1.5em;
     margin: 10px 30px;
 }
+
+.card .card-title .title-img {
+    height: 35px;
+    position: absolute;
+}
+
 .card .graph_box{
     margin-top: 60px;
 }

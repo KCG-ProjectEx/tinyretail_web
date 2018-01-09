@@ -16,6 +16,7 @@ class Favor extends ModelBase
 {
     protected $name = "hvc_p2";
     protected $sensor_name = " indoor_sensor_node";
+    protected $mic_name = "julius";
 
     public function getList($Time, $Date, $SexId)
     {
@@ -70,6 +71,17 @@ class Favor extends ModelBase
         return $stmt;
     }
 
+    public function getPojinega($Time,$Date)
+    {
+        $sql = sprintf('SELECT favor as pojinega FROM %s WHERE (date=:Date) and (time like :Time)',$this->mic_name );
+        $params = array(
+            'Date' => $Date,
+            'Time' => $Time
+        );
+        $stmt = $this->query($sql,$params);
+        return $stmt;
+    }
+
     public function getEmotion($Date)
     {
         $sql = sprintf('SELECT neutral,happiness,surprise,anger,sadness FROM %s WHERE (date=:Date) AND stabilization = 1', $this->name);
@@ -105,16 +117,17 @@ for ($Time=8; $Time <= 19; $Time++) { // 8:00-19:00のデータ取得
     $unknown[] = $favor->getList($Time."%", $Date, "3");
     $tmp[] = $favor->getSensorList($Time."%",$Date);
     $favor_data[] = $favor->getFavorAvg($Time."%",$Date);
+    $pojinega[] = $favor->getPojinega($Time."%",$Date);
 }
-
-for ($i=0; $i < 12 ; $i++) {
+for ($i=0; $i < 12; $i++) {
     $basic_datas[] = array(
         'time' => (string)($i+8),
         'men' => (string)$men[$i][0]['count'],
         'ladies' => (string)$women[$i][0]['count'],
         'unknown' => (string)$unknown[$i][0]['count'],
         'tmp' => (string)$tmp[$i][0]['tmp'],
-        'favor_data' => (string)$favor_data[$i][0]['favor_data']
+        'favor_data' => (string)$favor_data[$i][0]['favor_data'],
+        'pojinega' => $pojinega[$i]
     );
 }
 
