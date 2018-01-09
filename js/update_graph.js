@@ -18,6 +18,10 @@ console.log(datas);
         }else{
             myChart_favor.data.datasets[0].data[i] = (parseInt(datas[0][i]["favor_data"]) / 100 ) * 50;
         }
+datas[0][i]["pojinega"].forEach( function( value ) {
+    console.log(i);
+    console.log(value.pojinega);
+});
         myChart_favor.data.datasets[1].data[i] = datas[0][i]["tmp"];
         myChart_favor.data.datasets[2].data[i] = datas[0][i]["men"];
         myChart_favor.data.datasets[3].data[i] = datas[0][i]["ladies"];
