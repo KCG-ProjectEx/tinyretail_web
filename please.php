@@ -7,8 +7,8 @@ $connInfo = array(
     'host'     => 'localhost',
     'dbname'   => 'tinyretail',
     'dbuser'   => 'root',
-    'password' => 'mysql0001'
-    //'password' => ''
+    //'password' => 'mysql0001'
+    'password' => ''
 );
 ModelBase::setConnectionInfo($connInfo );
 
@@ -148,7 +148,7 @@ foreach ($listEmotion as $value) {
 $age = $favor->getAvgAge($Date);
 $People = $favor->getCurPerson($Date);
 
-$favorDate = array(
+$favorData = array(
     'date' => $Date,
     'age' => $age,
     'cnt' => $People,
@@ -157,10 +157,10 @@ $favorDate = array(
     $ary_facial_expression
 );
 
-echo $favor->json_safe_encode($favorDate);
+echo $favor->json_safe_encode($favorData);
 // echo "<h1>ather</h1>";
 // echo "<pre>";
-// var_dump($favorDate);
+// var_dump($favorData);
 // echo "</pre>";
 
 
