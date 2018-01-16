@@ -6,23 +6,32 @@ function myChart_UPDATE()
     target.innerText = document.forms.form_dete.get_dete.value;
 
     var date = target.innerText.split( '/' ).join( '-' );
-
     var datas = JSON.parse(getCurrentDateData(date));
+console.log(datas.weather);
     myChart_sex.data.datasets[0].data = [0,0,0];
-console.log(datas);
-    for(i=0;i<12;i++){
+    var positiveWords = 0;
+    var negativeWords = 0;
+    for(i=0;i<12;i++){    
+        var favor_tmp = 0;
         // グラフデータを更新
         if(datas[0][i]["favor_data"] === ""){
             //NULL時は0(neutral)
-            myChart_favor.data.datasets[0].data[i] = 0;
+            favor_tmp = 0;
         }else{
-            myChart_favor.data.datasets[0].data[i] = (parseInt(datas[0][i]["favor_data"]) / 100 ) * 50;
+            favor_tmp = (parseInt(datas[0][i]["favor_data"]) / 100 ) * 50;
         }
-
-    console.log(i+8);
-datas[0][i]["pojinega"].forEach( function( value ) {
-    console.log(value.pojinega);
-});
+        /* 2018/01/16 juliusのネガポジ判定用ロジック追加 */
+        datas[0][i]["pojinega"].forEach( function( value ) {
+            if(value.pojinega === "positive" && favor_tmp < 50){
+                positiveWords++;
+                favor_tmp++;
+            }
+            if(value.pojinega === "negative" && favor_tmp > -50){
+                negativeWords++;
+                favor_tmp--;
+            }
+        });
+        myChart_favor.data.datasets[0].data[i] = favor_tmp;
         myChart_favor.data.datasets[1].data[i] = datas[0][i]["tmp"];
         myChart_favor.data.datasets[2].data[i] = datas[0][i]["men"];
         myChart_favor.data.datasets[3].data[i] = datas[0][i]["ladies"];

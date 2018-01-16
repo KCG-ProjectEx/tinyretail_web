@@ -4,7 +4,7 @@ var ctx = document.getElementById("graph_sex");
 var myChart_sex = new Chart(ctx, {
     type: 'doughnut',
     data: {
-        labels: ["men","ladies"],
+        labels: ["men","women"],
         datasets: [{
             backgroundColor: [
                 "#9fa8da",
@@ -12,7 +12,7 @@ var myChart_sex = new Chart(ctx, {
             ],
             borderWidth: 10,
             hoverBorderWidth: 0,
-            data: [data_men,data_ladies]
+            data: [data_men,data_women]
         }]
     },
     //オプションの設定

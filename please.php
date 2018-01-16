@@ -17,6 +17,7 @@ class Favor extends ModelBase
     protected $name = "hvc_p2";
     protected $sensor_name = " indoor_sensor_node";
     protected $mic_name = "julius";
+    protected $weather_name = "weather";
 
     public function getList($Time, $Date, $SexId)
     {
@@ -103,6 +104,16 @@ class Favor extends ModelBase
         return $stmt;
     }
 
+    public function getWeatherData($Date)
+    {
+        $sql = sprintf('SELECT weather FROM %s WHERE (date=:Date)' , $this->weather_name);
+        $params = array(
+            'Date' => $Date
+        );
+        $stmt = $this->query($sql, $params);
+        return $stmt;
+    }
+
     public function json_safe_encode($data){
         return json_encode($data, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT);
     }
@@ -160,14 +171,15 @@ foreach ($listEmotion as $value) {
 
 $age = $favor->getAvgAge($Date);
 $People = $favor->getCurPerson($Date);
-
+$weather = $favor->getWeatherData($Date);
 $favorData = array(
     'date' => $Date,
     'age' => $age,
     'cnt' => $People,
     $basic_datas,
     $ary_age,
-    $ary_facial_expression
+    $ary_facial_expression,
+    'weather' => $weather
 );
 
 echo $favor->json_safe_encode($favorData);

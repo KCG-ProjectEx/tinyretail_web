@@ -29,10 +29,10 @@ data: {
         backgroundColor: "#9fa8da",
         data:ary_timeline_men
     },{
-        label: 'ladies',
+        label: 'women',
         type: 'bar',
         backgroundColor: "#ef9a9a",
-        data:ary_timeline_ladies
+        data:ary_timeline_women
     }
 ]},
     //オプションの設定
