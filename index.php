@@ -43,14 +43,18 @@ $url = "http://weather.livedoor.com/forecast/webservice/json/v1?city=260010";
 /* Osaka */
 //$url_wu = "http://api.wunderground.com/api/1e884494f8533bbe/conditions/q/zmw:00000.36.47617.json";
 
+/* Kyoto */
+// $url_wu= "http://api.wunderground.com/api/1e884494f8533bbe/history_20171231/q/JP/Kyoto.json";
+
 /* for Debug */
-$url_wu = "./history.json";
+ $url_wu = "./history.json";
 /* 天気情報をDBへ送りたい(未完成) */
 $weather_wu = file_get_contents($url_wu, true);
 $weather_wu = json_decode($weather_wu, true);
-//$weatherData = $weather_wu['current_observation'];
-//echo $weather_wu['history']['observations'][7]['conds'];
-/* <img src=<?php echo "http://icons.wxug.com/i/c/j/".$weather_wu['current_observation']['icon'].".gif" ; ?> > */
+// $weatherData = $weather_wu['current_observation'];
+// echo $weather_wu['history']['observations'][7]['conds'];
+// echo $weather_wu['history']['observations'][7]['icon'];
+/* <img src=<?php echo "http://icons.wxug.com/i/c/i/".$weather_wu['current_observation']['icon'].".gif" ; ?> > */
 
 /* 天気アイコンと文字を表示 */
 $weather = file_get_contents($url, true);
@@ -119,6 +123,7 @@ $text = $weather['description']['text'];
         <div class="card">
             <div class="card-content">
                 <header class="card-header">
+                    <!-- <h1 class="card-title">好感度分析<img class="title-img" src=<?php echo "http://icons.wxug.com/i/c/i/".$weather_wu['history']['observations'][7]['icon'].".gif" ; ?> ></h1> -->
                     <h1 class="card-title">好感度分析<img class="title-img" src=<?php echo $img; ?> ></h1>
                     <p id="output-date">日付</p>
                 </header>

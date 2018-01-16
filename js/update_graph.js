@@ -7,7 +7,6 @@ function myChart_UPDATE()
 
     var date = target.innerText.split( '/' ).join( '-' );
     var datas = JSON.parse(getCurrentDateData(date));
-console.log(datas.weather);
     myChart_sex.data.datasets[0].data = [0,0,0];
     var positiveWords = 0;
     var negativeWords = 0;
