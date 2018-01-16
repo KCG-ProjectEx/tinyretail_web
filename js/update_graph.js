@@ -6,10 +6,19 @@ function myChart_UPDATE()
     target.innerText = document.forms.form_dete.get_dete.value;
 
     var date = target.innerText.split( '/' ).join( '-' );
-    var datas = JSON.parse(getCurrentDateData(date));
+    var dateForWeather = target.innerText.split( '/' ).join( '' );
+    var datas= JSON.parse(getCurrentDateData(date));
+
+    if(datas['weather'] == 0){ 
+        addWeatherInfo(dateForWeather);
+        datas = JSON.parse(getCurrentDateData(date));
+    }
+
     myChart_sex.data.datasets[0].data = [0,0,0];
+
     var positiveWords = 0;
     var negativeWords = 0;
+
     for(i=0;i<12;i++){    
         var favor_tmp = 0;
         // グラフデータを更新
@@ -46,6 +55,7 @@ function myChart_UPDATE()
     myChart_favor.update(); // グラフの再描画
     document.getElementById('average_age').textContent = Math.round(datas.age[0][0]*10)/10;
     document.getElementById('count').textContent = datas.cnt[0][0];
+    document.getElementById('title-img').src = datas['weather'][0]['icon'];
 }
 
 // フォームにカレンダーの表示 (id="datepicker"で使用可能)
@@ -67,6 +77,18 @@ function getCurrentDateData ( currentDate ){
     return datas;
 }
 
+function addWeatherInfo( currentDate ){
+    var datas = $.ajax({
+        type: 'GET',
+        url: 'addWeatherInfo.php',
+        async: false,
+        data: {
+          date: currentDate,
+        }
+    }).responseText;
+    return datas;
+}
+
 var today = new Date();
-document.getElementById('datepicker').value = (today.getFullYear()) + "/" + (today.getMonth()+1) + "/" + (today.getDate());
+document.getElementById('datepicker').value = (today.getFullYear()) + "/" + ("0"+(today.getMonth() + 1)).slice(-2) + "/" + ("0"+today.getDate()).slice(-2);
 myChart_UPDATE(); // グラフの再描画

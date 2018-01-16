@@ -106,7 +106,7 @@ class Favor extends ModelBase
 
     public function getWeatherData($Date)
     {
-        $sql = sprintf('SELECT weather FROM %s WHERE (date=:Date)' , $this->weather_name);
+        $sql = sprintf('SELECT weather,icon FROM %s WHERE (date=:Date)' , $this->weather_name);
         $params = array(
             'Date' => $Date
         );
@@ -125,7 +125,6 @@ $Date = $_GET['date'];
 for ($Time=8; $Time <= 19; $Time++) { // 8:00-19:00のデータ取得
     $men[] = $favor->getList($Time."%", $Date, "1");
     $women[] = $favor->getList($Time."%", $Date, "2");
-    $unknown[] = $favor->getList($Time."%", $Date, "3");
     $tmp[] = $favor->getSensorList($Time."%",$Date);
     $favor_data[] = $favor->getFavorAvg($Time."%",$Date);
     $pojinega[] = $favor->getPojinega($Time."%",$Date);
@@ -135,7 +134,6 @@ for ($i=0; $i < 12; $i++) {
         'time' => (string)($i+8),
         'men' => (string)$men[$i][0]['count'],
         'ladies' => (string)$women[$i][0]['count'],
-        'unknown' => (string)$unknown[$i][0]['count'],
         'tmp' => (string)$tmp[$i][0]['tmp'],
         'favor_data' => (string)$favor_data[$i][0]['favor_data'],
         'pojinega' => $pojinega[$i]
@@ -183,24 +181,4 @@ $favorData = array(
 );
 
 echo $favor->json_safe_encode($favorData);
-// echo "<h1>ather</h1>";
-// echo "<pre>";
-// var_dump($favorData);
-// echo "</pre>";
-
-
-// echo "<h1>men</h1>";
-// echo "<pre>";
-// var_dump($men);
-// echo "</pre>";
-
-// echo "<h1>women</h1>";
-// echo "<pre>";
-// var_dump($women);
-// echo "</pre>";
-
-// echo "<h1>unknown</h1>";
-// echo "<pre>";
-// var_dump($unknown);
-// echo "</pre>";
 ?>

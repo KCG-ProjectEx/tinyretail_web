@@ -6,18 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="icon" href="./img/favicon_64.gif" type="img/gif">
-    <!--Import Google Icon Font-->
+    <!-- Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
 
-    <!--Import materialize.css-->
+    <!-- Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="commons/css/materialize.min.css"  media="screen,projection"/>
 
-    <!--カレンダーCSS  -->
+    <!-- カレンダーCSS  -->
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/blitzer/jquery-ui.css" >
     <link type="text/css" rel="stylesheet" href="css/style.css"/>
 
-    <!--icon  -->
+    <!-- icon  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
@@ -43,18 +43,16 @@ $url = "http://weather.livedoor.com/forecast/webservice/json/v1?city=260010";
 /* Osaka */
 //$url_wu = "http://api.wunderground.com/api/1e884494f8533bbe/conditions/q/zmw:00000.36.47617.json";
 
-/* Kyoto */
+/* KyotoHistory */
 // $url_wu= "http://api.wunderground.com/api/1e884494f8533bbe/history_20171231/q/JP/Kyoto.json";
 
-/* for Debug */
- $url_wu = "./history.json";
-/* 天気情報をDBへ送りたい(未完成) */
+$url_wu = "./history.json";
 $weather_wu = file_get_contents($url_wu, true);
 $weather_wu = json_decode($weather_wu, true);
 // $weatherData = $weather_wu['current_observation'];
-// echo $weather_wu['history']['observations'][7]['conds'];
 // echo $weather_wu['history']['observations'][7]['icon'];
 /* <img src=<?php echo "http://icons.wxug.com/i/c/i/".$weather_wu['current_observation']['icon'].".gif" ; ?> > */
+$img_wu = "http://icons.wxug.com/i/c/i/".$weather_wu['history']['observations'][7]['icon'].".gif";
 
 /* 天気アイコンと文字を表示 */
 $weather = file_get_contents($url, true);
@@ -62,7 +60,6 @@ $weather = json_decode($weather, true);
 $img = $weather['forecasts'][0]['image']['url'];
 $img = str_replace("http://weather.livedoor.com/img/icon","./img",$img);
 $text = $weather['description']['text'];
-
 ?>
 <div id="wrapper">
     <header>
@@ -124,10 +121,11 @@ $text = $weather['description']['text'];
             <div class="card-content">
                 <header class="card-header">
                     <!-- <h1 class="card-title">好感度分析<img class="title-img" src=<?php echo "http://icons.wxug.com/i/c/i/".$weather_wu['history']['observations'][7]['icon'].".gif" ; ?> ></h1> -->
-                    <h1 class="card-title">好感度分析<img class="title-img" src=<?php echo $img; ?> ></h1>
+                    <h1 class="card-title">好感度分析</h1>
                     <p id="output-date">日付</p>
                 </header>
                 <div class="graph_box">
+                    <img id="title-img" class="title-img" src=<?php echo $img_wu; ?> >
                     <canvas id="graph_favor"></canvas>
                 </div>
             </div>
