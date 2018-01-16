@@ -52,6 +52,7 @@ main{
 
 .card .card-title .title-img {
     height: 35px;
+    margin-top : -2px;
     position: absolute;
 }
 

@@ -18,17 +18,16 @@ console.log(datas);
         }else{
             myChart_favor.data.datasets[0].data[i] = (parseInt(datas[0][i]["favor_data"]) / 100 ) * 50;
         }
+
+    console.log(i+8);
 datas[0][i]["pojinega"].forEach( function( value ) {
-    console.log(i);
     console.log(value.pojinega);
 });
         myChart_favor.data.datasets[1].data[i] = datas[0][i]["tmp"];
         myChart_favor.data.datasets[2].data[i] = datas[0][i]["men"];
         myChart_favor.data.datasets[3].data[i] = datas[0][i]["ladies"];
-        myChart_favor.data.datasets[4].data[i] = datas[0][i]["unknown"];
         myChart_sex.data.datasets[0].data[0] = parseInt(myChart_sex.data.datasets[0].data[0]) + parseInt(datas[0][i]["men"]);
         myChart_sex.data.datasets[0].data[1] = parseInt(myChart_sex.data.datasets[0].data[1]) + parseInt(datas[0][i]["ladies"]);
-        myChart_sex.data.datasets[0].data[2] = parseInt(myChart_sex.data.datasets[0].data[2]) + parseInt(datas[0][i]["unknown"]);
     }
     myChart_age.data.datasets[0].data = datas[1];
     myChart_facial_expression.data.datasets[0].data = datas[2];

@@ -33,11 +33,6 @@ data: {
         type: 'bar',
         backgroundColor: "#ef9a9a",
         data:ary_timeline_ladies
-    },{
-        label: 'unknown',
-        type: 'bar',
-        backgroundColor: "#bdbdbd",
-        data:ary_timeline_unknown
     }
 ]},
     //オプションの設定
