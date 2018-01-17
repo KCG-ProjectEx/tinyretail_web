@@ -6,8 +6,8 @@
         'host'     => 'localhost',
         'dbname'   => 'tinyretail',
         'dbuser'   => 'root',
-        //'password' => 'mysql0001'
-        'password' => ''
+        'password' => 'mysql0001'
+        //'password' => ''
     );
     ModelBase::setConnectionInfo($connInfo);
 

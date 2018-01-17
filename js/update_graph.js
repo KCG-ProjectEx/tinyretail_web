@@ -10,7 +10,8 @@ function myChart_UPDATE()
     var datas= JSON.parse(getCurrentDateData(date));
     var ret;
     /* 過去の天気情報がなければ登録 */
-    if(datas['weather'] == 0){ 
+    if(datas['weather'] == 0){
+	addWeatherInfo(date);
         datas = JSON.parse(getCurrentDateData(date));
     }
 
