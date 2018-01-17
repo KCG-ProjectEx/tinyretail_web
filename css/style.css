@@ -54,12 +54,25 @@ main{
 .card .graph_box{
     margin-top: 60px;
 }
-.card .graph_box .title-img{
+.card .graph_box .box {
+    display: inline-block;
+}
+.card .graph_box .box .weather-history-img{
     height : 36px;
     border-radius : 2px;
-    margin-top :-30px;
+    margin-top : -30px;
     padding-bottom : 5px;
     position: absolute;
+}
+.card .graph_box .box .weather-history-text{
+    color: #666666;
+    font-size: 0.3em;
+    margin-bottom:10px;
+}
+.card .graph_box .box .weather-history-atm{
+    color: #666666;
+    font-size: 0.3em;
+    margin-bottom:10px;
 }
 .card .graph_label{
     margin-top: 60px;
@@ -108,13 +121,13 @@ main{
   background-color: #183d55;
 }
 #weather .card .card-image:hover .weather-text-content {
-
   width: 500px;
   right: 10px;
   display: block;
   border-radius:5px;
   z-index: 2;
 }
+
 /* 適当領域*****************  */
 /* cnt-info  */
 #cnt-info .card{
@@ -126,6 +139,12 @@ main{
     left : 15%;
     margin-top: 10px;
 }
+#cnt-info .card .card-content{
+    margin-bottom: 10px;
+    padding-bottom: 31px;
+
+}
+
 #cnt-info .card i{
     position: absolute;
 }

@@ -36,23 +36,23 @@ $url = "http://weather.livedoor.com/forecast/webservice/json/v1?city=260010";
 /* Otsu */
 //$url = "http://weather.livedoor.com/forecast/webservice/json/v1?city=250010";
 
-/* weather underground API */
-/* Kyoto */
-//$url_wu= "http://api.wunderground.com/api/1e884494f8533bbe/conditions/q/JP/Kyoto.json";
+// /* weather underground API */
+// /* Kyoto */
+// //$url_wu= "http://api.wunderground.com/api/1e884494f8533bbe/conditions/q/JP/Kyoto.json";
 
-/* Osaka */
-//$url_wu = "http://api.wunderground.com/api/1e884494f8533bbe/conditions/q/zmw:00000.36.47617.json";
+// /* Osaka */
+// //$url_wu = "http://api.wunderground.com/api/1e884494f8533bbe/conditions/q/zmw:00000.36.47617.json";
 
-/* KyotoHistory */
-// $url_wu= "http://api.wunderground.com/api/1e884494f8533bbe/history_20171231/q/JP/Kyoto.json";
+// /* KyotoHistory */
+// // $url_wu= "http://api.wunderground.com/api/1e884494f8533bbe/history_20171231/q/JP/Kyoto.json";
 
-$url_wu = "./history.json";
-$weather_wu = file_get_contents($url_wu, true);
-$weather_wu = json_decode($weather_wu, true);
-// $weatherData = $weather_wu['current_observation'];
-// echo $weather_wu['history']['observations'][7]['icon'];
-/* <img src=<?php echo "http://icons.wxug.com/i/c/i/".$weather_wu['current_observation']['icon'].".gif" ; ?> > */
-$img_wu = "http://icons.wxug.com/i/c/i/".$weather_wu['history']['observations'][7]['icon'].".gif";
+// $url_wu = "./history.json";
+// $weather_wu = file_get_contents($url_wu, true);
+// $weather_wu = json_decode($weather_wu, true);
+// // $weatherData = $weather_wu['current_observation'];
+// // echo $weather_wu['history']['observations'][7]['icon'];
+// $img_wu = "http://icons.wxug.com/i/c/i/".$weather_wu['history']['observations'][7]['icon'].".gif";
+
 
 /* 天気アイコンと文字を表示 */
 $weather = file_get_contents($url, true);
@@ -120,12 +120,17 @@ $text = $weather['description']['text'];
         <div class="card">
             <div class="card-content">
                 <header class="card-header">
-                    <!-- <h1 class="card-title">好感度分析<img class="title-img" src=<?php echo "http://icons.wxug.com/i/c/i/".$weather_wu['history']['observations'][7]['icon'].".gif" ; ?> ></h1> -->
                     <h1 class="card-title">好感度分析</h1>
                     <p id="output-date">日付</p>
                 </header>
                 <div class="graph_box">
-                    <img id="title-img" class="title-img" src=<?php echo $img_wu; ?> >
+                    <div class="box">
+                        <img id="weather-history-img" class="weather-history-img" src="" >
+                        <div id="weather-history-text" class="weather-history-text"></div>
+                    </div>
+                    <div class="box">
+                        <div id="weather-history-atm" class="weather-history-text"></div>
+                    </div>
                     <canvas id="graph_favor"></canvas>
                 </div>
             </div>

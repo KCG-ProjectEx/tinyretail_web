@@ -8,9 +8,9 @@ function myChart_UPDATE()
     var date = target.innerText.split( '/' ).join( '-' );
     var dateForWeather = target.innerText.split( '/' ).join( '' );
     var datas= JSON.parse(getCurrentDateData(date));
-
+    var ret;
+    /* 過去の天気情報がなければ登録 */
     if(datas['weather'] == 0){ 
-        addWeatherInfo(dateForWeather);
         datas = JSON.parse(getCurrentDateData(date));
     }
 
@@ -28,7 +28,7 @@ function myChart_UPDATE()
         }else{
             favor_tmp = (parseInt(datas[0][i]["favor_data"]) / 100 ) * 50;
         }
-        /* 2018/01/16 juliusのネガポジ判定用ロジック追加 */
+        /* juliusのネガポジ判定 */
         datas[0][i]["pojinega"].forEach( function( value ) {
             if(value.pojinega === "positive" && favor_tmp < 50){
                 positiveWords++;
@@ -55,7 +55,9 @@ function myChart_UPDATE()
     myChart_favor.update(); // グラフの再描画
     document.getElementById('average_age').textContent = Math.round(datas.age[0][0]*10)/10;
     document.getElementById('count').textContent = datas.cnt[0][0];
-    document.getElementById('title-img').src = datas['weather'][0]['icon'];
+    document.getElementById('weather-history-img').src = datas['weather'][0]['icon'];
+    document.getElementById('weather-history-text').textContent = datas['weather'][0]['weather'];
+    // document.getElementById('weather-history-atm').textContent = datas['weather'][0]['weather'];
 }
 
 // フォームにカレンダーの表示 (id="datepicker"で使用可能)
@@ -76,7 +78,7 @@ function getCurrentDateData ( currentDate ){
     }).responseText;
     return datas;
 }
-
+/* 天気情報の追加 */
 function addWeatherInfo( currentDate ){
     var datas = $.ajax({
         type: 'GET',
