@@ -11,7 +11,7 @@ function myChart_UPDATE()
     var ret;
     /* 過去の天気情報がなければ登録 */
     if(datas['weather'] == 0){
-	addWeatherInfo(date);
+    	addWeatherInfo(dateForWeather);
         datas = JSON.parse(getCurrentDateData(date));
     }
 
