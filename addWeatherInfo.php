@@ -6,8 +6,8 @@
         'host'     => 'localhost',
         'dbname'   => 'tinyretail',
         'dbuser'   => 'root',
-        //'password' => 'mysql0001'
-        'password' => ''
+        'password' => 'mysql0001'
+        //'password' => ''
     );
     ModelBase::setConnectionInfo($connInfo);
 
@@ -56,9 +56,9 @@
         return;
     }
     $date = $Date;
-    $conds = $weather_wu['history']['observations'][7]['conds'];
+    $conds = $weather_wu['history']['observations'][4]['conds'];
     $url = $url_wu;
-    $icon = "http://icons.wxug.com/i/c/i/".$weather_wu['history']['observations'][7]['icon'].".gif";
+    $icon = "http://icons.wxug.com/i/c/i/".$weather_wu['history']['observations'][4]['icon'].".gif";
     $weather->insertWeatherInfo($date,$conds,$url,$icon);
 
     echo 1;
