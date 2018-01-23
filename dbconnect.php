@@ -12,8 +12,8 @@ $get_type = $_GET['iam'];
 
 $dsn = "mysql:host=localhost;dbname=tinyretail;charset=utf8"; // Database name
 $user = "root";           // Databese User Name
-$password = "mysql0001";        // Database Password
-//$password = "";        // Database Password
+//$password = "mysql0001";        // Database Password
+$password = "";        // Database Password
 $dbh = new PDO($dsn, $user, $password); // Database Connect (Make object)
 
 switch ($get_type) {

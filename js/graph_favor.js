@@ -24,6 +24,15 @@ data: {
         pointBorderColor: "#33691e",
         yAxisID:"y-axis-2",
     },{
+        label: '気圧',
+        data: ary_timeline_atm,
+        type: 'line',
+        fill: false,
+        borderColor: "#CBCDFB",
+        backgroundColor: "#FFF",
+        pointBorderColor: "#33691e",
+        yAxisID:"y-axis-3",
+    },{
         label: 'men',
         type: 'bar',
         backgroundColor: "#9fa8da",
@@ -47,6 +56,8 @@ data: {
                 id:"y-axis-1"
             },{
                 id:"y-axis-2"
+            },{
+                id:"y-axis-3"
             }],
             yAxes: [{
                 // stacked: true, //積み上げ棒グラフにする設定
@@ -84,6 +95,18 @@ data: {
                     // Include a dollar sign in the ticks
                     callback: function(value, index, values) {
                         return value + "℃";
+                    }
+                }
+            },{
+                id:"y-axis-3",
+                display:false,
+                ticks:{
+                    max: 1200,
+                    min: 800,
+                    stepSize: 20,
+                    // Include a dollar sign in the ticks
+                    callback: function(value, index, values) {
+                        return value + "Pa";
                     }
                 }
             }]

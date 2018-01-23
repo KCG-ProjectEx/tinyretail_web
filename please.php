@@ -7,8 +7,8 @@ $connInfo = array(
     'host'     => 'localhost',
     'dbname'   => 'tinyretail',
     'dbuser'   => 'root',
-    'password' => 'mysql0001'
-    //'password' => ''
+    //'password' => 'mysql0001'
+    'password' => ''
 );
 ModelBase::setConnectionInfo($connInfo );
 
@@ -65,7 +65,7 @@ class Favor extends ModelBase
 
     public function getSensorList($Time,$Date)
     {
-        $sql = sprintf('SELECT avg(temperature) as tmp FROM %s WHERE (date=:Date) and (time like :Time)',$this->sensor_name );
+        $sql = sprintf('SELECT avg(temperature) as tmp, atm FROM %s WHERE (date=:Date) and (time like :Time)',$this->sensor_name );
         $params = array(
             'Date' => $Date,
             'Time' => $Time
@@ -129,16 +129,18 @@ $Date = $_GET['date'];
 for ($Time=8; $Time <= 19; $Time++) { // 8:00-19:00のデータ取得
     $men[] = $favor->getList($Time."%", $Date, "1");
     $women[] = $favor->getList($Time."%", $Date, "2");
-    $tmp[] = $favor->getSensorList($Time."%",$Date);
+    $sensor[] = $favor->getSensorList($Time."%",$Date);
     $favor_data[] = $favor->getFavorAvg($Time."%",$Date);
     $pojinega[] = $favor->getPojinega($Time."%",$Date);
 }
+//var_dump($sensor);
 for ($i=0; $i < 12; $i++) {
     $basic_datas[] = array(
         'time' => (string)($i+8),
         'men' => (string)$men[$i][0]['count'],
         'ladies' => (string)$women[$i][0]['count'],
-        'tmp' => (string)$tmp[$i][0]['tmp'],
+        'tmp' => (string)$sensor[$i][0]['tmp'],
+        'atm' => (string)$sensor[$i][0]['atm'],
         'favor_data' => (string)$favor_data[$i][0]['favor_data'],
         'pojinega' => $pojinega[$i]
     );

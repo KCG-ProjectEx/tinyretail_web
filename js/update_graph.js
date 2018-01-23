@@ -22,8 +22,6 @@ function myChart_UPDATE()
     var favor_tmp = 0;
     for(i=0;i<12;i++){
         // グラフデータを更新
-console.log(datas[0][i]["favor_data"]);
-console.log(datas);
         if(datas[0][i]["favor_data"] === ""){
             //NULL時は0(neutral)
             favor_tmp = 0;
@@ -41,14 +39,15 @@ console.log(datas);
                 favor_tmp--;
             }
         });
-//console.log(favor_tmp);
         myChart_favor.data.datasets[0].data[i] = favor_tmp;
         myChart_favor.data.datasets[1].data[i] = datas[0][i]["tmp"];
-        myChart_favor.data.datasets[2].data[i] = datas[0][i]["men"];
-        myChart_favor.data.datasets[3].data[i] = datas[0][i]["ladies"];
+        myChart_favor.data.datasets[2].data[i] = datas[0][i]["atm"];
+        myChart_favor.data.datasets[3].data[i] = datas[0][i]["men"];
+        myChart_favor.data.datasets[4].data[i] = datas[0][i]["ladies"];
         myChart_sex.data.datasets[0].data[0] = parseInt(myChart_sex.data.datasets[0].data[0]) + parseInt(datas[0][i]["men"]);
         myChart_sex.data.datasets[0].data[1] = parseInt(myChart_sex.data.datasets[0].data[1]) + parseInt(datas[0][i]["ladies"]);
     }
+    console.log(datas);
     myChart_age.data.datasets[0].data = datas[1];
     myChart_facial_expression.data.datasets[0].data = datas[2];
 
