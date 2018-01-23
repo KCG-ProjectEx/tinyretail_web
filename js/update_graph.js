@@ -19,10 +19,11 @@ function myChart_UPDATE()
 
     var positiveWords = 0;
     var negativeWords = 0;
-
-    for(i=0;i<12;i++){    
-        var favor_tmp = 0;
+    var favor_tmp = 0;
+    for(i=0;i<12;i++){
         // グラフデータを更新
+console.log(datas[0][i]["favor_data"]);
+console.log(datas);
         if(datas[0][i]["favor_data"] === ""){
             //NULL時は0(neutral)
             favor_tmp = 0;
@@ -40,6 +41,7 @@ function myChart_UPDATE()
                 favor_tmp--;
             }
         });
+//console.log(favor_tmp);
         myChart_favor.data.datasets[0].data[i] = favor_tmp;
         myChart_favor.data.datasets[1].data[i] = datas[0][i]["tmp"];
         myChart_favor.data.datasets[2].data[i] = datas[0][i]["men"];

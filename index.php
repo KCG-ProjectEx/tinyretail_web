@@ -105,11 +105,11 @@ $text = $weather['description']['text'];
                     <div class="card-content">
                         <div class="ave-age relative">
                             <i class="material-icons" style="color: white;">face</i>
-                            <p id="average_age"><?php echo json_encode($ave_age); ?></p>
+                            <p id="average_age"></p>
                         </div>
                         <div class="visitor_num relative">
                             <i class="material-icons" style="color: white;">people</i>
-                            <p id="count"><?php echo json_encode($pickupCount); ?></p>
+                            <p id="count"></p>
                         </div>
                     </div>
                 </div>

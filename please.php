@@ -44,7 +44,8 @@ class Favor extends ModelBase
 
     public function getListAge($Date)
     {
-        $sql = sprintf('SELECT age FROM %s WHERE (date=:Date) AND stabilization = 1' , $this->name);
+//        $sql = sprintf('SELECT age FROM %s WHERE (date=:Date) AND stabilization = 1' , $this->name);
+        $sql = sprintf('SELECT age FROM %s WHERE (date=:Date)' , $this->name);
         $params = array(
             'Date' => $Date
         );
@@ -53,7 +54,8 @@ class Favor extends ModelBase
     }
 
     public function getCurPerson($Date){
-        $sql = sprintf('SELECT count(date) FROM %s WHERE (date=:Date) AND stabilization = 1' , $this->name);
+//        $sql = sprintf('SELECT count(date) as cnt FROM %s WHERE (date=:Date) AND stabilization = 1' , $this->name);
+        $sql = sprintf('SELECT count(date) as cnt FROM %s WHERE (date=:Date)' , $this->name);
         $params = array(
             'Date' => $Date
         );
@@ -85,7 +87,8 @@ class Favor extends ModelBase
 
     public function getEmotion($Date)
     {
-        $sql = sprintf('SELECT neutral,happiness,surprise,anger,sadness FROM %s WHERE (date=:Date) AND stabilization = 1', $this->name);
+//        $sql = sprintf('SELECT neutral,happiness,surprise,anger,sadness FROM %s WHERE (date=:Date) AND stabilization = 1', $this->name);
+        $sql = sprintf('SELECT neutral,happiness,surprise,anger,sadness FROM %s WHERE (date=:Date)', $this->name);
         $params = array(
             'Date' => $Date
         );
@@ -95,7 +98,8 @@ class Favor extends ModelBase
 
     public function getFavorAvg($Time,$Date)
     {
-        $sql = sprintf('SELECT avg(emotion) as favor_data FROM %s WHERE (date=:Date) and (time like :Time) and stabilization = 1' , $this->name);
+//        $sql = sprintf('SELECT avg(emotion) as favor_data FROM %s WHERE (date=:Date) and (time like :Time) and stabilization = 1' , $this->name);
+        $sql = sprintf('SELECT avg(emotion) as favor_data FROM %s WHERE (date=:Date) and (time like :Time)' , $this->name);
         $params = array(
             'Date' => $Date,
             'Time' => $Time
