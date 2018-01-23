@@ -125,7 +125,7 @@ $text = $weather['description']['text'];
                 </header>
                 <div class="graph_box">
                     <div class="box">
-                        <img id="weather-history-img" class="weather-history-img" src="" >
+                        <img id="weather-history-img" class="weather-history-img" src="./img/default.gif" >
                         <div id="weather-history-text" class="weather-history-text"></div>
                     </div>
                     <div class="box">
