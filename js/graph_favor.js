@@ -103,7 +103,6 @@ data: {
                 ticks:{
                     max: 1200,
                     min: 800,
-                    stepSize: 20,
                     // Include a dollar sign in the ticks
                     callback: function(value, index, values) {
                         return value + "Pa";
