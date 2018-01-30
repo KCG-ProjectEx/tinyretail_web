@@ -11,10 +11,11 @@
     while($row = mysql_fetch_assoc($result)){
         $str = $row['favor'];
     }
+    echo '$str';
     $result->close();
     if(strcmp($str,"positive")){
         echo 'w';
-    }elseif(strcmp($str,"negativce")){
+    }elseif(strcmp($str,"negative")){
         echo 'c';
     }elseif(strcmp($str,"null")){
         echo 's';
