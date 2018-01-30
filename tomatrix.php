@@ -11,7 +11,7 @@
     while($row = mysql_fetch_assoc($result)){
         $str = $row['favor'];
     }
-    echo '$str';
+    echo $str;
     $result->close();
     if(strcmp($str,"positive")){
         echo 'w';
