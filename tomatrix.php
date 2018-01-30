@@ -28,40 +28,16 @@ class Tomatrix extends ModelBase
     $tomatrix = new Tomatrix();
 
     $row = $tomatrix->getFavor();
-    var_dump($row);
     $str = $row[0]['favor'];
 
-    if(strcmp($str,"positive")){
+//    var_dump($str);
+    if($str == "positive"){
         echo 'w';
-    }elseif(strcmp($str,"negative")){
+    }elseif($str == "negative"){
         echo 'c';
-    }elseif(strcmp($str,"null")){
+    }elseif($str == "null"){
         echo 's';
     }else{
         echo 'b';
     }
 
-/*
-    $dsn = "mysql:host=localhost;dbname=tinyretail;charset=utf8"; // Database name
-    $user = "root";           // Databese User Name
-    $password = "mysql0001";        // Database Password
-    $dbh = new PDO($dsn, $user, $password);
-    $sql= "SELECT * FROM julius order by desc limit 1";
-    $stmt = $dbh->prepare($sql);
-
-    while($row = mysql_fetch_assoc($result)){
-        $str = $row['favor'];
-    }
-    var_dump($str);
-    $result->close();
-    if(strcmp($str,"positive")){
-        echo 'w';
-    }elseif(strcmp($str,"negative")){
-        echo 'c';
-    }elseif(strcmp($str,"null")){
-        echo 's';
-    }else{
-        echo 'b';
-    }
-?> 
-*/
