@@ -19,7 +19,7 @@ class Tomatrix extends ModelBase
 
     public function getFavor()
     {
-        $sql = sprintf("SELECT favor FROM %s order by desc limit 1", $this->name);
+        $sql = sprintf("SELECT favor FROM %s order by date desc limit 1", $this->name);
         $stmt = $this->query($sql);
         return $stmt;
     }
