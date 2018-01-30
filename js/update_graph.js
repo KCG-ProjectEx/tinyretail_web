@@ -47,7 +47,6 @@ function myChart_UPDATE()
         myChart_sex.data.datasets[0].data[0] = parseInt(myChart_sex.data.datasets[0].data[0]) + parseInt(datas[0][i]["men"]);
         myChart_sex.data.datasets[0].data[1] = parseInt(myChart_sex.data.datasets[0].data[1]) + parseInt(datas[0][i]["ladies"]);
     }
-    console.log(datas);
     myChart_age.data.datasets[0].data = datas[1];
     myChart_facial_expression.data.datasets[0].data = datas[2];
 

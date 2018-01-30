@@ -19,12 +19,12 @@ $dbh = new PDO($dsn, $user, $password); // Database Connect (Make object)
 switch ($get_type) {
   case 'sensor':
 //    $sql = "INSERT INTO indoor_sensor_node (date, time, temperature, humidity, illuminance, atm, booth_id) VALUES (curdate(), curtime(), :temperature, :humidity, :illuminance, :atm, :booth_id)";
-    $sql = "INSERT INTO indoor_sensor_node (date, time, temperature, humidity, illuminance) VALUES (curdate(), curtime(), :temperature, :humidity, :illuminance)";
+    $sql = "INSERT INTO indoor_sensor_node (date, time, temperature, humidity, illuminance, atm) VALUES (curdate(), curtime(), :temperature, :humidity, :illuminance, :atm)";
     $stmt = $dbh->prepare($sql);
     $stmt->bindValue(':temperature', $json_data_d['temperature'], PDO::PARAM_INT);
     $stmt->bindValue(':humidity', $json_data_d['humidity'], PDO::PARAM_INT);
     $stmt->bindValue(':illuminance', $json_data_d['illuminance'], PDO::PARAM_INT);
-//    $stmt->bindValue(':atm', $json_data_d['atm'], PDO::PARAM_INT);
+    $stmt->bindValue(':atm', $json_data_d['atm'], PDO::PARAM_INT);
 //    $stmt->bindValue(':booth_id', $json_data_d['booth_id'], PDO::PARAM_INT);
     break;
 

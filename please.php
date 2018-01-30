@@ -133,7 +133,6 @@ for ($Time=8; $Time <= 19; $Time++) { // 8:00-19:00のデータ取得
     $favor_data[] = $favor->getFavorAvg($Time."%",$Date);
     $pojinega[] = $favor->getPojinega($Time."%",$Date);
 }
-//var_dump($sensor);
 for ($i=0; $i < 12; $i++) {
     $basic_datas[] = array(
         'time' => (string)($i+8),
