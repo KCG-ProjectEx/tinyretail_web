@@ -29,7 +29,7 @@ class Tomatrix extends ModelBase
 
     $row = $tomatrix->getFavor();
     var_dump($row);
-    $str = $row['favor'];
+    $str = $row[0]['favor'];
 
     if(strcmp($str,"positive")){
         echo 'w';
