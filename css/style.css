@@ -1,6 +1,7 @@
 #wrapper{
-    background-color: rgba(225, 245, 254, 0.35);
+    background-color: #e1f5fe59;
     min-width: 450px;
+    padding-bottom: 30px;
 }
 
 main{
@@ -8,6 +9,32 @@ main{
     margin: 0 auto;
     padding-top: 50px;
 }
+/* 日付を入力する部分 */
+#search .searchBotton{
+    padding-top: 20px;
+    padding-left: 6px;
+}
+#search .searchBtn {
+    height: 35px;
+    width: 35px;
+}
+#search .searchBtn i{
+    line-height: 0px;
+    position: absolute;
+    top: 18px;
+    left: 1px;
+    font-size: 1.3rem;
+}
+#search form{
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-top: 20px;
+    color: #FFFFFF;
+}
+#search .active{
+    color: #FFFFFF;
+}
+
 .card .card-header{
     display: block;
     width: 100%;
@@ -15,6 +42,7 @@ main{
     position: absolute;
     top: 0;
     left: 0;
+    border-radius: 2px 2px 0px 0px;
 }
 .card .card-title{
     font-family: "Rounded Mplus 1c";
@@ -22,8 +50,29 @@ main{
     font-size: 1.5em;
     margin: 10px 30px;
 }
+
 .card .graph_box{
     margin-top: 60px;
+}
+.card .graph_box .box {
+    display: inline-block;
+}
+.card .graph_box .box .weather-history-img{
+    height : 36px;
+    border-radius : 2px;
+    margin-top : -30px;
+    padding-bottom : 5px;
+    position: absolute;
+}
+.card .graph_box .box .weather-history-text{
+    color: #666666;
+    font-size: 0.3em;
+    margin-bottom:10px;
+}
+.card .graph_box .box .weather-history-atm{
+    color: #666666;
+    font-size: 0.3em;
+    margin-bottom:10px;
 }
 .card .graph_label{
     margin-top: 60px;
@@ -38,7 +87,7 @@ main{
     color: #FFF;
 }
 #favor .card-header{
-    background-color: #af2de6;
+    background-color: #1E88E5;
 }
 #favor .card-header .card-title{
     color: #FFF;
@@ -58,7 +107,7 @@ main{
 
 /* weather */
 #weather .card{
-    background-color: #607d8b;
+    background-color: #425a7a;
 }
 #weather .card .card-image{
     width: 70%;
@@ -68,21 +117,21 @@ main{
   position: absolute;
   display: none;
   padding: 15px;
-  color: white;
-  background-color: #007963;
+  color: #FFFFFF;
+  background-color: #183d55;
 }
 #weather .card .card-image:hover .weather-text-content {
-
   width: 500px;
   right: 10px;
   display: block;
   border-radius:5px;
   z-index: 2;
 }
+
 /* 適当領域*****************  */
 /* cnt-info  */
 #cnt-info .card{
-    background-color: #00d2a0;
+    background-color: #1f2b3b;
 }
 #cnt-info .card .relative{
     position: relative;
@@ -90,6 +139,12 @@ main{
     left : 15%;
     margin-top: 10px;
 }
+#cnt-info .card .card-content{
+    margin-bottom: 10px;
+    padding-bottom: 31px;
+
+}
+
 #cnt-info .card i{
     position: absolute;
 }
@@ -104,7 +159,7 @@ main{
 
 /* sex */
 #sex .card-header{
-    background-color: #e69c2d;
+    background-color: #985E00;
 }
 #sex .card-header .card-title{
     color: #FFF;
@@ -112,7 +167,7 @@ main{
 
 /* age */
 #age .card-header{
-    background-color: #2d80e6;
+    background-color: #0A5698;
 }
 #age .card-header .card-title{
     color: #FFF;
@@ -120,8 +175,18 @@ main{
 
 /* facial_expression */
 #facial_expression .card-header{
-    background-color: #F78DB1;
+    background-color: #43447F;
 }
 #facial_expression .card-header .card-title{
     color: #FFF;
+}
+
+.nav_color{
+    background-color: #2C4B65 !important;
+}
+.search-color{
+    background-color: #6488ba !important;
+}
+.search-btn-color{
+    background-color: #3b516d !important;
 }

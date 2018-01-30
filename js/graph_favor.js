@@ -1,18 +1,18 @@
 var ctx = document.getElementById("graph_favor");
 
 var myChart_favor = new Chart(ctx, {
-responsive : true, 
+responsive : true,
 type: 'bar',
 data: {
     labels: label_timeline,
-    datasets:[        
+    datasets:[
     {
         label: '好感度',
         data: ary_timeline_favor,
         type: 'line',
         fill: false,
         borderColor: "#ff4081",
-        backgroundColor: "#FFF",        
+        backgroundColor: "#FFF",
         yAxisID:"y-axis-1",
     },{
         label: '気温',
@@ -24,20 +24,24 @@ data: {
         pointBorderColor: "#33691e",
         yAxisID:"y-axis-2",
     },{
+        label: '気圧',
+        data: ary_timeline_atm,
+        type: 'line',
+        fill: false,
+        borderColor: "#CBCDFB",
+        backgroundColor: "#FFF",
+        pointBorderColor: "#33691e",
+        yAxisID:"y-axis-3",
+    },{
         label: 'men',
         type: 'bar',
         backgroundColor: "#9fa8da",
         data:ary_timeline_men
     },{
-        label: 'ladies',
+        label: 'women',
         type: 'bar',
         backgroundColor: "#ef9a9a",
-        data:ary_timeline_ladies
-    },{
-        label: 'unknown',
-        type: 'bar',
-        backgroundColor: "#bdbdbd",
-        data:ary_timeline_unknown
+        data:ary_timeline_women
     }
 ]},
     //オプションの設定
@@ -52,25 +56,29 @@ data: {
                 id:"y-axis-1"
             },{
                 id:"y-axis-2"
+            },{
+                id:"y-axis-3"
             }],
             yAxes: [{
                 // stacked: true, //積み上げ棒グラフにする設定
-                position: "right", //目盛りを右へ                
+                position: "right", //目盛りを右へ
+                display:false,
                 //目盛りの設定
                 ticks: {
                     beginAtZero:true, //開始値を0にする
                     max: 200,
                     min: 0,
-                    stepSize: 20
+                    stepSize: 10
                 }
             },{
+                position: "right", //目盛りを右へ
                 id:"y-axis-1",
-                display:false, //目盛りの表示・非表示
+                display:true, //目盛りの表示・非表示
                 ticks:{
-                    beginAtZero:true, 
-                    max: 100,
-                    min: 0,
-                    stepSize: 20,
+                    //beginAtZero:true,
+                    max: 50,
+                    min: -50,
+                    stepSize: 10,
                     // Include a dollar sign in the ticks
                     callback: function(value, index, values) {
                         return value + "%";
@@ -80,7 +88,7 @@ data: {
                 id:"y-axis-2",
                 position: "left", //目盛りを左へ
                 ticks:{
-                    beginAtZero:true, 
+                    beginAtZero:true,
                     max: 45,
                     min: -5,
                     stepSize: 10,
@@ -88,7 +96,18 @@ data: {
                     callback: function(value, index, values) {
                         return value + "℃";
                     }
-                } 
+                }
+            },{
+                id:"y-axis-3",
+                display:false,
+                ticks:{
+                    max: 1200,
+                    min: 800,
+                    // Include a dollar sign in the ticks
+                    callback: function(value, index, values) {
+                        return value + "Pa";
+                    }
+                }
             }]
         },legend: { //ラベルの表示
             // display: false, //false : 非表示

@@ -1,111 +1,70 @@
 <!DOCTYPE html>
-<html lang="jp">
+<html lang="ja">
 <head>
-    <title>Project Ex TinyRetail Test</title>
+    <title>TinyRetail</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-    <!--Import Google Icon Font-->
+    <link rel="icon" href="./img/favicon_64.gif" type="img/gif">
+    <!-- Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/earlyaccess/roundedmplus1c.css" rel="stylesheet" />
 
-    <!--Import materialize.css-->
+    <!-- Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="commons/css/materialize.min.css"  media="screen,projection"/>
 
-    <!--カレンダーCSS  -->
+    <!-- カレンダーCSS  -->
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/blitzer/jquery-ui.css" >
     <link type="text/css" rel="stylesheet" href="css/style.css"/>
 
-    <!--icon  -->
+    <!-- icon  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body>
 <?php
-
-$dsn = 'mysql:dbname=tinyretail;host=localhost;charset=utf8';
-$user = 'root';
-$pass = 'mysql0001';
-$border = 1;
-$ary_age = array(0,0,0,0,0,0,0,0,0,0);
-$ary_facial_expression = array(0,0,0,0,0);
-
-try{
-
-  $dbh = new PDO($dsn,$user,$pass);
-  $sql = 'SELECT * FROM hvc_p2 INNER JOIN sex ON hvc_p2.sex_id = sex.sex_id';
-
-  foreach ($dbh->query($sql,PDO::FETCH_ASSOC) as $row) {
-    if($row['sex_val'] == '男'){
-      $count_men++;
-    }elseif($row['sex_val'] == '女'){
-      $count_ladies++;
-    }else{
-      $count_other++;
-    }
-    $ary_age[round($row['age']/10)] += 1;
-    $ave_age = $ave_age + $row['age'];
-    $count++;
-  }
-
-  $sql = 'SELECT * FROM hvc_p2';
-  foreach ($dbh->query($sql,PDO::FETCH_ASSOC) as $row) {
-    if (intval($row['neutral']) >= $border){
-      $ary_facial_expression[0]++;
-    }
-    if (intval($row['happiness']) >= $border){
-      $ary_facial_expression[1]++;
-    }
-    if (intval($row['surprise']) >= $border){
-      $ary_facial_expression[2]++;
-    }
-    if (intval($row['anger']) >= $border){
-      $ary_facial_expression[3]++;
-    }
-    if (intval($row['sadness']) >= $border){
-      $ary_facial_expression[4]++;
-    }
-  }
-
-
-}catch (PDOException $e){
-    print('Error:'.$e->Message());
-    die();
-}
-
-$dbh = null;
-$ave_age = round($ave_age / $count,1); //小数点第一位で四捨五入
-$encoded_age = json_encode($ave_age);
-$encoded_facial = json_encode($ary_facial_expression);
-
+/* livedoor weather Hack API */
+/* Kyoto */
 $url = "http://weather.livedoor.com/forecast/webservice/json/v1?city=260010";
+
+/* Osaka */
+//$url = "http://weather.livedoor.com/forecast/webservice/json/v1?city=270000";
+
+/* Toyohashi */
+//$url = "http://weather.livedoor.com/forecast/webservice/json/v1?city=230020";
+
+/* Otsu */
+//$url = "http://weather.livedoor.com/forecast/webservice/json/v1?city=250010";
+
+// /* weather underground API */
+// /* Kyoto */
+// //$url_wu= "http://api.wunderground.com/api/1e884494f8533bbe/conditions/q/JP/Kyoto.json";
+
+// /* Osaka */
+// //$url_wu = "http://api.wunderground.com/api/1e884494f8533bbe/conditions/q/zmw:00000.36.47617.json";
+
+// /* KyotoHistory */
+// // $url_wu= "http://api.wunderground.com/api/1e884494f8533bbe/history_20171231/q/JP/Kyoto.json";
+
+// $url_wu = "./history.json";
+// $weather_wu = file_get_contents($url_wu, true);
+// $weather_wu = json_decode($weather_wu, true);
+// // $weatherData = $weather_wu['current_observation'];
+// // echo $weather_wu['history']['observations'][7]['icon'];
+// $img_wu = "http://icons.wxug.com/i/c/i/".$weather_wu['history']['observations'][7]['icon'].".gif";
+
+
+/* 天気アイコンと文字を表示 */
 $weather = file_get_contents($url, true);
 $weather = json_decode($weather, true);
-
-$title = $weather['title'];
-$description = $weather['description']['text'];
-$publicTime = $weather['publicTime'];
-$city = $weather['location']['city'];
-$area = $weather['location']['area'];
-$prefecture = $weather['location']['prefecture'];
 $img = $weather['forecasts'][0]['image']['url'];
 $img = str_replace("http://weather.livedoor.com/img/icon","./img",$img);
 $text = $weather['description']['text'];
 ?>
-<script id="data_db" src="./js/variable_assignment.js"
-    data-ary-age= "<?php echo json_encode($ary_age); ?>";
-    data-men="<?php echo json_encode($count_men); ?>";
-    data-ladies="<?php echo json_encode($count_ladies); ?>";
-    data-unknown="<?php echo json_encode($count_other); ?>";
-    data-ary-facial-expression=<?php echo json_encode($encoded_facial); ?>;
->
-</script>
 <div id="wrapper">
-
     <header>
         <!-- Nav -->
-        <nav class="blue darken-1">
+        <nav class="nav_color">
             <div class="nav-wrapper">
                 <a href="#" class="brand-logo center">TinyRetail</a>
             </div>
@@ -117,7 +76,47 @@ $text = $weather['description']['text'];
 
     <div class="row">
 
-        <article id="favor" class="col s12 m9">
+        <div class="col m3 push-m9 s12">
+            <div id="search" class="col s12 m12">
+                <div class="card search-color">
+                    <form id="form_dete" action="">
+                        <div class="row">
+                        <div class="input-field col s7">
+                            <input type="text" id="datepicker" name="get_dete" value="" />
+                            <label for="datepicker">検索日時</label>
+                        </div>
+                        <div class="searchBotton col s5">
+                            <a class="btn-floating btn-large waves-effect waves-light search-btn-color searchBtn" onclick="myChart_UPDATE();"><i class="material-icons">sync</i></a>
+                        </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div id="weather" class="col s6 m12">
+                <div class="card">
+                    <div class="card-image">
+                        <img class="responsive-img" src=<?php echo $img; ?> >
+                        <p class="weather-text-content"><?php echo $text; ?></p>
+                    </div>
+                </div>
+            </div>
+            <div id="cnt-info" class="col s6 m12">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="ave-age relative">
+                            <i class="material-icons" style="color: white;">face</i>
+                            <p id="average_age"></p>
+                        </div>
+                        <div class="visitor_num relative">
+                            <i class="material-icons" style="color: white;">people</i>
+                            <p id="count"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <article id="favor" class="col m9 pull-m3 s12">
         <div class="card">
             <div class="card-content">
                 <header class="card-header">
@@ -125,49 +124,19 @@ $text = $weather['description']['text'];
                     <p id="output-date">日付</p>
                 </header>
                 <div class="graph_box">
+                    <div class="box">
+                        <img id="weather-history-img" class="weather-history-img" src="./img/default.gif" >
+                        <div id="weather-history-text" class="weather-history-text"></div>
+                    </div>
+                    <div class="box">
+                        <div id="weather-history-atm" class="weather-history-text"></div>
+                    </div>
                     <canvas id="graph_favor"></canvas>
                 </div>
-            </div>
-
-            <div class="card-action">
-                <form id="form_dete" action="">
-                    <div class="row">
-                    <div class="input-field col s5">
-                        <input type="text" id="datepicker" name="get_dete" value="" />
-                        <label for="datepicker">検索日時</label>
-                    </div>
-                    <div class="input-field col s5">
-                        <a class="waves-effect waves-light btn" onclick="myChart_UPDATE();">更新</a>
-                    </div>
-                    </div>
-                </form>
             </div>
         </div>
         </article>
 
-        <article id="weather" class="col s6 m3">
-            <div class="card">
-                <div class="card-image">
-                    <img class="responsive-img" src=<?php echo $img; ?> >
-                    <p class="weather-text-content"><?php echo $text ?></p>
-                </div>
-            </div>
-        </article>
-
-        <article id="cnt-info" class="col s6 m3">
-            <div class="card">
-                <div class="card-content">
-                    <div class="ave-age relative">
-                        <i class="material-icons">face</i>
-                        <p><?php echo json_encode($ave_age); ?></p>
-                    </div>
-                    <div class="visitor_num relative">
-                        <i class="material-icons">people</i>
-                        <p><?php echo json_encode($count); ?></p>
-                    </div>
-                </div>
-            </div>
-        </article>
 
         <article id="sex" class="col s12 m6">
         <div class="card">
@@ -227,13 +196,41 @@ $text = $weather['description']['text'];
 
 <!-- jsの変数初期化 -->
 <script type="text/javascript" src="js/variable_assignment.js"></script>
-<!--グラフの更新  -->
-<script type="text/javascript" src="js/update_graph.js"></script>
+<script id="data_db" src="./js/variable_assignment.js"></script>
 <!--各種グラフの設定  -->
 <script id="Graph_favor" src="js/graph_favor.js"></script>
 <script id="Graph_sex" src="js/graph_sex.js"></script>
 <script id="Graph_age" src="js/graph_age.js"></script>
 <script id="Graph_facial_expression" src="js/graph_facial_expression.js"></script>
+<!--グラフの更新  -->
+<script type="text/javascript" src="js/update_graph.js"></script>
+
+<!-- 雪を降らせる -->
+<!--
+<script type="text/javascript" src="commons/js/snowfall.jquery.js"></script>
+<script>
+    $(document).snowfall({
+        // 雪の量 (数値)
+        flakeCount : 100,
+        // z-indexの値
+        flakeIndex : "888",
+        // 最小サイズ （数値）
+        minSize : 5,
+        // 最大サイズ（数値）
+        maxSize : 10,
+        // 最低速度（数値）
+        minSpeed : 1,
+        // 最高速度（数値）
+        maxSpeed : 5,
+        // 雪の形を丸にする（boolean）
+        round : true,
+        // 影をつける（boolean）
+        shadow : false,
+        // イメージを表示する
+        image : "img/snow.png"
+    });
+</script>
+-->
 
 </body>
 </html>
