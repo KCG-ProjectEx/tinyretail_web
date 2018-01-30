@@ -65,7 +65,7 @@ class Favor extends ModelBase
 
     public function getSensorList($Time,$Date)
     {
-        $sql = sprintf('SELECT avg(temperature) as tmp, atm FROM %s WHERE (date=:Date) and (time like :Time)',$this->sensor_name );
+        $sql = sprintf('SELECT avg(temperature) as tmp, max(atm) as atm FROM %s WHERE (date=:Date) and (time like :Time)',$this->sensor_name );
         $params = array(
             'Date' => $Date,
             'Time' => $Time
