@@ -9,8 +9,8 @@ $connInfo = array(
     'host'     => 'localhost',
     'dbname'   => 'tinyretail',
     'dbuser'   => 'root',
-    'password' => 'mysql0001'
-    //'password' => ''
+    //'password' => 'mysql0001'
+    'password' => ''
 );
 ModelBase::setConnectionInfo($connInfo );
 
@@ -39,14 +39,14 @@ class Tomatrix extends ModelBase
     $str = $row[0]['favor'];
     
     //hvc from time
-    $camera_row =$tomatrix->hvctime();
-    $camera_str=$camera_row[0]['time'];
+    $camera_row = $tomatrix->hvctime();
+    $camera_str = $camera_row[0]['time'];
     
-    var_dump($camera_str);
-    
-    if($camera_str<$prev_time+30 && $str !=  $prev_favor){
-        $prev_time=$camera_str;
-        $str=$prev_str;
+//    var_dump($camera_str);
+
+    if($camera_str < $prev_time+30 && $str !=  $prev_favor){
+        $prev_time = $camera_str;
+        $str = $prev_favor;
 //    var_dump($str);
         if($str == "positive"){
             echo 'w';
