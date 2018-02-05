@@ -34,9 +34,6 @@ class Tomatrix extends ModelBase
     $tomatrix = new Tomatrix();
 
     $prev_time = time();
-    $prev_favor = "null";
-
-
     $row = $tomatrix->getFavor();
     $str = $row[0]['favor'];
     
@@ -48,9 +45,7 @@ class Tomatrix extends ModelBase
     // $camera_str += 30;    
     // var_dump($prev_time);
 
-    if($camera_str + 30 < $prev_time && $str != $prev_favor){
-        $prev_time = $camera_str;
-        $str = $prev_favor;
+    if($camera_str + 30 < $prev_time){
         if($str == "positive"){
             echo 'w';
         }elseif($str == "negative"){
