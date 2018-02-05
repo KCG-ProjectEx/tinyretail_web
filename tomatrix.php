@@ -45,7 +45,7 @@ class Tomatrix extends ModelBase
     // $camera_str += 30;    
     // var_dump($prev_time);
 
-    if($camera_str + 30 < $prev_time){
+    if($camera_str + 30 > $prev_time){
         if($str == "positive"){
             echo 'w';
         }elseif($str == "negative"){
