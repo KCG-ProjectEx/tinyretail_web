@@ -1,7 +1,5 @@
 
 <?php
-    $prev_time=0;
-    $prev_favor="null";
 require_once('ModelBase.php');
 
 // DB接続情報設定 (本来はここに置くべきでは無い処理)
@@ -27,7 +25,7 @@ class Tomatrix extends ModelBase
     }
     public function hvctime()
     {
-        $sql = sprintf("SELECT time FROM %s order by date desc limit 1", $this->camera_name);
+        $sql = sprintf("SELECT date,time FROM %s order by date desc limit 1", $this->camera_name);
         $stmt = $this->query($sql);
         return $stmt;
     }
@@ -35,19 +33,24 @@ class Tomatrix extends ModelBase
 
     $tomatrix = new Tomatrix();
 
+    $prev_time = time();
+    $prev_favor = "null";
+
+
     $row = $tomatrix->getFavor();
     $str = $row[0]['favor'];
     
     //hvc from time
     $camera_row = $tomatrix->hvctime();
-    $camera_str = $camera_row[0]['time'];
-    
-//    var_dump($camera_str);
+    $camera_str = strtotime($camera_row[0]['date'].$camera_row[0]['time']);
 
-    if($camera_str < $prev_time+30 && $str !=  $prev_favor){
+    // var_dump($camera_str);
+    // $camera_str += 30;    
+    // var_dump($prev_time);
+
+    if($camera_str + 30 < $prev_time && $str != $prev_favor){
         $prev_time = $camera_str;
         $str = $prev_favor;
-//    var_dump($str);
         if($str == "positive"){
             echo 'w';
         }elseif($str == "negative"){
