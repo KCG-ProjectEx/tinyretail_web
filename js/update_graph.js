@@ -20,6 +20,9 @@ function myChart_UPDATE()
     var positiveWords = 0;
     var negativeWords = 0;
     var favor_tmp = 0;
+    var happyValue = 0; // 笑顔の合計
+    var happyCount = 0; // 笑顔の数
+    var happy = 0; // 笑顔補正用数値
     for(i=0;i<12;i++){
         // グラフデータを更新
         if(datas[0][i]["favor_data"] === ""){
@@ -28,7 +31,7 @@ function myChart_UPDATE()
         }else{
             favor_tmp = (parseInt(datas[0][i]["favor_data"]) / 100 ) * 50;
         }
-        /* juliusのネガポジ判定 */
+        /* juliusのネガポジ判定 笑顔と優しさ補正 */
         datas[0][i]["pojinega"].forEach( function( value ) {
             if(value.pojinega === "positive" && favor_tmp < 50){
                 positiveWords++;
@@ -39,17 +42,31 @@ function myChart_UPDATE()
                 favor_tmp--;
             }
         });
+        datas[0][i]["happy"].forEach( function( value ) {
+            happyValue += parseInt(value.happiness);
+            happyCount++;
+        });
+        if(happyCount != 0){
+            happy = happyValue/happyCount;
+        }
+        favor_tmp = favor_tmp + happy;
+        if(favor_tmp > 50){
+            favor_tmp = 50;
+        }
+        happyValue = 0;
+        happyCount = 0;
+        happy = 0;
         myChart_favor.data.datasets[0].data[i] = favor_tmp;
         myChart_favor.data.datasets[1].data[i] = datas[0][i]["tmp"];
         myChart_favor.data.datasets[2].data[i] = datas[0][i]["atm"];
-        myChart_favor.data.datasets[3].data[i] = datas[0][i]["men"];
-        myChart_favor.data.datasets[4].data[i] = datas[0][i]["ladies"];
+        myChart_favor.data.datasets[3].data[i] = datas[0][i]["ave_age"][0][0];
+        myChart_favor.data.datasets[4].data[i] = datas[0][i]["men"];
+        myChart_favor.data.datasets[5].data[i] = datas[0][i]["ladies"];
         myChart_sex.data.datasets[0].data[0] = parseInt(myChart_sex.data.datasets[0].data[0]) + parseInt(datas[0][i]["men"]);
         myChart_sex.data.datasets[0].data[1] = parseInt(myChart_sex.data.datasets[0].data[1]) + parseInt(datas[0][i]["ladies"]);
     }
     myChart_age.data.datasets[0].data = datas[1];
     myChart_facial_expression.data.datasets[0].data = datas[2];
-
     myChart_age.update();
     myChart_facial_expression.update();
     myChart_sex.update();

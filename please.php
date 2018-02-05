@@ -42,6 +42,17 @@ class Favor extends ModelBase
         return $stmt;
     }
 
+    public function getAvgAgeTime($Time,$Date)
+    {
+        $sql = sprintf('SELECT avg(age) FROM %s WHERE (date=:Date) AND (time like :Time)' , $this->name);
+        $params = array(
+            'Date' => $Date,
+            'Time' => $Time
+        );
+        $stmt = $this->query($sql, $params);
+        return $stmt;
+    }
+
     public function getListAge($Date)
     {
 //        $sql = sprintf('SELECT age FROM %s WHERE (date=:Date) AND stabilization = 1' , $this->name);
@@ -118,6 +129,17 @@ class Favor extends ModelBase
         return $stmt;
     }
 
+    public function getHappyData($Time,$Date)
+    {
+        $sql = sprintf('SELECT happiness FROM %s WHERE (date=:Date) AND (time like :Time) AND happiness > 5' , $this->name);
+        $params = array(
+            'Date' => $Date,
+            'Time' => $Time
+        );
+        $stmt = $this->query($sql, $params);
+        return $stmt;
+    }
+
     public function json_safe_encode($data){
         return json_encode($data, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT);
     }
@@ -132,6 +154,8 @@ for ($Time=8; $Time <= 19; $Time++) { // 8:00-19:00のデータ取得
     $sensor[] = $favor->getSensorList($Time."%",$Date);
     $favor_data[] = $favor->getFavorAvg($Time."%",$Date);
     $pojinega[] = $favor->getPojinega($Time."%",$Date);
+    $happy[] = $favor->getHappyData($Time."%",$Date);
+    $aveAge[] = $favor->getAvgAgeTime($Time."%",$Date);
 }
 for ($i=0; $i < 12; $i++) {
     $basic_datas[] = array(
@@ -141,7 +165,9 @@ for ($i=0; $i < 12; $i++) {
         'tmp' => (string)$sensor[$i][0]['tmp'],
         'atm' => (string)$sensor[$i][0]['atm'],
         'favor_data' => (string)$favor_data[$i][0]['favor_data'],
-        'pojinega' => $pojinega[$i]
+        'pojinega' => $pojinega[$i],
+        'happy' => $happy[$i],
+        'ave_age' => $aveAge[$i]
     );
 }
 

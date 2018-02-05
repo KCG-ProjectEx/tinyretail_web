@@ -30,8 +30,16 @@ data: {
         fill: false,
         borderColor: "#CBCDFB",
         backgroundColor: "#FFF",
-        pointBorderColor: "#33691e",
+        pointBorderColor: "#BDBDFB",
         yAxisID:"y-axis-3",
+    },{
+        label: '平均年齢',
+        type: 'line',
+        fill: false,
+        backgroundColor: "#5C2A86",
+        borderColor: "rgba(255,255,255,0)",
+        data: ary_timeline_ageAverage,
+        yAxisID:"y-axis-4",
     },{
         label: 'men',
         type: 'bar',
@@ -49,7 +57,7 @@ data: {
         //軸の設定
         scales: {
             xAxes: [{
-                // stacked: true, //積み上げ棒グラフにする設定
+                //stacked: true, //積み上げ棒グラフにする設定
                 categoryPercentage:0.7, //棒グラフの太さ
                 barPercentage:0.9 //棒グラフの全体の幅
             },{
@@ -66,7 +74,7 @@ data: {
                 //目盛りの設定
                 ticks: {
                     beginAtZero:true, //開始値を0にする
-                    max: 200,
+                    max: 300,
                     min: 0,
                     stepSize: 10
                 }
@@ -102,11 +110,18 @@ data: {
                 display:false,
                 ticks:{
                     max: 1200,
-                    min: 800,
+                    min: 500,
                     // Include a dollar sign in the ticks
                     callback: function(value, index, values) {
                         return value + "Pa";
                     }
+                }
+            },{
+                id:"y-axis-4",
+                display:false,
+                ticks:{
+                    max: 100,
+                    min: 0,
                 }
             }]
         },legend: { //ラベルの表示
