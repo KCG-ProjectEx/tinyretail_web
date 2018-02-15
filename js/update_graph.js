@@ -35,11 +35,11 @@ function myChart_UPDATE()
         datas[0][i]["pojinega"].forEach( function( value ) {
             if(value.pojinega === "positive" && favor_tmp < 50){
                 positiveWords++;
-                favor_tmp++;
+                favor_tmp += 10;
             }
             if(value.pojinega === "negative" && favor_tmp > -50){
                 negativeWords++;
-                favor_tmp--;
+                favor_tmp -= 5;
             }
         });
         datas[0][i]["happy"].forEach( function( value ) {

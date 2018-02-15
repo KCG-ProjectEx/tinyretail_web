@@ -74,9 +74,9 @@ data: {
                 //目盛りの設定
                 ticks: {
                     beginAtZero:true, //開始値を0にする
-                    max: 300,
-                    min: 0,
-                    stepSize: 10
+//                    max: 800,
+//                    min: 0,
+                    stepSize: 20
                 }
             },{
                 position: "right", //目盛りを右へ
