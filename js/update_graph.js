@@ -23,6 +23,7 @@ function myChart_UPDATE()
     var happyValue = 0; // 笑顔の合計
     var happyCount = 0; // 笑顔の数
     var happy = 0; // 笑顔補正用数値
+
     for(i=0;i<12;i++){
         // グラフデータを更新
         if(datas[0][i]["favor_data"] === ""){
@@ -35,7 +36,7 @@ function myChart_UPDATE()
         datas[0][i]["pojinega"].forEach( function( value ) {
             if(value.pojinega === "positive" && favor_tmp < 50){
                 positiveWords++;
-                favor_tmp += 10;
+                favor_tmp += 5;
             }
             if(value.pojinega === "negative" && favor_tmp > -50){
                 negativeWords++;
@@ -53,9 +54,11 @@ function myChart_UPDATE()
         if(favor_tmp > 50){
             favor_tmp = 50;
         }
+
         happyValue = 0;
         happyCount = 0;
         happy = 0;
+
         myChart_favor.data.datasets[0].data[i] = favor_tmp;
         myChart_favor.data.datasets[1].data[i] = datas[0][i]["tmp"];
         myChart_favor.data.datasets[2].data[i] = datas[0][i]["atm"];

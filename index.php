@@ -120,7 +120,7 @@ $text = $weather['description']['text'];
         <div class="card">
             <div class="card-content">
                 <header class="card-header">
-                    <h1 class="card-title">好感度分析</h1>
+                    <h1 class="card-title">好感度</h1>
                     <p id="output-date">日付</p>
                 </header>
                 <div class="graph_box">

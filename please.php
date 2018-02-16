@@ -87,7 +87,7 @@ class Favor extends ModelBase
 
     public function getPojinega($Time,$Date)
     {
-        $sql = sprintf('SELECT favor AS pojinega FROM %s WHERE (date=:Date) AND (time like :Time) AND favor_score > 0.95 AND favor <> "neutral"',$this->mic_name );
+        $sql = sprintf('SELECT favor AS pojinega FROM %s WHERE (date=:Date) AND (time like :Time) AND favor_score > 0.9 AND favor <> "neutral"',$this->mic_name );
         $params = array(
             'Date' => $Date,
             'Time' => $Time
@@ -109,8 +109,8 @@ class Favor extends ModelBase
 
     public function getFavorAvg($Time,$Date)
     {
-//        $sql = sprintf('SELECT avg(emotion) as favor_data FROM %s WHERE (date=:Date) and (time like :Time) and stabilization = 1' , $this->name);
-        $sql = sprintf('SELECT avg(emotion) as favor_data FROM %s WHERE (date=:Date) and (time like :Time)' , $this->name);
+//        $sql = sprintf('SELECT avg(emotion + cast(surprise AS SIGNED) + cast(sadness as SIGNED) ) as favor_data FROM %s WHERE (date=:Date) AND (time like :Time) AND stabilization = 1' , $this->name);
+        $sql = sprintf('SELECT avg(emotion + cast(sadness as SIGNED) + cast(anger as SIGNED)) as favor_data FROM %s WHERE (date=:Date) AND (time like :Time)' , $this->name);
         $params = array(
             'Date' => $Date,
             'Time' => $Time
