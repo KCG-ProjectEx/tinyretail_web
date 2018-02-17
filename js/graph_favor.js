@@ -14,6 +14,7 @@ data: {
         borderColor: "#ff4081",
         backgroundColor: "#FFF",
         yAxisID:"y-axis-1",
+	borderJoinStyle : "miter",
     },{
         label: '気温',
         data: ary_timeline_temp,

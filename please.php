@@ -110,7 +110,8 @@ class Favor extends ModelBase
     public function getFavorAvg($Time,$Date)
     {
 //        $sql = sprintf('SELECT avg(emotion + cast(surprise AS SIGNED) + cast(sadness as SIGNED) ) as favor_data FROM %s WHERE (date=:Date) AND (time like :Time) AND stabilization = 1' , $this->name);
-        $sql = sprintf('SELECT avg(emotion + cast(sadness as SIGNED) + cast(anger as SIGNED)) as favor_data FROM %s WHERE (date=:Date) AND (time like :Time)' , $this->name);
+//        $sql = sprintf('SELECT avg(emotion + cast(sadness as SIGNED) + cast(anger as SIGNED)) as favor_data FROM %s WHERE (date=:Date) AND (time like :Time)' , $this->name);
+        $sql = sprintf('SELECT avg(emotion + cast(anger as SIGNED)) as favor_data FROM %s WHERE (date=:Date) AND (time like :Time)' , $this->name);
         $params = array(
             'Date' => $Date,
             'Time' => $Time
