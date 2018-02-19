@@ -24,7 +24,7 @@ function myChart_UPDATE()
     var happyCount = 0; // 笑顔の数
     var happy = 0; // 笑顔補正用数値
 
-    for(i=0;i<12;i++){
+    for(i=0;i<11;i++){
         // グラフデータを更新
         if(datas[0][i]["favor_data"] === ""){
             //NULL時は0(neutral)

@@ -87,7 +87,7 @@ class Favor extends ModelBase
 
     public function getPojinega($Time,$Date)
     {
-        $sql = sprintf('SELECT favor AS pojinega FROM %s WHERE (date=:Date) AND (time like :Time) AND favor_score > 0.9 AND favor <> "neutral"',$this->mic_name );
+        $sql = sprintf('SELECT favor AS pojinega FROM %s WHERE (date=:Date) AND (time like :Time) AND favor_score > 0.95 AND favor <> "neutral" AND sentence <> "。"',$this->mic_name );
         $params = array(
             'Date' => $Date,
             'Time' => $Time
@@ -111,7 +111,8 @@ class Favor extends ModelBase
     {
 //        $sql = sprintf('SELECT avg(emotion + cast(surprise AS SIGNED) + cast(sadness as SIGNED) ) as favor_data FROM %s WHERE (date=:Date) AND (time like :Time) AND stabilization = 1' , $this->name);
 //        $sql = sprintf('SELECT avg(emotion + cast(sadness as SIGNED) + cast(anger as SIGNED)) as favor_data FROM %s WHERE (date=:Date) AND (time like :Time)' , $this->name);
-        $sql = sprintf('SELECT avg(emotion + cast(anger as SIGNED)) as favor_data FROM %s WHERE (date=:Date) AND (time like :Time)' , $this->name);
+        $sql = sprintf('SELECT avg((emotion + cast(neutral as SIGNED) + cast(surprise as SIGNED)) * (cast(face_size as SIGNED) * 0.005)) as favor_data FROM %s WHERE (date=:Date) AND (time like :Time)' , $this->name);
+//        $sql = sprintf('SELECT avg(emotion) as favor_data FROM %s WHERE (date=:Date) AND (time like :Time)' , $this->name);
         $params = array(
             'Date' => $Date,
             'Time' => $Time
@@ -132,7 +133,7 @@ class Favor extends ModelBase
 
     public function getHappyData($Time,$Date)
     {
-        $sql = sprintf('SELECT happiness FROM %s WHERE (date=:Date) AND (time like :Time) AND happiness > 5' , $this->name);
+        $sql = sprintf('SELECT happiness FROM %s WHERE (date=:Date) AND (time like :Time)' , $this->name);
         $params = array(
             'Date' => $Date,
             'Time' => $Time
@@ -149,7 +150,7 @@ $favor = new Favor();
 
 $Date = $_GET['date'];
 
-for ($Time=8; $Time <= 19; $Time++) { // 8:00-19:00のデータ取得
+for ($Time = 10; $Time <= 20; $Time++) { // 10:00-20:00台のデータ取得
     $men[] = $favor->getList($Time."%", $Date, "1");
     $women[] = $favor->getList($Time."%", $Date, "2");
     $sensor[] = $favor->getSensorList($Time."%",$Date);
@@ -158,9 +159,9 @@ for ($Time=8; $Time <= 19; $Time++) { // 8:00-19:00のデータ取得
     $happy[] = $favor->getHappyData($Time."%",$Date);
     $aveAge[] = $favor->getAvgAgeTime($Time."%",$Date);
 }
-for ($i=0; $i < 12; $i++) {
+for ($i=0; $i < 11; $i++) {
     $basic_datas[] = array(
-        'time' => (string)($i+8),
+        'time' => (string)($i+10),
         'men' => (string)$men[$i][0]['count'],
         'ladies' => (string)$women[$i][0]['count'],
         'tmp' => (string)$sensor[$i][0]['tmp'],
